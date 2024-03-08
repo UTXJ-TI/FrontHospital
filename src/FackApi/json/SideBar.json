@@ -49,6 +49,71 @@
     "badge" : false
   },
   {
+    "title": "Farmacia Intrahospitalaria",
+    "name": "Farmacia Intrahospitalaria",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name": "dashboard.farmintra"
+    },
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-home-8-fill",
+    "badge" : false
+  },
+  {
+    "title": "Pediatria",
+    "name": "Pediatria",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name": "dashboard.pediatria"
+    },
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-home-8-fill",
+    "badge" : false
+  },
+  {
+    "title": "Radiologia e Imagen",
+    "name": "Radiologia e Imagen",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name": "dashboard.radiologiai"
+    },
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-home-8-fill",
+    "badge" : false
+  },
+  {
+    "title": "Recursos humanos",
+    "name": "Recursos Humanos",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name": "dashboard.recursosh"
+    },
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-home-8-fill",
+    "badge" : false
+  },
+  {
+    "title": "Registros Médicos",
+    "name": "Registros Médicos",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name": "dashboard.registrosm"
+    },
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-home-8-fill",
+    "badge" : false
+  },
+  {
     "title": "Apps",
     "name": "sidebar.app",
     "is_heading": true,
