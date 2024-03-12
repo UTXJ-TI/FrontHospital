@@ -1,293 +1,139 @@
 <template>
-    <b-container fluid>
-      <b-row>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Basic Checkbox</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-              <div class="checkbox d-inline-block me-2" v-for="(item, index) in state" :key="index">
-                <input type="checkbox" class="checkbox-input" :id="`basic-checkbox-${index}`" v-model="item.checked" :disabled="item.disabled" />
-                <label :for="`basic-checkbox-${index}`" class="ms-1">{{ item.label }}</label>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Custom Checkbox</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-  
-              <b-form-checkbox v-for="(item, index) in custom_checkbox" class="custom-switch-color" :class="item.checked === true ? 'bg-primary border-primary' : ''" :color="item.color" v-model="item.checked" :disabled="item.disabled" name="check-button" inline v-bind:key="index">
-                {{ item.label }}
-              </b-form-checkbox>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Custom Color</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-              <div class="d-flex gap-3 flex-wrap">
-                <div v-for="(item, index) in customColor" :key="index" class="custom-control custom-checkbox custom-checkbox-color custom-control-inline">
-                  <div class="custom-control custom-checkbox custom-checkbox-color custom-control-inline">
-                    <input type="checkbox" :class="`bg-${item.color} border-${item.color}`" class="custom-control-input" :disabled="item.disabled" :id="item.label" />
-                    <label class="custom-control-label" :for="item.label">{{ item.label }}</label>
-                  </div>
-                </div>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Color</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-  
-              <div class="d-flex gap-3 flex-wrap">
-                <div v-for="(item, index) in color" class="custom-control custom-checkbox custom-checkbox-color-check custom-control-inline" v-bind:key="index">
-                  <input type="checkbox" :class="item.checked === true ? `bg-${item.color} border-${item.color} ` : ''" v-model="item.checked" class="custom-control-input me-1" :id="item.id" />
-                  <label class="custom-control-label" :for="item.id"> {{ item.label }}</label>
-                </div>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Boolean Checkbox</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-              <div class="d-flex gap-3 flex-wrap">
-                <b-form-checkbox v-for="(item, index) in bool" v-model="item.checked" :class="custom - control - label" :disabled="item.disabled" name="check-button" v-bind:key="index">
-                  {{ item.label }}
-                </b-form-checkbox>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Change Icon</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-              <div class="d-flex gap-3 flex-wrap">
-                <div v-for="(item, index) in icon" class="custom-control custom-checkbox checkbox-icon custom-control-inline" v-bind:key="index">
-                  <input type="checkbox" class="custom-control-input" :id="`customSwitch-1-${index}`" v-model="item.checked" />
-                  <label class="custom-control-label" :for="`customSwitch-1-${index}`" v-html="item.label"></label>
-                </div>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-      </b-row>
-    </b-container>
-  </template>
-  <script>
-  import { xray } from '../../config/pluginInit'
-  import iqCard from '../../components/xray/cards/iq-card'
-  export default {
-    name: 'FormCheckboxes',
-    components: { iqCard },
-    mounted() {
-      xray.index()
-    },
-    data() {
-      return {
-        state: [
-          {
-            label: 'Primary / Inactive',
-            checked: false,
-            disabled: false
-          },
-          {
-            label: 'Primary / Active',
-            checked: true,
-            disabled: false
-          },
-          {
-            label: 'Disabled / Inactive',
-            checked: false,
-            disabled: false
-          },
-          {
-            label: 'Active / Disable',
-            checked: true,
-            disabled: true
-          }
-        ],
-        custom_checkbox: [
-          {
-            label: 'Primary / Inactive',
-            checked: false,
-            disabled: false
-          },
-          {
-            label: 'Primary / Active',
-            checked: true,
-            disabled: false
-          },
-          {
-            label: 'Primary - inactive - disabled',
-            checked: false,
-            disabled: false
-          },
-          {
-            label: 'Primary - active - disabled',
-            checked: true,
-            disabled: true
-          }
-        ],
-        text: [
-          {
-            activeLabel: 'On',
-            inactiveLabel: 'Off',
-            label: 'Primary',
-            class: 'primary',
-            checked: true
-          },
-          {
-            activeLabel: 'True',
-            inactiveLabel: 'False',
-            label: 'Success',
-            class: 'success',
-            checked: true
-          },
-          {
-            activeLabel: 'Yes',
-            inactiveLabel: 'No',
-            label: 'Danger',
-            class: 'danger',
-            checked: true
-          }
-        ],
-        customColor: [
-          {
-            label: 'Primary',
-            color: 'primary',
-            checked: true
-          },
-          {
-            label: 'Success',
-            color: 'success',
-            checked: true
-          },
-          {
-            label: 'Danger',
-            color: 'danger',
-            checked: true
-          },
-          {
-            label: 'Warning',
-            color: 'warning',
-            checked: true
-          },
-          {
-            label: 'Dark',
-            color: 'dark',
-            checked: true
-          },
-          {
-            label: 'Info',
-            color: 'info',
-            checked: true
-          }
-        ],
-        color: [
-          {
-            id: 1,
-            label: 'Primary',
-            color: 'primary',
-            checked: true
-          },
-          {
-            id: 2,
-            label: 'Success',
-            color: 'success',
-            checked: true
-          },
-          {
-            id: 3,
-            label: 'Danger',
-            color: 'danger',
-            checked: true
-          },
-          {
-            id: 4,
-            label: 'Warning',
-            color: 'warning',
-            checked: true
-          },
-          {
-            id: 5,
-            label: 'Dark',
-            color: 'dark',
-            checked: true
-          },
-          {
-            id: 6,
-            label: 'Info',
-            color: 'info',
-            checked: true
-          }
-        ],
-        icon: [
-          {
-            label: '<i class="fa fa-music"></i> Music',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-commenting-o"></i> SMS',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-times"></i> Cancel',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-file"></i> File',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-bold"></i> Bold',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-map-marker"></i> Location',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-camera"></i> Camera',
-            checked: true
-          }
-        ],
-        bool: [
-          {
-            label: 'True',
-            checked: true
-          },
-          {
-            label: 'False',
-            checked: false
-          }
-        ]
-      }
-    }
-  }
-  </script>
-  
+  <b-container fluid>
+    <b-row>
+      <!-- Contratación de personal -->
+      <b-col lg="6">
+        <iq-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">Contratación de Personal</h4>
+          </template>
+          <template v-slot:body>
+            <p>Publicación de vacantes, proceso de selección de candidatos, entrevistas, revisión de currículums.</p>
+          </template>
+        </iq-card>
+      </b-col>
+
+      <!-- Capacitación y desarrollo profesional -->
+      <b-col lg="6">
+        <iq-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">Capacitación y Desarrollo Profesional</h4>
+          </template>
+          <template v-slot:body>
+            <p>Programas de formación, cursos de actualización, planes de carrera para empleados.</p>
+          </template>
+        </iq-card>
+      </b-col>
+
+      <!-- Gestión de nómina y beneficios -->
+      <b-col lg="6">
+        <iq-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">Gestión de Nómina y Beneficios</h4>
+          </template>
+          <template v-slot:body>
+            <p>Procesamiento de pagos, administración de beneficios como seguro médico y bonos.</p>
+          </template>
+        </iq-card>
+      </b-col>
+
+      <!-- Administración de registros de empleados -->
+      <b-col lg="6">
+        <iq-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">Administración de Registros de Empleados</h4>
+          </template>
+          <template v-slot:body>
+            <p>Mantenimiento de expedientes, actualización de información personal y laboral.</p>
+          </template>
+        </iq-card>
+      </b-col>
+
+      <!-- Implementación y seguimiento de políticas laborales -->
+      <b-col lg="6">
+        <iq-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">Implementación y Seguimiento de Políticas Laborales</h4>
+          </template>
+          <template v-slot:body>
+            <p>Aplicación de normativas internas, comunicación de políticas y procedimientos.</p>
+          </template>
+        </iq-card>
+      </b-col>
+
+      <!-- Manejo de relaciones laborales y resolución de conflictos -->
+      <b-col lg="6">
+        <iq-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">Manejo de Relaciones Laborales y Resolución de Conflictos</h4>
+          </template>
+          <template v-slot:body>
+            <p>Mediación en disputas, promoción de un ambiente laboral saludable y colaborativo.</p>
+          </template>
+        </iq-card>
+      </b-col>
+
+      <!-- Evaluación del desempeño y programas de retroalimentación -->
+      <b-col lg="6">
+        <iq-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">Evaluación del Desempeño y Programas de Retroalimentación</h4>
+          </template>
+          <template v-slot:body>
+            <p>Revisiones periódicas, establecimiento de metas, retroalimentación constructiva.</p>
+          </template>
+        </iq-card>
+      </b-col>
+
+      <!-- Diseño e implementación de programas de bienestar y salud ocupacional -->
+      <b-col lg="6">
+        <iq-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">Diseño e Implementación de Programas de Bienestar y Salud Ocupacional</h4>
+          </template>
+          <template v-slot:body>
+            <p>Actividades de bienestar, promoción de estilos de vida saludables, prevención de accidentes laborales.</p>
+          </template>
+        </iq-card>
+      </b-col>
+
+      <!-- Coordinación de horarios y turnos de trabajo -->
+      <b-col lg="6">
+        <iq-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">Coordinación de Horarios y Turnos de Trabajo</h4>
+          </template>
+          <template v-slot:body>
+            <p>Elaboración de horarios, asignación de turnos, gestión de vacaciones y permisos.</p>
+          </template>
+        </iq-card>
+      </b-col>
+
+      <!-- Cumplimiento legal y normativo en materia laboral y de recursos humanos -->
+      <b-col lg="6">
+        <iq-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">Cumplimiento Legal y Normativo en Materia Laboral y de Recursos Humanos</h4>
+          </template>
+          <template v-slot:body>
+            <p>Seguimiento de leyes laborales, cumplimiento de regulaciones gubernamentales, gestión de documentación.</p>
+          </template>
+        </iq-card>
+      </b-col>
+    </b-row>
+  </b-container>
+</template>
+
+<script>
+import { xray } from '../../config/pluginInit'
+import iqCard from '../../components/xray/cards/iq-card'
+
+export default {
+  name: 'RecursosHumanos',
+  components: { iqCard },
+  mounted() {
+    xray.index()
+  },
+  // datos o lógica necesaria
+}
+</script>
