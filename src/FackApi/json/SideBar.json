@@ -109,6 +109,7 @@
     "class_name": "",
     "is_icon_class": true,
     "icon": "fa fa-folder",
+    "badge" : false,
     "children": [
       {
         "title": "Dashboard de exp",
@@ -127,7 +128,7 @@
         "name": "Notas Medicas",
         "is_active": true,
         "link": {
-          "name": "dashboard.registrosm"
+          "name": "dashboard.tabladinanotas"
         },
         "class_name": "",
         "is_icon_class": true,
@@ -139,7 +140,7 @@
         "name": "Crud de expedientes",
         "is_active": true,
         "link": {
-          "name": "dashboard.registrosm"
+          "name": "dashboard.crudregistrosm"
         },
         "class_name": "",
         "is_icon_class": true,
