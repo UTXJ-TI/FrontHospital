@@ -1,293 +1,279 @@
 <template>
-    <b-container fluid>
-      <b-row>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Basic Checkbox</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-              <div class="checkbox d-inline-block me-2" v-for="(item, index) in state" :key="index">
-                <input type="checkbox" class="checkbox-input" :id="`basic-checkbox-${index}`" v-model="item.checked" :disabled="item.disabled" />
-                <label :for="`basic-checkbox-${index}`" class="ms-1">{{ item.label }}</label>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Custom Checkbox</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-  
-              <b-form-checkbox v-for="(item, index) in custom_checkbox" class="custom-switch-color" :class="item.checked === true ? 'bg-primary border-primary' : ''" :color="item.color" v-model="item.checked" :disabled="item.disabled" name="check-button" inline v-bind:key="index">
-                {{ item.label }}
-              </b-form-checkbox>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Custom Color</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-              <div class="d-flex gap-3 flex-wrap">
-                <div v-for="(item, index) in customColor" :key="index" class="custom-control custom-checkbox custom-checkbox-color custom-control-inline">
-                  <div class="custom-control custom-checkbox custom-checkbox-color custom-control-inline">
-                    <input type="checkbox" :class="`bg-${item.color} border-${item.color}`" class="custom-control-input" :disabled="item.disabled" :id="item.label" />
-                    <label class="custom-control-label" :for="item.label">{{ item.label }}</label>
+  <b-container fluid>
+    <b-row>
+      <b-col sm="12">
+        <b-row>
+          <b-col lg="12">
+            <h1 style="text-align: center; font-size: 30px">
+              Dirección General
+            </h1>
+            <br />
+            <h5>Coordinación de Servicos Médicos de Alta Especialidad</h5>
+            <br />
+            <div
+              class="iq-card-body p-0 rounded"
+              :style="`background: url(${require('../../assets/images/page-img/imagenes-direccionGeneral/banner.png')}) no-repeat scroll center center; background-size: contain;  min-height: 446px;`"
+            ></div>
+            <br />
+          </b-col>
+
+          <div style="margin-left: auto; margin-right: auto; max-width: 1200px">
+            <div style="display: flex; justify-content: space-between">
+              <b-col md="4" lg="3">
+                <iq-card>
+                  <template v-slot:body>
+                    <div
+                      class="iq-card-body p-0 rounded"
+                      :style="`background: url(${require('../../assets/images/page-img/imagenes-direccionGeneral/medico.jpg')}) no-repeat scroll center center; background-size: contain;  min-height: 146px;`"
+                    ></div>
+                    <h4 class="mb-2 mt-2" style="text-align: center">
+                      Aprobación de Servicios Hospitalarios
+                    </h4>
+                    <div class="text-center">
+                      <button
+                        class="btn btn-primary"
+                        onclick="window.location.href='/aprobacion-servicios-hospitalarios'"
+                      >
+                        Conoce Más
+                      </button>
+                    </div>
+                  </template>
+                </iq-card>
+              </b-col>
+
+              <b-col md="6" lg="3">
+                <iq-card>
+                  <template v-slot:body>
+                    <div
+                      class="iq-card-body p-0 rounded"
+                      :style="`background: url(${require('../../assets/images/page-img/imagenes-direccionGeneral/servicioshospitalarios.jpg')}) no-repeat scroll center center; background-size: contain;  min-height: 146px;`"
+                    ></div>
+                    <h4 class="mb-2 mt-2" style="text-align: center">
+                      Estructura Organica del Hospital
+                    </h4>
+                    <div class="text-center">
+                      <button
+                        class="btn btn-primary"
+                        onclick="window.location.href='/estrucutura-organica-hospital'"
+                      >
+                        Conoce Más
+                      </button>
+                    </div>
+                  </template>
+                </iq-card>
+              </b-col>
+
+              <b-col md="6" lg="3">
+                <iq-card>
+                  <template v-slot:body>
+                    <div
+                      class="iq-card-body p-0 rounded"
+                      :style="`background: url(${require('../../assets/images/page-img/imagenes-direccionGeneral/servcio.webp')}) no-repeat scroll center center; background-size: contain;  min-height: 146px;`"
+                    ></div>
+                    <h4 class="mb-2 mt-2" style="text-align: center">
+                      Bitácora General del Hospital
+                    </h4>
+                    <div class="text-center">
+                      <button
+                        class="btn btn-primary"
+                        onclick="window.location.href='/bitacora-direccion-general'"
+                      >
+                        Conoce Más
+                      </button>
+                    </div>
+                  </template>
+                </iq-card>
+              </b-col>
+
+              <b-col md="6" lg="3">
+                <iq-card>
+                  <template v-slot:body>
+                    <div
+                      class="iq-card-body p-0 rounded"
+                      :style="`background: url(${require('../../assets/images/page-img/imagenes-direccionGeneral/EstadisitcasMedicas.jpg')}) no-repeat scroll center center; background-size: contain;  min-height: 146px;`"
+                    ></div>
+                    <h4 class="mb-2 mt-2" style="text-align: center">
+                      Dashboard General del Hospital
+                    </h4>
+                    <div class="text-center">
+                      <button
+                        class="btn btn-primary"
+                        onclick="window.location.href='/dashboard-general-hospital'"
+                      >
+                        Conoce Más
+                      </button>
+                    </div>
+                  </template>
+                </iq-card>
+              </b-col>
+            </div>
+          </div>
+        </b-row>
+      </b-col>
+    </b-row>
+
+    <!-- --------------------------------------------------------------------------------------------------------------------------->
+    <div style="margin-left: auto; margin-right: auto; max-width: 1200px">
+      <div style="display: flex; justify-content: space-between">
+        <b-row>
+          <b-col lg="12">
+            <iq-card>
+              <template v-slot:headerTitle>
+                <h4 class="card-title">Hospital General</h4>
+              </template>
+              <template v-slot:body>
+                <div style="text-align: justify">
+                  <p>
+                    Somos una institución que cuida la salud y seguridad de
+                    nuestros pacientes a través de las mejores prácticas
+                    médicas. Nos distinguimos por ser solidarios e incluyentes,
+                    invirtiendo recursos en acciones para mejorar la salud en
+                    México, como el acceso a servicios médicos para la población
+                    vulnerable.
+                  </p>
+                  <p>
+                    En nuestro Centro de Alta Especialidad brindamos un servicio
+                    seguro y de calidad, caracterizado por la orientación ala
+                    paciente y por contar con una amplia gama de servicios
+                    médicos y hospitalarios que están al nivel de los mejores
+                    del mundo.
+                  </p>
+                </div>
+              </template>
+            </iq-card>
+          </b-col>
+
+          <b-col lg="6">
+            <iq-card
+              body-class="hospital-mgt"
+              class="iq-card-block iq-card-height1"
+            >
+              <template v-slot:headerTitle>
+                <h4 class="card-title">Contacto</h4>
+              </template>
+
+              <template v-slot:body>
+                <div>
+                  <div>
+                    <p>Dirección: calle nombre hospital general #352</p>
+                    <p>Xicotepec de Juárez, Puebla C.P 73080</p>
+                    <hr />
+                    <p>Comunicate con Nosotros</p>
+                    <li>
+                      <p><a href="tel:+5253558858876">(52)33 55 885 8876</a></p>
+                      <p><a href="tel:+5233558858878">(52)33 55 885 8878</a></p>
+                      <p>
+                        <a href="tel:+5233558858870">Fax: (52)33 55 885 8870</a>
+                      </p>
+                    </li>
                   </div>
                 </div>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Color</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-  
-              <div class="d-flex gap-3 flex-wrap">
-                <div v-for="(item, index) in color" class="custom-control custom-checkbox custom-checkbox-color-check custom-control-inline" v-bind:key="index">
-                  <input type="checkbox" :class="item.checked === true ? `bg-${item.color} border-${item.color} ` : ''" v-model="item.checked" class="custom-control-input me-1" :id="item.id" />
-                  <label class="custom-control-label" :for="item.id"> {{ item.label }}</label>
+              </template>
+            </iq-card>
+          </b-col>
+
+          <b-col lg="6">
+            <iq-card
+              body-class="hospital-mgt"
+              class="iq-card-block iq-card-height1"
+            >
+              <template v-slot:headerTitle>
+                <h4 class="card-title">Enlaces</h4>
+              </template>
+
+              <template v-slot:body>
+                <div>
+                  <div>
+                    <p>Correo Electronico</p>
+                    <p>
+                      <a href="mailto:direcciongeneral@hospitalgeneral.com"
+                        >direcciongeneral@hospitalgeneral.com</a
+                      >
+                    </p>
+                    <hr />
+                    <iq-card>
+                      <template v-slot:headerTitle>
+                        <h4 class="card-title">Redes Sociales</h4>
+                      </template>
+                      <div style="text-align: center">
+                        <link
+                          rel="stylesheet"
+                          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+                        />
+                        <!-- Facebook -->
+                        <i
+                          class="fab fa-facebook-f fa-2x"
+                          style="color: #3b5998; margin-right: 25px"
+                        ></i>
+
+                        <!-- Twitter -->
+                        <i
+                          class="fab fa-twitter fa-2x"
+                          style="color: #55acee; margin-right: 25px"
+                        ></i>
+
+                        <!-- Instagram -->
+                        <i
+                          class="fab fa-instagram fa-2x"
+                          style="color: #ac2bac; margin-right: 25px"
+                        ></i>
+
+                        <!-- Linkedin -->
+                        <i
+                          class="fab fa-linkedin-in fa-2x"
+                          style="color: #0082ca; margin-right: 25px"
+                        ></i>
+
+                        <!-- Youtube -->
+                        <i
+                          class="fab fa-youtube fa-2x"
+                          style="color: #ed302f; margin-right: 25px"
+                        ></i>
+
+                        <!-- Whatsapp -->
+                        <i
+                          class="fab fa-whatsapp fa-2x"
+                          style="color: #25d366; margin-right: 25px"
+                        ></i>
+                      </div>
+                    </iq-card>
+                  </div>
                 </div>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Boolean Checkbox</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-              <div class="d-flex gap-3 flex-wrap">
-                <b-form-checkbox v-for="(item, index) in bool" v-model="item.checked" :class="custom - control - label" :disabled="item.disabled" name="check-button" v-bind:key="index">
-                  {{ item.label }}
-                </b-form-checkbox>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Change Icon</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-              <div class="d-flex gap-3 flex-wrap">
-                <div v-for="(item, index) in icon" class="custom-control custom-checkbox checkbox-icon custom-control-inline" v-bind:key="index">
-                  <input type="checkbox" class="custom-control-input" :id="`customSwitch-1-${index}`" v-model="item.checked" />
-                  <label class="custom-control-label" :for="`customSwitch-1-${index}`" v-html="item.label"></label>
-                </div>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-      </b-row>
-    </b-container>
-  </template>
-  <script>
-  import { xray } from '../../config/pluginInit'
-  import iqCard from '../../components/xray/cards/iq-card'
-  export default {
-    name: 'FormCheckboxes',
-    components: { iqCard },
-    mounted() {
-      xray.index()
-    },
-    data() {
-      return {
-        state: [
-          {
-            label: 'Primary / Inactive',
-            checked: false,
-            disabled: false
-          },
-          {
-            label: 'Primary / Active',
-            checked: true,
-            disabled: false
-          },
-          {
-            label: 'Disabled / Inactive',
-            checked: false,
-            disabled: false
-          },
-          {
-            label: 'Active / Disable',
-            checked: true,
-            disabled: true
-          }
-        ],
-        custom_checkbox: [
-          {
-            label: 'Primary / Inactive',
-            checked: false,
-            disabled: false
-          },
-          {
-            label: 'Primary / Active',
-            checked: true,
-            disabled: false
-          },
-          {
-            label: 'Primary - inactive - disabled',
-            checked: false,
-            disabled: false
-          },
-          {
-            label: 'Primary - active - disabled',
-            checked: true,
-            disabled: true
-          }
-        ],
-        text: [
-          {
-            activeLabel: 'On',
-            inactiveLabel: 'Off',
-            label: 'Primary',
-            class: 'primary',
-            checked: true
-          },
-          {
-            activeLabel: 'True',
-            inactiveLabel: 'False',
-            label: 'Success',
-            class: 'success',
-            checked: true
-          },
-          {
-            activeLabel: 'Yes',
-            inactiveLabel: 'No',
-            label: 'Danger',
-            class: 'danger',
-            checked: true
-          }
-        ],
-        customColor: [
-          {
-            label: 'Primary',
-            color: 'primary',
-            checked: true
-          },
-          {
-            label: 'Success',
-            color: 'success',
-            checked: true
-          },
-          {
-            label: 'Danger',
-            color: 'danger',
-            checked: true
-          },
-          {
-            label: 'Warning',
-            color: 'warning',
-            checked: true
-          },
-          {
-            label: 'Dark',
-            color: 'dark',
-            checked: true
-          },
-          {
-            label: 'Info',
-            color: 'info',
-            checked: true
-          }
-        ],
-        color: [
-          {
-            id: 1,
-            label: 'Primary',
-            color: 'primary',
-            checked: true
-          },
-          {
-            id: 2,
-            label: 'Success',
-            color: 'success',
-            checked: true
-          },
-          {
-            id: 3,
-            label: 'Danger',
-            color: 'danger',
-            checked: true
-          },
-          {
-            id: 4,
-            label: 'Warning',
-            color: 'warning',
-            checked: true
-          },
-          {
-            id: 5,
-            label: 'Dark',
-            color: 'dark',
-            checked: true
-          },
-          {
-            id: 6,
-            label: 'Info',
-            color: 'info',
-            checked: true
-          }
-        ],
-        icon: [
-          {
-            label: '<i class="fa fa-music"></i> Music',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-commenting-o"></i> SMS',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-times"></i> Cancel',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-file"></i> File',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-bold"></i> Bold',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-map-marker"></i> Location',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-camera"></i> Camera',
-            checked: true
-          }
-        ],
-        bool: [
-          {
-            label: 'True',
-            checked: true
-          },
-          {
-            label: 'False',
-            checked: false
-          }
-        ]
-      }
-    }
-  }
-  </script>
-  
+              </template>
+            </iq-card>
+          </b-col>
+        </b-row>
+      </div>
+    </div>
+
+    <!-- --------------------------------------------------------------------------------------------------------------------------->
+  </b-container>
+</template>
+
+<script>
+import IqCard from "../../components/xray/cards/iq-card";
+import { xray } from "../../config/pluginInit";
+//import CountUp from 'vue-countup-v3'
+const body = document.getElementsByTagName("body");
+
+export default {
+  name: "DireccionGeneral",
+  components: { IqCard },
+  data() {
+    return {
+      config: {
+        dateFormat: "Y-m-d",
+        inline: true,
+      },
+    };
+  },
+  mounted() {
+    xray.index();
+    body[0].classList.add("sidebar-main-menu");
+  },
+  unmounted() {
+    body[0].classList.remove("sidebar-main-menu");
+  },
+};
+</script>
+/* eslint-disable */
