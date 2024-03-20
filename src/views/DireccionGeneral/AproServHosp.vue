@@ -14,7 +14,7 @@
           <b-col lg="12">
             <iq-card className="iq-card-block iq-card-stretch iq-card-height1">
               <template v-slot:headerTitle>
-                <h4 class="card-title">Grafico de Solicitudes</h4>
+                <h4 class="card-title">Gráfico de Solicitudes</h4>
               </template>
               <template v-slot:body>
                 <ApexChart
@@ -43,8 +43,8 @@
               <template v-slot:body>
                 <div class="container-fluid">
                   <h3 style="text-align: center">
-                    Operaciones CRUD de Solicitudes de Procediemintos Clinicos y
-                    Quirurgicos
+                    Operaciones CRUD de Solicitudes de Procedimientos Clínicos y
+                    Quirúrgicos
                   </h3>
                   <br />
                   <div class="row">

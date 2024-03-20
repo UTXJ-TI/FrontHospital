@@ -247,7 +247,7 @@
           class="iq-card-block iq-card-height1"
         >
           <template v-slot:headerTitle>
-            <h4 class="card-title">Camas Diponibles por Área</h4>
+            <h4 class="card-title">Camas Disponibles por Área</h4>
           </template>
           <div class="iq-card-body hospital-mgt">
             <div class="progress mb-4" style="height: 30px">
@@ -1575,7 +1575,7 @@ export default {
           },
         },
         {
-          title: "Índice de Edad Recurente Para la Atención Médica",
+          title: "Índice de Edad Recurrente Para la Atención Médica",
           type: "bar-line",
           bodyData: {
             colors: ["#089bab", "#FC9F5B"],
@@ -2369,7 +2369,7 @@ export default {
           },
         },
         {
-          title: "Poblacione cercanas a la zona de Atención",
+          title: "Poblaciones cercanas a la zona de Atención",
           type: "radar",
           bodyData: {
             colors: ["#089bab"],
@@ -2417,7 +2417,7 @@ export default {
           },
         },
         {
-          title: "Grafíco de Enfermedades más Recurrentes de la Población",
+          title: "Gráfico de Enfermedades más Recurrentes de la Población",
           type: "pie",
           bodyData: {
             colors: [

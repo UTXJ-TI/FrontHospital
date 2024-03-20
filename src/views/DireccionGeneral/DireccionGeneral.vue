@@ -8,7 +8,7 @@
               Dirección General
             </h1>
             <br />
-            <h5>Coordinación de Servicos Médicos de Alta Especialidad</h5>
+            <h5>Coordinación de Servicios Médicos de Alta Especialidad</h5>
             <br />
             <div
               class="iq-card-body p-0 rounded"
@@ -49,7 +49,7 @@
                       :style="`background: url(${require('../../assets/images/page-img/imagenes-direccionGeneral/servicioshospitalarios.jpg')}) no-repeat scroll center center; background-size: contain;  min-height: 146px;`"
                     ></div>
                     <h4 class="mb-2 mt-2" style="text-align: center">
-                      Estructura Organica del Hospital
+                      Estructura Orgánica del Hospital
                     </h4>
                     <div class="text-center">
                       <button

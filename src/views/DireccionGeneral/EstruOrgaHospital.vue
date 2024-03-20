@@ -3,7 +3,7 @@
     <b-row>
       <b-col sm="12">
         <h1 style="text-align: center; font-size: 30px">
-          Estrucutura Organica del Hospital
+          Estructura Orgánica del Hospital
         </h1>
 
         <b-row>
