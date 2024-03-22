@@ -10,17 +10,17 @@
               <b-row>
                 <b-col md="3">
                   <ul id="top-tabbar-vertical" class="p-0">
-                    <li class="active" :class="`${currentindex == 1 ? 'active' : ''} ${currentindex > 1 ? 'done active' : ''} `" id="personal">
-                      <a href="#"> <i class="ri-lock-unlock-line text-primary"></i><span>Personal</span> </a>
+                    <li class="datos" :class="`${currentindex == 1 ? 'active' : ''} ${currentindex > 1 ? 'done active' : ''} `" id="personal">
+                      <a href="#"> <i class="ri-lock-unlock-line text-primary"></i><span>Datos Personales</span> </a>
                     </li>
-                    <li id="contact" :class="`${currentindex == 2 ? 'active' : ''} ${currentindex > 2 ? 'done active' : ''}`">
-                      <a href="#"> <i class="ri-user-fill text-danger"></i><span>Contact</span> </a>
+                    <li id="contactos" :class="`${currentindex == 2 ? 'active' : ''} ${currentindex > 2 ? 'done active' : ''}`">
+                      <a href="#"> <i class="ri-user-fill text-danger"></i><span>Contactos</span> </a>
                     </li>
-                    <li id="official" :class="`${currentindex == 3 ? 'active' : ''} ${currentindex > 3 ? 'done active' : ''}`">
-                      <a href="#"> <i class="ri-camera-fill text-success"></i><span>Official</span> </a>
+                    <li id="padecimiento_a" :class="`${currentindex == 3 ? 'active' : ''} ${currentindex > 3 ? 'done active' : ''}`">
+                      <a href="#"> <i class="ri-camera-fill text-success"></i><span>Padecimiento Actual</span> </a>
                     </li>
-                    <li id="payment" :class="`${currentindex == 4 ? 'active' : ''} ${currentindex > 4 ? 'done active' : ''}`">
-                      <a href="#"> <i class="ri-check-fill text-warning"></i><span>Payment</span> </a>
+                    <li id="signos_v" :class="`${currentindex == 4 ? 'active' : ''} ${currentindex > 4 ? 'done active' : ''}`">
+                      <a href="#"> <i class="ri-check-fill text-warning"></i><span>Signos vitales</span> </a>
                     </li>
                   </ul>
                 </b-col>
@@ -109,8 +109,8 @@
                             </div>
                           </b-row>
                         </div>
-                        <a href="#payment" @click="changeTab(3)" class="btn btn-primary next action-button float-end" value="Next">Next</a>
-                        <a href="#account" @click="changeTab(1)" class="btn btn-dark previous action-button-previous float-end me-1" value="Previous">Previous</a>
+                        <a href="#" @click="changeTab(3)" class="btn btn-primary next action-button float-end" value="Next">Next</a>
+                        <a href="#signos_v" @click="changeTab(1)" class="btn btn-dark previous action-button-previous float-end me-1" value="Previous">Previous</a>
                       </fieldset>
                     </div>
                     <div :class="`${currentindex == 3 ? 'show' : 'd-none'}`">
@@ -118,38 +118,26 @@
                         <div class="form-card text-left">
                           <div class="row">
                             <div class="col-12">
-                              <h3 class="mb-4">Official Information:</h3>
+                              <h3 class="mb-4">Padecimiento actual:</h3>
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-md-12">
                               <div class="form-group">
-                                <label for="empid">Employee Id: *</label>
-                                <input type="email" class="form-control" id="empid" name="empid" placeholder="Employee Id." />
+                                <label for="empid">Padecimiento: *</label>
+                                <input type="text" class="form-control" id="empid" name="empid" placeholder="Padecimiento actual" />
                               </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
-                                <label for="desg">Designation: *</label>
-                                <input type="text" class="form-control" id="desg" name="desg" placeholder="Designation." spellcheck="false" data-ms-editor="true" />
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <label for="accname">Departmrnt Name: *</label>
-                                <input type="text" class="form-control" id="accname" name="accname" placeholder="Departmrnt Name." spellcheck="false" data-ms-editor="true" />
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <label for="workhour">Working Hour: *</label>
-                                <input type="text" class="form-control" id="workhour" name="workhour" placeholder="Working Hour." spellcheck="false" data-ms-editor="true" />
+                                <label for="desg">Estatus: *</label>
+                                <input type="text" class="form-control" id="desg" name="desg" placeholder="Estatus." spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                           </div>
                         </div>
-                        <a href="#payment" @click="changeTab(4)" class="btn btn-primary next action-button float-end" value="Next">Next</a>
-                        <a href="#account" @click="changeTab(2)" class="btn btn-dark previous action-button-previous float-end me-1" value="Previous">Previous</a>
+                        <a href="#padecimiento_a" @click="changeTab(4)" class="btn btn-primary next action-button float-end" value="Next">Next</a>
+                        <a href="#signos_v" @click="changeTab(2)" class="btn btn-dark previous action-button-previous float-end me-1" value="Previous">Previous</a>
                       </fieldset>
                     </div>
                     <div :class="`${currentindex == 4 ? 'show' : 'd-none'}`">
@@ -157,39 +145,63 @@
                         <div class="form-card text-left">
                           <div class="row">
                             <div class="col-12">
-                              <h3 class="mb-4 text-left">Payment:</h3>
+                              <h3 class="mb-4 text-left">Signos vitales:</h3>
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-md-12">
                               <div class="form-group">
-                                <label for="panno">Pan No: *</label>
-                                <input type="text" class="form-control" id="panno" name="panno" placeholder="Pan No." spellcheck="false" data-ms-editor="true" />
+                                <label for="panno">Estatura: *</label>
+                                <input type="number" class="form-control" id="panno" name="panno" placeholder="Pan No." spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
-                                <label for="accno">Account No: *</label>
-                                <input type="text" class="form-control" id="accno" name="accno" placeholder="Account No." spellcheck="false" data-ms-editor="true" />
+                                <label for="accno">Peso: *</label>
+                                <input type="number" class="form-control" id="accno" name="accno" placeholder="signos_v No." spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
-                                <label for="holname">Account Holder Name: *</label>
-                                <input type="text" class="form-control" id="holname" name="accname" placeholder="Account Holder Name." spellcheck="false" data-ms-editor="true" />
+                                <label for="holname">Temperatura corporal: *</label>
+                                <input type="number" class="form-control" id="holname" name="accname" placeholder="signos_v Holder Name." spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
-                                <label for="ifsc">IFSC Code: *</label>
-                                <input type="text" class="form-control" id="ifsc" name="ifsc" placeholder="IFSC Code." spellcheck="false" data-ms-editor="true" />
+                                <label for="ifsc">Presion sistolica: *</label>
+                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="IFSC Code." spellcheck="false" data-ms-editor="true" />
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="ifsc">Presion diastolica: *</label>
+                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="IFSC Code." spellcheck="false" data-ms-editor="true" />
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="ifsc">Oxigenacion: *</label>
+                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="IFSC Code." spellcheck="false" data-ms-editor="true" />
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="ifsc">Frecuencia cardiaca: *</label>
+                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="IFSC Code." spellcheck="false" data-ms-editor="true" />
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="ifsc">Frecuencia respiratoria: *</label>
+                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="IFSC Code." spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                           </div>
                         </div>
-                        <a href="#payment" @click="changeTab(1)" class="btn btn-primary next action-button float-end mt-3" value="Next">submit</a>
+                        <a href="#padecimiento_a" @click="changeTab(1)" class="btn btn-primary next action-button float-end mt-3" value="Next">submit</a>
                         <!-- <a
-                    href="#account"
+                    href="#signos_v"
                     @click="changeTab(1)"
                     class="btn btn-dark previous action-button-previous float-end me-1"
                     value="Previous"
