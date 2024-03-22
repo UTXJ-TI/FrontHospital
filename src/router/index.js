@@ -103,7 +103,13 @@ import BitacoraDG from "../views/DireccionGeneral/BitacoraDG.vue";
 //------------------------------------------------------
 import ComiteT from "../views/ComiteTransplantes/comitetransplantes.vue";
 import FarmaciaI from "../views/FarmaciaIntraHospitalaria/farmaciaintrahospitalaria.vue";
+
+//------------------------------------------------------
 import Pediatria from "../views/Pediatria/pediatria.vue";
+import Seguimiento from "../views/Pediatria/seguimiento.vue";
+import Pacientes from "../views/Pediatria/pacientes.vue";
+import Registro from "../views/Pediatria/registro.vue";
+//------------------------------------------------------
 import ProgramacionQ from "../views/ProgramacionQuirurgica/programacionquirurgica.vue";
 import RadiologiaI from "../views/RadiologiaImagen/radiologiaimagen.vue";
 import RecursosH from "../views/RecursosHumanos/recursoshumanos.vue";
@@ -111,7 +117,6 @@ import RegistrosM from "../views/RegistrosMedicos/registrosmedicos.vue";
 import NotasM from "../views/RegistrosMedicos/notasmedicas.vue";
 import CrudRegistrosM from "../views/RegistrosMedicos/crudregistrosmedicos.vue";
 import AgregaRegistrosMedicos from "../views/RegistrosMedicos/agregaregistrosmedicos.vue";
-
 
 const childRoutes = (prop, mode) => [
   {
@@ -213,7 +218,7 @@ const childRoutes = (prop, mode) => [
     name: prop + ".recursosh",
     meta: { dark: mode, auth: true, name: "Recursos humanos" },
     component: RecursosH,
-  },/*
+  } /*
   {
     path: "registrosm",
     name: prop + ".registrosm",
@@ -223,7 +228,7 @@ const childRoutes = (prop, mode) => [
     name: prop + ".comtrans",
     meta: { dark: mode, auth: true, name: "Comite de Transplantes" },
     component: ComiteT,
-  },*/
+  },*/,
   {
     path: "farmintra",
     name: prop + ".farmintra",
@@ -231,10 +236,28 @@ const childRoutes = (prop, mode) => [
     component: FarmaciaI,
   },
   {
-    path: "pediatria",
+    /*Dashboard*/ path: "pediatria",
     name: prop + ".pediatria",
     meta: { dark: mode, auth: true, name: "Pediatria" },
     component: Pediatria,
+  },
+  {
+    /*Pacientes*/ path: "pacientes",
+    name: prop + ".pacientes",
+    meta: { dark: mode, auth: true, name: "Pacientes" },
+    component: Pacientes,
+  },
+  {
+    /*Seguimiento*/ path: "seguimiento",
+    name: prop + ".seguimiento",
+    meta: { dark: mode, auth: true, name: "Seguimiento" },
+    component: Seguimiento,
+  },
+  {
+    /*Seguimiento*/ path: "resgistro",
+    name: prop + ".registro",
+    meta: { dark: mode, auth: true, name: "Registro" },
+    component: Registro,
   },
   {
     path: "prograq",
