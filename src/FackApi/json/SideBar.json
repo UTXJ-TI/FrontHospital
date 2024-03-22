@@ -67,12 +67,64 @@
     "is_heading": false,
     "is_active": false,
     "link": {
-      "name": "dashboard.pediatria"
+      "name": ""
     },
     "class_name": "",
     "is_icon_class": true,
     "icon": "ri-home-8-fill",
-    "badge" : false
+    "badge" : false,
+    "children": 
+      [
+
+        {
+          "title": "registro",
+          "name": "registro",
+          "is_active": false,
+          "link": {
+            "name" : "dashboard.pediatria"
+          },
+          "class_name": "",
+          "is_icon_class": true,
+          "icon": "ri-user-add-fill"
+        },
+        {
+          "title": "registro",
+          "name": "registro",
+          "is_active": false,
+          "link": {
+            "name" : "dashboard.registro"
+          },
+          "class_name": "",
+          "is_icon_class": true,
+          "icon": "ri-user-add-fill"
+        },
+        {
+          "title": "Seguimiento",
+          "name": "Seguimiento",
+          "is_active": false,
+          
+          "link": {
+            "name" : "dashboard.seguimiento"
+          },
+          "class_name": "",
+          "is_icon_class": true,
+          "icon": "ri-server-fill"
+        },
+        {
+          "title": "Pacientes",
+          "name": "Pacientes",
+          "is_active": false,
+          "link": {
+            "name" : "dashboard.pacientes"
+          },
+          "class_name": "",
+          "is_icon_class": true,
+          "icon": "ri-user-3-fill"
+        }
+        
+  
+        
+      ]
   },
   {
     "title": "Radiologia e Imagen",
