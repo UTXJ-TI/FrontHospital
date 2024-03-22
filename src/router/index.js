@@ -101,7 +101,6 @@ import DashboardGenHospital from "../views/DireccionGeneral/DashboardGenHospital
 import BitacoraDG from "../views/DireccionGeneral/BitacoraDG.vue";
 
 //------------------------------------------------------
-import DireccionG from "../views/DireccionGeneral/DireccionGeneral.vue";
 import ComiteT from "../views/ComiteTransplantes/comitetransplantes.vue";
 import FarmaciaI from "../views/FarmaciaIntraHospitalaria/farmaciaintrahospitalaria.vue";
 import Pediatria from "../views/Pediatria/pediatria.vue";
@@ -214,7 +213,7 @@ const childRoutes = (prop, mode) => [
     name: prop + ".recursosh",
     meta: { dark: mode, auth: true, name: "Recursos humanos" },
     component: RecursosH,
-  },
+  },/*
   {
     path: "registrosm",
     name: prop + ".registrosm",
@@ -224,7 +223,7 @@ const childRoutes = (prop, mode) => [
     name: prop + ".comtrans",
     meta: { dark: mode, auth: true, name: "Comite de Transplantes" },
     component: ComiteT,
-  },
+  },*/
   {
     path: "farmintra",
     name: prop + ".farmintra",
