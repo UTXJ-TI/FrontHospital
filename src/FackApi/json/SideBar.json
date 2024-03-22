@@ -128,7 +128,7 @@
         "name": "Notas Medicas",
         "is_active": true,
         "link": {
-          "name": "dashboard.tabladinanotas"
+          "name": "dashboard.notasm"
         },
         "class_name": "",
         "is_icon_class": true,
@@ -141,6 +141,18 @@
         "is_active": true,
         "link": {
           "name": "dashboard.crudregistrosm"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-home-8-fill",
+        "badge" : false
+      },
+      {
+        "title": "Agregar expedientes",
+        "name": "Agregar expedientes",
+        "is_active": true,
+        "link": {
+          "name": "dashboard.agregaregistrosmedicos"
         },
         "class_name": "",
         "is_icon_class": true,
