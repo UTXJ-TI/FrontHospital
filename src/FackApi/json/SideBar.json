@@ -77,8 +77,8 @@
       [
 
         {
-          "title": "registro",
-          "name": "registro",
+          "title": "dashboard",
+          "name": "dashboard",
           "is_active": false,
           "link": {
             "name" : "dashboard.pediatria"
