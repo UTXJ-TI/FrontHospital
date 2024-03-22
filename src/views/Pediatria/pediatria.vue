@@ -1,293 +1,319 @@
 <template>
-    <b-container fluid>
-      <b-row>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Basic Checkbox</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-              <div class="checkbox d-inline-block me-2" v-for="(item, index) in state" :key="index">
-                <input type="checkbox" class="checkbox-input" :id="`basic-checkbox-${index}`" v-model="item.checked" :disabled="item.disabled" />
-                <label :for="`basic-checkbox-${index}`" class="ms-1">{{ item.label }}</label>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Custom Checkbox</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-  
-              <b-form-checkbox v-for="(item, index) in custom_checkbox" class="custom-switch-color" :class="item.checked === true ? 'bg-primary border-primary' : ''" :color="item.color" v-model="item.checked" :disabled="item.disabled" name="check-button" inline v-bind:key="index">
-                {{ item.label }}
-              </b-form-checkbox>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Custom Color</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-              <div class="d-flex gap-3 flex-wrap">
-                <div v-for="(item, index) in customColor" :key="index" class="custom-control custom-checkbox custom-checkbox-color custom-control-inline">
-                  <div class="custom-control custom-checkbox custom-checkbox-color custom-control-inline">
-                    <input type="checkbox" :class="`bg-${item.color} border-${item.color}`" class="custom-control-input" :disabled="item.disabled" :id="item.label" />
-                    <label class="custom-control-label" :for="item.label">{{ item.label }}</label>
-                  </div>
-                </div>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Color</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-  
-              <div class="d-flex gap-3 flex-wrap">
-                <div v-for="(item, index) in color" class="custom-control custom-checkbox custom-checkbox-color-check custom-control-inline" v-bind:key="index">
-                  <input type="checkbox" :class="item.checked === true ? `bg-${item.color} border-${item.color} ` : ''" v-model="item.checked" class="custom-control-input me-1" :id="item.id" />
-                  <label class="custom-control-label" :for="item.id"> {{ item.label }}</label>
-                </div>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Boolean Checkbox</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-              <div class="d-flex gap-3 flex-wrap">
-                <b-form-checkbox v-for="(item, index) in bool" v-model="item.checked" :class="custom - control - label" :disabled="item.disabled" name="check-button" v-bind:key="index">
-                  {{ item.label }}
-                </b-form-checkbox>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-        <b-col lg="6">
-          <iq-card>
-            <template v-slot:headerTitle>
-              <h4 class="card-title">Change Icon</h4>
-            </template>
-            <template v-slot:body>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-              <div class="d-flex gap-3 flex-wrap">
-                <div v-for="(item, index) in icon" class="custom-control custom-checkbox checkbox-icon custom-control-inline" v-bind:key="index">
-                  <input type="checkbox" class="custom-control-input" :id="`customSwitch-1-${index}`" v-model="item.checked" />
-                  <label class="custom-control-label" :for="`customSwitch-1-${index}`" v-html="item.label"></label>
-                </div>
-              </div>
-            </template>
-          </iq-card>
-        </b-col>
-      </b-row>
-    </b-container>
-  </template>
-  <script>
-  import { xray } from '../../config/pluginInit'
-  import iqCard from '../../components/xray/cards/iq-card'
-  export default {
-    name: 'FormCheckboxes',
-    components: { iqCard },
-    mounted() {
-      xray.index()
-    },
-    data() {
-      return {
-        state: [
+  <b-container fluid>
+    <b-row>
+      <b-col lg="8">
+        <iq-card className="iq-card-block iq-card-stretch iq-card-height1">
+          <template v-slot:headerTitle>
+            <h4 class="card-title">Atenciones mas frecuentes del año 2023</h4>
+          </template>
+          <template v-slot:body>
+            <ApexChart
+              element="home-chart-05"
+              :chartOption="chart5"
+              v-if="$route.meta.dark"
+            />
+            <ApexChart element="home-chart-05" :chartOption="chart5" v-else />
+          </template>
+        </iq-card>
+      </b-col>
+
+      <!-- <b-col lg="4">
+        <iq-card
+          
+        >
+          <template v-slot:body>
+            <img style="height: 425px; width: 290px;"
+              src="../../assets/images/page-img/foto.png"
+              class="rounded"
+              alt="banner-img"
+            />
+          </template>
+        </iq-card>
+      </b-col> -->
+      <b-col lg="4">
+        <iq-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">Satisfaccion de Pacientes</h4>
+          </template>
+          <template v-slot:body>
+            <h2>
+              3,897
+              <small class="text-secondary font-size-14">
+                Reseñas de pacientes</small
+              >
+            </h2>
+            <div class="progress mt-3">
+              <div
+                class="progress-bar bg-primary"
+                role="progressbar"
+                aria-valuenow="40"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 40%"
+              ></div>
+              <div
+                class="progress-bar bg-warning"
+                role="progressbar"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 20%"
+              ></div>
+              <div
+                class="progress-bar bg-info"
+                role="progressbar"
+                aria-valuenow="10"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 10%"
+              ></div>
+              <div
+                class="progress-bar bg-danger"
+                role="progressbar"
+                aria-valuenow="40"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 40%"
+              ></div>
+              <div
+                class="progress-bar bg-success"
+                role="progressbar"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 20%"
+              ></div>
+              <div
+                class="progress-bar bg-secondary"
+                role="progressbar"
+                aria-valuenow="10"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 10%"
+              ></div>
+            </div>
+            <div class="table-responsive mt-4">
+              <table class="table mb-0 table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="iq-profile-avatar status-online mt-4"></div>
+                    </td>
+                    <td>
+                      <h4>Excelente</h4>
+                    </td>
+                    <td><span class="text-muted">2400</span></td>
+                    <td>60%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="iq-profile-avatar mt-4"></div>
+                    </td>
+                    <td>
+                      <h4>Muy buena</h4>
+                    </td>
+                    <td><span class="text-muted">1200</span></td>
+                    <td>30%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="iq-profile-avatar mt-4"></div>
+                    </td>
+                    <td>
+                      <h4>Buena</h4>
+                    </td>
+                    <td><span class="text-muted">240</span></td>
+                    <td>6%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="iq-profile-avatar mt-4"></div>
+                    </td>
+                    <td>
+                      <h4>Aceptable</h4>
+                    </td>
+                    <td><span class="text-muted">80</span></td>
+                    <td>2%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="iq-profile-avatar status-away mt-4"></div>
+                    </td>
+                    <td>
+                      <h4>Mala</h4>
+                    </td>
+                    <td><span class="text-muted">40</span></td>
+                    <td>1%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="iq-profile-avatar mt-4"></div>
+                    </td>
+                    <td>
+                      <h4>Muy mala</h4>
+                    </td>
+                    <td><span class="text-muted">40</span></td>
+                    <td>1%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </template>
+        </iq-card>
+      </b-col>
+      <b-col style="padding-top: 0px">
+        <b-row>
+          <b-col lg="12" v-for="(item, index) in charts" :key="index">
+            <iq-card>
+              <template v-slot:headerTitle>
+                <h4>{{ item.title }}</h4>
+              </template>
+              <template v-slot:body>
+                <ApexChart :element="item.type" :chartOption="item.bodyData" />
+              </template>
+            </iq-card>
+          </b-col>
+        </b-row>
+      </b-col>
+    </b-row>
+  </b-container>
+</template>
+<script>
+import { xray } from "../../config/pluginInit";
+import { useStore } from "../../store/pinia/index";
+import { mapState } from "pinia";
+// Chart
+import ApexChart from "../../components/xray/charts/ApexChart";
+
+import IqCard from "../../components/xray/cards/iq-card";
+export default {
+  name: "DashboardTwo",
+  components: { IqCard, ApexChart },
+  mounted() {
+    xray.index();
+  },
+  computed: {
+    ...mapState(useStore, {
+      selectedLang: "lang",
+    }),
+  },
+  watch: {},
+  methods: {},
+  data() {
+    return {
+      charts: [
+        {
+          title: "Infantes Vacunados en el Año 2023",
+          type: "line-area",
+          bodyData: {
+            chart: {
+              height: 375,
+              type: "area",
+            },
+            dataLabels: {
+              enabled: false,
+            },
+            stroke: {
+              curve: "smooth",
+            },
+            colors: ["#089bab", "#FC9F5B"],
+            series: [
+              {
+                name: "Niños",
+                data: [31, 40, 28, 51, 42, 109, 100, 25, 13, 41, 50, 100],
+              },
+              {
+                name: "Niñas",
+                data: [11, 32, 45, 32, 34, 52, 41, 19, 74, 15, 95, 95],
+              },
+            ],
+
+            xaxis: {
+              type: "text",
+              categories: [
+                "Enero de 2023",
+                "Febrero de 2023",
+                "Marzo de 2023",
+                "Abril de 2023",
+                "Mayo de 2023",
+                "Junio de 2023",
+                "Julio de 2023",
+                "Agosto de 2023",
+                "Septiembre de 2023",
+                "Octubre de 2023",
+                "Noviembre de 2023",
+                "Diciembre de 2023",
+              ],
+            },
+            tooltip: {
+              x: {
+                format: "dd/MM/yy HH:mm",
+              },
+            },
+          },
+        },
+      ],
+
+      chart5: {
+        series: [
           {
-            label: 'Primary / Inactive',
-            checked: false,
-            disabled: false
+            name: "Niños",
+            data: [44, 55, 41, 67, 22, 43],
           },
           {
-            label: 'Primary / Active',
-            checked: true,
-            disabled: false
+            name: "Niñas",
+            data: [13, 23, 20, 8, 13, 27],
           },
-          {
-            label: 'Disabled / Inactive',
-            checked: false,
-            disabled: false
-          },
-          {
-            label: 'Active / Disable',
-            checked: true,
-            disabled: true
-          }
         ],
-        custom_checkbox: [
-          {
-            label: 'Primary / Inactive',
-            checked: false,
-            disabled: false
+        colors: ["#089bab", "#FC9F5B", "#5bc5d1"],
+        chart: {
+          type: "bar",
+          height: 350,
+          stacked: true,
+          toolbar: {
+            show: true,
           },
-          {
-            label: 'Primary / Active',
-            checked: true,
-            disabled: false
+          zoom: {
+            enabled: true,
           },
+        },
+        responsive: [
           {
-            label: 'Primary - inactive - disabled',
-            checked: false,
-            disabled: false
+            breakpoint: 480,
+            options: {
+              legend: {
+                position: "bottom",
+                offsetX: -10,
+                offsetY: 0,
+              },
+            },
           },
-          {
-            label: 'Primary - active - disabled',
-            checked: true,
-            disabled: true
-          }
         ],
-        text: [
-          {
-            activeLabel: 'On',
-            inactiveLabel: 'Off',
-            label: 'Primary',
-            class: 'primary',
-            checked: true
+        plotOptions: {
+          bar: {
+            horizontal: false,
           },
-          {
-            activeLabel: 'True',
-            inactiveLabel: 'False',
-            label: 'Success',
-            class: 'success',
-            checked: true
-          },
-          {
-            activeLabel: 'Yes',
-            inactiveLabel: 'No',
-            label: 'Danger',
-            class: 'danger',
-            checked: true
-          }
-        ],
-        customColor: [
-          {
-            label: 'Primary',
-            color: 'primary',
-            checked: true
-          },
-          {
-            label: 'Success',
-            color: 'success',
-            checked: true
-          },
-          {
-            label: 'Danger',
-            color: 'danger',
-            checked: true
-          },
-          {
-            label: 'Warning',
-            color: 'warning',
-            checked: true
-          },
-          {
-            label: 'Dark',
-            color: 'dark',
-            checked: true
-          },
-          {
-            label: 'Info',
-            color: 'info',
-            checked: true
-          }
-        ],
-        color: [
-          {
-            id: 1,
-            label: 'Primary',
-            color: 'primary',
-            checked: true
-          },
-          {
-            id: 2,
-            label: 'Success',
-            color: 'success',
-            checked: true
-          },
-          {
-            id: 3,
-            label: 'Danger',
-            color: 'danger',
-            checked: true
-          },
-          {
-            id: 4,
-            label: 'Warning',
-            color: 'warning',
-            checked: true
-          },
-          {
-            id: 5,
-            label: 'Dark',
-            color: 'dark',
-            checked: true
-          },
-          {
-            id: 6,
-            label: 'Info',
-            color: 'info',
-            checked: true
-          }
-        ],
-        icon: [
-          {
-            label: '<i class="fa fa-music"></i> Music',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-commenting-o"></i> SMS',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-times"></i> Cancel',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-file"></i> File',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-bold"></i> Bold',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-map-marker"></i> Location',
-            checked: true
-          },
-          {
-            label: '<i class="fa fa-camera"></i> Camera',
-            checked: true
-          }
-        ],
-        bool: [
-          {
-            label: 'True',
-            checked: true
-          },
-          {
-            label: 'False',
-            checked: false
-          }
-        ]
-      }
-    }
-  }
-  </script>
-  
+        },
+        xaxis: {
+          type: "text",
+          categories: [
+            "Resfriado",
+            "Gripe",
+            "Infecciones de Oido",
+            "Varicela",
+            "Sarampion",
+            "Poliomielitis",
+          ],
+        },
+        legend: {
+          position: "right",
+          offsetY: 40,
+        },
+        fill: {
+          opacity: 1,
+        },
+      },
+    };
+  },
+};
+</script>

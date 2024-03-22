@@ -4,21 +4,24 @@
       <b-col lg="8">
         <iq-card className="iq-card-block iq-card-stretch iq-card-height1">
           <template v-slot:headerTitle>
-            <h4 class="card-title">Atenciones mas en el año 2023</h4>
+            <h4 class="card-title">Atenciones mas frecuentes del año 2023</h4>
           </template>
           <template v-slot:body>
-            <ApexChart element="home-chart-05" :chartOption="chart5" v-if="$route.meta.dark" />
+            <ApexChart
+              element="home-chart-05"
+              :chartOption="chart5"
+              v-if="$route.meta.dark"
+            />
             <ApexChart element="home-chart-05" :chartOption="chart5" v-else />
           </template>
         </iq-card>
       </b-col>
 
       <b-col lg="4">
-        <iq-card
-          
-        >
+        <iq-card>
           <template v-slot:body>
-            <img style="height: 425px; width: 290px;"
+            <img
+              style="height: 425px; width: 290px"
               src="../../assets/images/page-img/foto.png"
               class="rounded"
               alt="banner-img"
@@ -33,11 +36,12 @@
           </template>
           <template v-slot:body>
             <h2>
-              3,897   <small class="text-secondary font-size-14"
-                >  Reseñas de pacientes</small
+              3,897
+              <small class="text-secondary font-size-14">
+                Reseñas de pacientes</small
               >
             </h2>
-            <div class="progress mt-3 ">
+            <div class="progress mt-3">
               <div
                 class="progress-bar bg-primary"
                 role="progressbar"
@@ -156,7 +160,7 @@
           </template>
         </iq-card>
       </b-col>
-      <b-col style="padding-top: 0px;">
+      <b-col style="padding-top: 0px">
         <b-row>
           <b-col lg="12" v-for="(item, index) in charts" :key="index">
             <iq-card>
@@ -170,21 +174,7 @@
           </b-col>
         </b-row>
       </b-col>
-
-
-      
-
-
-
     </b-row>
-
-
-
-
-
-
-
-
   </b-container>
 </template>
 <script>
@@ -193,7 +183,6 @@ import { useStore } from "../../store/pinia/index";
 import { mapState } from "pinia";
 // Chart
 import ApexChart from "../../components/xray/charts/ApexChart";
-
 
 import IqCard from "../../components/xray/cards/iq-card";
 export default {
@@ -211,60 +200,58 @@ export default {
   methods: {},
   data() {
     return {
-
-      charts: [{
-
-        title: "Infantes Vacunados en el Año 2023",
-        type: "line-area",
-        bodyData: {
-          chart: {
-            height: 375,
-            type: "area",
-          },
-          dataLabels: {
-            enabled: false,
-          },
-          stroke: {
-            curve: "smooth",
-          },
-          colors: ["#089bab", "#FC9F5B"],
-          series: [
-            {
-              name: "Niños",
-              data: [31, 40, 28, 51, 42, 109, 100, 25, 13, 41, 50, 100],
+      charts: [
+        {
+          title: "Infantes Vacunados en el Año 2023",
+          type: "line-area",
+          bodyData: {
+            chart: {
+              height: 375,
+              type: "area",
             },
-            {
-              name: "Niñas",
-              data: [11, 32, 45, 32, 34, 52, 41, 19, 74, 15 , 95, 95],
+            dataLabels: {
+              enabled: false,
             },
-          ],
-
-          xaxis: {
-            type: "text",
-            categories: [
-              "Enero de 2023",
-              "Febrero de 2023",
-              "Marzo de 2023",
-              "Abril de 2023",
-              "Mayo de 2023",
-              "Junio de 2023",
-              "Julio de 2023",
-              "Agosto de 2023",
-              "Septiembre de 2023",
-              "Octubre de 2023",
-              "Noviembre de 2023",
-              "Diciembre de 2023",
+            stroke: {
+              curve: "smooth",
+            },
+            colors: ["#089bab", "#FC9F5B"],
+            series: [
+              {
+                name: "Niños",
+                data: [31, 40, 28, 51, 42, 109, 100, 25, 13, 41, 50, 100],
+              },
+              {
+                name: "Niñas",
+                data: [11, 32, 45, 32, 34, 52, 41, 19, 74, 15, 95, 95],
+              },
             ],
-          },
-          tooltip: {
-            x: {
-              format: "dd/MM/yy HH:mm",
+
+            xaxis: {
+              type: "text",
+              categories: [
+                "Enero de 2023",
+                "Febrero de 2023",
+                "Marzo de 2023",
+                "Abril de 2023",
+                "Mayo de 2023",
+                "Junio de 2023",
+                "Julio de 2023",
+                "Agosto de 2023",
+                "Septiembre de 2023",
+                "Octubre de 2023",
+                "Noviembre de 2023",
+                "Diciembre de 2023",
+              ],
+            },
+            tooltip: {
+              x: {
+                format: "dd/MM/yy HH:mm",
+              },
             },
           },
         },
-      }
       ],
-
 
       chart5: {
         series: [
@@ -276,7 +263,6 @@ export default {
             name: "Niñas",
             data: [13, 23, 20, 8, 13, 27],
           },
-
         ],
         colors: ["#089bab", "#FC9F5B", "#5bc5d1"],
         chart: {
@@ -326,10 +312,6 @@ export default {
           opacity: 1,
         },
       },
-
-
-
-
     };
   },
 };
