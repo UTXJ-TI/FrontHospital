@@ -103,9 +103,8 @@ import RecursosH from "../views/RecursosHumanos/recursoshumanos.vue";
 import RegistrosM from "../views/RegistrosMedicos/registrosmedicos.vue";
 import NotasM from "../views/RegistrosMedicos/notasmedicas.vue";
 import CrudRegistrosM from "../views/RegistrosMedicos/crudregistrosmedicos.vue";
-import CrudRegistrosMEditar from "../views/RegistrosMedicos/crudregistrosmedicos.vue";
-import CrudRegistrosMAgregar from "../views/RegistrosMedicos/crudregistrosmedicos.vue";
-import CrudRegistrosMEliminar from "../views/RegistrosMedicos/crudregistrosmedicos.vue";
+import AgregaRegistrosMedicos from "../views/RegistrosMedicos/agregaregistrosmedicos.vue";
+
 
 const childRoutes = (prop, mode) => [
   {
@@ -182,8 +181,8 @@ const childRoutes = (prop, mode) => [
     component: RegistrosM,
   },
   {
-    /* tabla dinamica de las notas medicas */ path: "tabladinanotas",
-    name: prop + ".tabladinanotas",
+    /* tabla dinamica de las notas medicas */ path: "notasm",
+    name: prop + ".notasm",
     meta: { dark: mode, auth: true, name: "Notas medicas" },
     component: NotasM,
   },
@@ -194,24 +193,11 @@ const childRoutes = (prop, mode) => [
     component: CrudRegistrosM,
   },
   {
-    /* crud - para agregar un expediente */ path: "crudregistrosmagregar",
-    name: prop + ".crudregistrosm.agregar",
+    /* crud - para agregar un expediente */ path: "agregaregistrosmedicos",
+    name: prop + ".agregaregistrosmedicos",
     meta: { dark: mode, auth: true, name: "Agregar Expedientes medicos" },
-    component: CrudRegistrosMAgregar,
+    component: AgregaRegistrosMedicos,
   },
-  {
-    /* crud - para editar un expediente */ path: "crudregistrosmeditar",
-    name: prop + ".crudregistrosm.editar",
-    meta: { dark: mode, auth: true, name: "Editar Expedientes medicos" },
-    component: CrudRegistrosMEditar,
-  },
-  {
-    /* crud - para eliminar un expediente */ path: "crudregistrosmeliminar",
-    name: prop + ".crudregistrosm.eliminar",
-    meta: { dark: mode, auth: true, name: "Eliminar Expedientes medicos" },
-    component: CrudRegistrosMEliminar,
-  },
-
   {
     path: "covid-19",
     name: prop + ".dashboard5",
