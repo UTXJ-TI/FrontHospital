@@ -24,16 +24,13 @@
                   <div class="col-8"></div>
                   <div class="col-4">Email de Contacto:</div>
                   <div class="col-8"></div>
-                  <br>
+                  <br />
                 </div>
               </div>
             </div>
-
           </template>
         </iq-card>
-
       </b-col>
-
 
       <b-col md="4">
         <iq-card>
@@ -47,7 +44,8 @@
                   <i class="ri-checkbox-blank-circle-fill text-primary" />
                 </div>
                 <div class="schedule-text">
-                  <span>Ultima Cita</span> <span>Viernes 12 de Febrero de 2024 a las 11:30 am.</span>
+                  <span>Ultima Cita</span>
+                  <span>Viernes 12 de Febrero de 2024 a las 11:30 am.</span>
                 </div>
               </li>
               <li class="d-flex">
@@ -55,7 +53,8 @@
                   <i class="ri-checkbox-blank-circle-fill text-success" />
                 </div>
                 <div class="schedule-text">
-                  <span>Proxima Cita</span> <span>Viernes 12 de Abril de 2024 a las 11:30 am.</span>
+                  <span>Proxima Cita</span>
+                  <span>Viernes 12 de Abril de 2024 a las 11:30 am.</span>
                 </div>
               </li>
             </ul>
@@ -91,9 +90,6 @@
           </template>
         </iq-card>
       </b-col>
-
-
-
     </b-row>
   </b-container>
 </template>
@@ -114,7 +110,6 @@ import {
   LegendComponent,
 } from "echarts/components";
 
-
 // import ECharts from 'vue-echarts'
 //mport * as echarts from "echarts";
 
@@ -133,23 +128,24 @@ export default {
       LegendComponent,
     ]);
 
-
-
-
-
-
-
     return {
-
-
-
-
       columns: [
         { label: "Nombre", field: "Nombre", headerClass: "text-left" },
-        { label: "Fecha de Consulta", field: "fConsulta ", headerClass: "text-left" },
-        { label: "Tipo de Consulta", field: "tConsulta", headerClass: "text-left" },
-        { label: "Observaciones", field: "Observaciones", headerClass: "text-left" },
-
+        {
+          label: "Fecha de Consulta",
+          field: "fConsulta ",
+          headerClass: "text-left",
+        },
+        {
+          label: "Tipo de Consulta",
+          field: "tConsulta",
+          headerClass: "text-left",
+        },
+        {
+          label: "Observaciones",
+          field: "Observaciones",
+          headerClass: "text-left",
+        },
       ],
       rows: [
         {
@@ -158,7 +154,6 @@ export default {
           fConsulta: " \u00A0",
           tConsulta: " \u00A0 ",
           Observaciones: " \u00A0 ",
-
         },
         {
           id: 2,
@@ -166,21 +161,18 @@ export default {
           fConsulta: " \u00A0",
           tConsulta: " \u00A0 ",
           Observaciones: " \u00A0 ",
-
         },
         {
           Nombre: " \u00A0",
           fConsulta: " \u00A0",
           tConsulta: " \u00A0 ",
           Observaciones: " \u00A0 ",
-
         },
         {
           id: 4,
           Nombre: " \u00A0 ",
           tConsulta: " \u00A0 ",
           Observaciones: " \u00A0 ",
-
         },
         {
           id: 5,
@@ -190,20 +182,19 @@ export default {
           Observaciones: " \u00A0 ",
         },
       ],
-
     };
   },
   data() {
     return {
-      doctor: {
-        profilecopia: require('../personas/1.jpg'),
-        profilecopia2: require('../personas/2.jpg'),
-        profilecopia3: require('../personas/3.jpg'),
-        profilecopia4: require('../personas/4.jpg'),
-        profilecopia5: require('../personas/5.jpg'),
-        profilecopia6: require('../personas/6.jpg'),
-        perfilInfanteUrl: require('../User/Profile.vue'),
-      },
+      // doctor: {
+      //   profilecopia: require('../personas/1.jpg'),
+      //   profilecopia2: require('../personas/2.jpg'),
+      //   profilecopia3: require('../personas/3.jpg'),
+      //   profilecopia4: require('../personas/4.jpg'),
+      //   profilecopia5: require('../personas/5.jpg'),
+      //   profilecopia6: require('../personas/6.jpg'),
+      //   perfilInfanteUrl: require('../User/Profile.vue'),
+      // },
       chart: null,
       xVal: 0,
       options: {
