@@ -16,10 +16,10 @@
                     <li id="contactos" :class="`${currentindex == 2 ? 'active' : ''} ${currentindex > 2 ? 'done active' : ''}`">
                       <a href="#"> <i class="ri-user-fill text-danger"></i><span>Contactos</span> </a>
                     </li>
-                    <li id="padecimiento_a" :class="`${currentindex == 3 ? 'active' : ''} ${currentindex > 3 ? 'done active' : ''}`">
+                    <li id="padecimiento_actualctual" :class="`${currentindex == 3 ? 'active' : ''} ${currentindex > 3 ? 'done active' : ''}`">
                       <a href="#"> <i class="ri-camera-fill text-success"></i><span>Padecimiento Actual</span> </a>
                     </li>
-                    <li id="signos_v" :class="`${currentindex == 4 ? 'active' : ''} ${currentindex > 4 ? 'done active' : ''}`">
+                    <li id="signos_vitales" :class="`${currentindex == 4 ? 'active' : ''} ${currentindex > 4 ? 'done active' : ''}`">
                       <a href="#"> <i class="ri-check-fill text-warning"></i><span>Signos vitales</span> </a>
                     </li>
                   </ul>
@@ -110,7 +110,7 @@
                           </b-row>
                         </div>
                         <a href="#" @click="changeTab(3)" class="btn btn-primary next action-button float-end" value="Next">Next</a>
-                        <a href="#signos_v" @click="changeTab(1)" class="btn btn-dark previous action-button-previous float-end me-1" value="Previous">Previous</a>
+                        <a href="#signos_vitales" @click="changeTab(1)" class="btn btn-dark previous action-button-previous float-end me-1" value="Previous">Previous</a>
                       </fieldset>
                     </div>
                     <div :class="`${currentindex == 3 ? 'show' : 'd-none'}`">
@@ -136,8 +136,8 @@
                             </div>
                           </div>
                         </div>
-                        <a href="#padecimiento_a" @click="changeTab(4)" class="btn btn-primary next action-button float-end" value="Next">Next</a>
-                        <a href="#signos_v" @click="changeTab(2)" class="btn btn-dark previous action-button-previous float-end me-1" value="Previous">Previous</a>
+                        <a href="#padecimiento_actual" @click="changeTab(4)" class="btn btn-primary next action-button float-end" value="Next">Next</a>
+                        <a href="#signos_vitales" @click="changeTab(2)" class="btn btn-dark previous action-button-previous float-end me-1" value="Previous">Previous</a>
                       </fieldset>
                     </div>
                     <div :class="`${currentindex == 4 ? 'show' : 'd-none'}`">
@@ -199,9 +199,9 @@
                             </div>
                           </div>
                         </div>
-                        <a href="#padecimiento_a" @click="changeTab(1)" class="btn btn-primary next action-button float-end mt-3" value="Next">submit</a>
+                        <a href="#padecimiento_actual" @click="changeTab(1)" class="btn btn-primary next action-button float-end mt-3" value="Next">submit</a>
                         <!-- <a
-                    href="#signos_v"
+                    href="#signos_vitales"
                     @click="changeTab(1)"
                     class="btn btn-dark previous action-button-previous float-end me-1"
                     value="Previous"
