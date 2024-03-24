@@ -152,49 +152,49 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="panno">Estatura: *</label>
-                                <input type="number" class="form-control" id="panno" name="panno" placeholder="Pan No." spellcheck="false" data-ms-editor="true" />
+                                <input type="number" class="form-control" id="panno" name="panno" placeholder="Estatura" spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="accno">Peso: *</label>
-                                <input type="number" class="form-control" id="accno" name="accno" placeholder="signos_v No." spellcheck="false" data-ms-editor="true" />
+                                <input type="number" class="form-control" id="accno" name="accno" placeholder="Peso" spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="holname">Temperatura corporal: *</label>
-                                <input type="number" class="form-control" id="holname" name="accname" placeholder="signos_v Holder Name." spellcheck="false" data-ms-editor="true" />
+                                <input type="number" class="form-control" id="holname" name="accname" placeholder="Temperatura corporal" spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="ifsc">Presion sistolica: *</label>
-                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="IFSC Code." spellcheck="false" data-ms-editor="true" />
+                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="Presion sistolica" spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="ifsc">Presion diastolica: *</label>
-                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="IFSC Code." spellcheck="false" data-ms-editor="true" />
+                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="Presion diastolica" spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="ifsc">Oxigenacion: *</label>
-                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="IFSC Code." spellcheck="false" data-ms-editor="true" />
+                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="Oxigenacion" spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="ifsc">Frecuencia cardiaca: *</label>
-                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="IFSC Code." spellcheck="false" data-ms-editor="true" />
+                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="Frecuencia cardiaca" spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="ifsc">Frecuencia respiratoria: *</label>
-                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="IFSC Code." spellcheck="false" data-ms-editor="true" />
+                                <input type="number" class="form-control" id="ifsc" name="ifsc" placeholder="Frecuencia respiratoria" spellcheck="false" data-ms-editor="true" />
                               </div>
                             </div>
                           </div>
