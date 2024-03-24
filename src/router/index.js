@@ -104,7 +104,7 @@ import RegistrosM from "../views/RegistrosMedicos/registrosmedicos.vue";
 import NotasM from "../views/RegistrosMedicos/notasmedicas.vue";
 import CrudRegistrosM from "../views/RegistrosMedicos/crudregistrosmedicos.vue";
 import AgregaRegistrosMedicos from "../views/RegistrosMedicos/agregaregistrosmedicos.vue";
-
+import EditarRegistrosMedicos from "../views/RegistrosMedicos/editaregistrosmedicos.vue";
 
 const childRoutes = (prop, mode) => [
   {
@@ -197,6 +197,12 @@ const childRoutes = (prop, mode) => [
     name: prop + ".agregaregistrosmedicos",
     meta: { dark: mode, auth: true, name: "Agregar Expedientes medicos" },
     component: AgregaRegistrosMedicos,
+  },
+  {
+    /* crud - para editar un expediente */ path: "editaregistrosmedicos",
+    name: prop + ".editaregistrosmedicos",
+    meta: { dark: mode, auth: true, name: "Editar Expedientes medicos" },
+    component: EditarRegistrosMedicos,
   },
   {
     path: "covid-19",

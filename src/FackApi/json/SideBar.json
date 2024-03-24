@@ -158,6 +158,18 @@
         "is_icon_class": true,
         "icon": "ri-home-8-fill",
         "badge" : false
+      },
+      {
+        "title": "Editar expedientes",
+        "name": "Editar expedientes",
+        "is_active": true,
+        "link": {
+          "name": "dashboard.editaregistrosmedicos"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-home-8-fill",
+        "badge" : false
       }
     ]
   },
