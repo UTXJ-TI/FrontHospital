@@ -101,6 +101,7 @@ import DashboardGenHospital from "../views/DireccionGeneral/DashboardGenHospital
 import BitacoraDG from "../views/DireccionGeneral/BitacoraDG.vue";
 
 //------------------------------------------------------
+import DireccionG from "../views/DireccionGeneral/DireccionGeneral.vue";
 import ComiteT from "../views/ComiteTransplantes/comitetransplantes.vue";
 import FarmaciaI from "../views/FarmaciaIntraHospitalaria/farmaciaintrahospitalaria.vue";
 import Pediatria from "../views/Pediatria/pediatria.vue";
@@ -108,6 +109,10 @@ import ProgramacionQ from "../views/ProgramacionQuirurgica/programacionquirurgic
 import RadiologiaI from "../views/RadiologiaImagen/radiologiaimagen.vue";
 import RecursosH from "../views/RecursosHumanos/recursoshumanos.vue";
 import RegistrosM from "../views/RegistrosMedicos/registrosmedicos.vue";
+import NotasM from "../views/RegistrosMedicos/notasmedicas.vue";
+import CrudRegistrosM from "../views/RegistrosMedicos/crudregistrosmedicos.vue";
+import AgregaRegistrosMedicos from "../views/RegistrosMedicos/agregaregistrosmedicos.vue";
+
 
 const childRoutes = (prop, mode) => [
   {
@@ -215,6 +220,65 @@ const childRoutes = (prop, mode) => [
     name: prop + ".registrosm",
     meta: { dark: mode, auth: true, name: "Registros Medicos" },
     component: RegistrosM,
+    path: "comtrans",
+    name: prop + ".comtrans",
+    meta: { dark: mode, auth: true, name: "Comite de Transplantes" },
+    component: ComiteT,
+  },
+  {
+    path: "farmintra",
+    name: prop + ".farmintra",
+    meta: { dark: mode, auth: true, name: "Farmacia Intrahospitalaria" },
+    component: FarmaciaI,
+  },
+  {
+    path: "pediatria",
+    name: prop + ".pediatria",
+    meta: { dark: mode, auth: true, name: "Pediatria" },
+    component: Pediatria,
+  },
+  {
+    path: "prograq",
+    name: prop + ".prograq",
+    meta: { dark: mode, auth: true, name: "Programación Quirurgica" },
+    component: ProgramacionQ,
+  },
+  {
+    path: "radiologiai",
+    name: prop + ".radiologiai",
+    meta: { dark: mode, auth: true, name: "Radiologia e Imagen" },
+    component: RadiologiaI,
+  },
+  {
+    path: "recursosh",
+    name: prop + ".recursosh",
+    meta: { dark: mode, auth: true, name: "Recursos humanos" },
+    component: RecursosH,
+  },
+
+  {
+    /* Dashboard */ path: "registrosm",
+    name: prop + ".registrosm",
+    meta: { dark: mode, auth: true, name: "Registros Medicos" },
+    component: RegistrosM,
+  },
+  {
+    /* tabla dinamica de las notas medicas */ path: "notasm",
+    name: prop + ".notasm",
+    meta: { dark: mode, auth: true, name: "Notas medicas" },
+    component: NotasM,
+  },
+  {
+    /* crud - para mostrar todos los expedientes */ path: "crudregistrosm",
+    name: prop + ".crudregistrosm",
+    meta: { dark: mode, auth: true, name: "Expedientes medicos" },
+    component: CrudRegistrosM,
+  },
+  {
+    /* crud - para agregar un expediente */ path: "agregaregistrosmedicos",
+    name: prop + ".agregaregistrosmedicos",
+    meta: { dark: mode, auth: true, name: "Agregar Expedientes medicos" },
+    component: AgregaRegistrosMedicos,
   },
   {
     path: "covid-19",
