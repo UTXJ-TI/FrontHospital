@@ -50,16 +50,54 @@
   },
   {
     "title": "Farmacia Intrahospitalaria",
-    "name": "Farmacia Intrahospitalaria",
+    "name": "Farmacia",
     "is_heading": false,
     "is_active": false,
-    "link": {
-      "name": "dashboard.farmintra"
-    },
+    "link": "",
     "class_name": "",
     "is_icon_class": true,
-    "icon": "ri-home-8-fill",
-    "badge" : false
+    "icon": "ri-hospital-fill",
+    "children": [
+      {
+        "title": "Farmacia Intrahospitalaria",
+        "name": "Dispensacion",
+        "is_heading": false,
+        "is_active": false,
+        "link": {
+          "name": "dashboard.farmintra"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-home-8-fill",
+        "badge": false
+      },
+      {
+        "title": "Farmacia Intrahospitalaria",
+        "name": "Inventario",
+        "is_heading": false,
+        "is_active": false,
+        "link": {
+          "name": "dashboard.farmintraInv"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-home-8-fill",
+        "badge": false
+      },
+      {
+        "title": "Farmacia Intrahospitalaria",
+        "name": "Dashboard",
+        "is_heading": false,
+        "is_active": false,
+        "link": {
+          "name": "dashboard.farmadash"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-home-8-fill",
+        "badge": false
+      }
+    ]
   },
   {
     "title": "Pediatria",
