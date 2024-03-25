@@ -1,0 +1,252 @@
+{
+  "hospital": {
+    "nombre": "Hospital General",
+    "ubicacion": "Hospital de Alta Especcialidad de Xicopetec de Juarez",
+    "servicios": [
+      {
+        "nombre": "Atención de Urgencia",
+        "descripcion": "Considera Usted que el servicio de atención de Urgencias es ficiente",
+        "opiniones": [
+          {
+            "usuario": "Usuario 1",
+            "opinion": "Opinión del usuario 1",
+            "calificacion": 10
+          }
+        ]
+      },
+      {
+        "nombre": "Consulta Médica",
+        "descripcion": "Considera que la Atención Proporcionada por el personal medico es oportuna",
+        "opiniones": [
+          {
+            "usuario": "Usuario 2",
+            "opinion": "Opinión del usuario 3",
+            "calificacion": 8
+          }
+        ]
+      },
+      {
+        "nombre": "Farmacia",
+        "descripcion": "Considera el area de Farmacia es Eficiente",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 3",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Instalaciones",
+        "descripcion": "Cree usted que las instalaciones que ofrece el hospital son adecuadas para la atención médica",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 4",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Edificios",
+        "descripcion": "Cree que el edificio donde recibe atención medica es susfucuente para a la atencion de los pacientes",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 5",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Pisos",
+        "descripcion": "Las areas estan conectadas con la consulta medica deacuedo a su area de atención",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 6",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Salas",
+        "descripcion": "La sala donde es atendido cuenta con las instalaciones para su comodidad mientras espera ser atendido",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 7",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Laboratorios",
+        "descripcion": "Sus estudios clinicos son expedidos en tiempo y forma de auerdo al formato de la receta medica emitida",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 8",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Unidad",
+        "descripcion": "Las unidades que de atención le brindan la información necesaria para los prosedimeintos medicos que ha solicitado su medico de cabecera",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 8",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Unidad",
+        "descripcion": "Las unidades que de atención le brindan la información necesaria para los prosedimeintos medicos que ha solicitado su medico de cabecera",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 9",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Quirofano",
+        "descripcion": "Antes de ser intevenido le explica los procedimientos quirugicos a los que sera sometido y el materia que se utlizara en su operación",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 10",
+            "calificacion": 9
+          }
+        ]
+      }
+    ],
+    "Personal": [
+      {
+        "nombre": "Medicos",
+        "descripcion": "El medico que lo atiende le brinda un servicio cordial",
+        "opiniones": [
+          {
+            "usuario": "Usuario 1",
+            "opinion": "Opinión del usuario 1",
+            "calificacion": 1
+          }
+        ]
+      },
+      {
+        "nombre": "Enfermeras",
+        "descripcion": "Las enfermeras que lo atiende le brindan su apoyo y le explican los procedimieintos para que se sienta con mayor seguridad",
+        "opiniones": [
+          {
+            "usuario": "Usuario 2",
+            "opinion": "Opinión del usuario 3",
+            "calificacion": 8
+          }
+        ]
+      },
+      {
+        "nombre": "Farmaceuta ",
+        "descripcion": "Como considera la tencion del farmaucenta en la expedicion de sus medicamentos",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 3",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Guardia de Seguridad",
+        "descripcion": "Considera importante que una persona este vigilando el oden en el hospital",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 4",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Camilleros",
+        "descripcion": "Considera que personal de camilla y traslado es eficiene en su trabajo",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 5",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Recepcinista",
+        "descripcion": "Considera que el servicio de recepcion es oportuno con las indicaciones que realiza a los pacientes",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 6",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Psicología",
+        "descripcion": "Como considera el servicio que se brinda de Psicologia",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 7",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Odontología",
+        "descripcion": "Como considera el servicio de odontologia",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 8",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Optometrista",
+        "descripcion": "Como considera el servicio de optometria que se brinda en el hospital",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 8",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Radiología",
+        "descripcion": "piensa que el servicio de radiologia que se proporciona en el hospital es adecuado",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 9",
+            "calificacion": 9
+          }
+        ]
+      },
+      {
+        "nombre": "Banco de Sangre ",
+        "descripcion": "Considera importante que el hospital ofrezaca el servicio de baco de sangre para la atención de sus derechohabientes",
+        "opiniones": [
+          {
+            "usuario": "Usuario 3",
+            "opinion": "Opinión del usuario 10",
+            "calificacion": 9
+          }
+        ]
+      }
+    ]
+  }
+}
