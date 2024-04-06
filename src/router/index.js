@@ -93,7 +93,7 @@ import VerticalWizard from "../views/FormWizard/VerticalWizard.vue";
 // Vue.use(VueRouter)
 //IMPORT NEW VIEW PROYECTO 8A
 //-----Dirección General
-import DireccionG from "../views/DireccionGeneral/DireccionGeneral.vue";
+//import DireccionG from "../views/DireccionGeneral/DireccionGeneral.vue";
 import AproServiHosp from "../views/DireccionGeneral/AproServHosp.vue";
 import EstruOrgaHosp from "../views/DireccionGeneral/EstruOrgaHospital.vue";
 import EstruOrgaHosp2 from "../views/DireccionGeneral/EstruOrgaHospital2.vue";
@@ -112,7 +112,6 @@ import RegistrosM from "../views/RegistrosMedicos/registrosmedicos.vue";
 import NotasM from "../views/RegistrosMedicos/notasmedicas.vue";
 import CrudRegistrosM from "../views/RegistrosMedicos/crudregistrosmedicos.vue";
 import AgregaRegistrosMedicos from "../views/RegistrosMedicos/agregaregistrosmedicos.vue";
-
 
 const childRoutes = (prop, mode) => [
   {
@@ -220,6 +219,8 @@ const childRoutes = (prop, mode) => [
     name: prop + ".registrosm",
     meta: { dark: mode, auth: true, name: "Registros Medicos" },
     component: RegistrosM,
+  },
+  {
     path: "comtrans",
     name: prop + ".comtrans",
     meta: { dark: mode, auth: true, name: "Comite de Transplantes" },
