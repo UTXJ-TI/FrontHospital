@@ -60,6 +60,7 @@
                             <th scope="col">Estatus</th>
                             <th scope="col">Comentarios</th>
                             <th scope="col">Fecha de Aprobación</th>
+                            <th scope="col">Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -67,32 +68,32 @@
                             v-for="procedimiento in procedimientos"
                             :key="procedimiento.id"
                           >
-                            <td>{{ procedimiento.ID }}</td>
-                            <td>{{ procedimiento.Servicio_Paciente_ID }}</td>
+                            <td>{{ procedimiento.id }}</td>
+                            <td>{{ procedimiento.servicio_paciente_id }}</td>
                             <td>
-                              {{ procedimiento.Departamento_Solicitante }}
+                              {{ procedimiento.departamento_solicitante }}
                             </td>
-                            <td>{{ procedimiento.Fecha_Solicitud }}</td>
-                            <td>{{ procedimiento.Estatus }}</td>
-                            <td>{{ procedimiento.Comentarios }}</td>
-                            <td>{{ procedimiento.Fecha_Aprobacion }}</td>
+                            <td>{{ procedimiento.fecha_solicitud }}</td>
+                            <td>{{ procedimiento.estatus }}</td>
+                            <td>{{ procedimiento.comentarios }}</td>
+                            <td>{{ procedimiento.fecha_aprobacion }}</td>
                             <td>
-                              <a href="#" class="edit" title=""
-                                ><button
+                              <a href="#" class="edit" title="">
+                                <button
                                   class="btn btn-warning btn-sm"
                                   @click="editBtn(procedimiento.id)"
                                 >
                                   Editar
-                                </button></a
-                              >
-                              <a href="#" class="edit ml-1" title=""
-                                ><button
+                                </button>
+                              </a>
+                              <a href="#" class="edit ml-1" title="">
+                                <button
                                   class="btn btn-danger btn-sm"
                                   @click="deleteprocedimiento(procedimiento.id)"
                                 >
                                   Eliminar
-                                </button></a
-                              >
+                                </button>
+                              </a>
                             </td>
                           </tr>
                         </tbody>
@@ -465,7 +466,7 @@ export default {
 
       procedimientos: [],
       currentProcedimeinto: {},
-      api: "http://127.0.0.1:8000/api",
+      api: "http://127.0.0.1:8000/hospital/api/v1AprobacionesServicios",
       procedimiento: {
         ID: "",
         Servicio: "",
