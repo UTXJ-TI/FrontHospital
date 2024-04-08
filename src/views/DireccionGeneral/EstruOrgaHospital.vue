@@ -82,7 +82,7 @@
       <b-col lg="12">
         <iq-card>
           <template v-slot:headerTitle>
-            <h4 class="card-title">Servicios Hospitalarios</h4>
+            <h2 class="card-title">Servicios Hospitalarios</h2>
 
             <div
               style="margin-left: auto; margin-right: auto; max-width: 1200px"
@@ -134,6 +134,7 @@
               <table class="table mb-3 table-borderless">
                 <thead>
                   <tr>
+                    <th scope="col">N°</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Tipo</th>
                     <th scope="col">Tipo de Intervención</th>
@@ -142,25 +143,53 @@
                     <th scope="col">Estatus</th>
                   </tr>
                 </thead>
-                <tbody v-for="data in globalRecord" :key="data.id">
-                  <tr>
-                    <td v-for="data1 in data.country" :key="data1.id">
-                      <img
-                        :src="data1.counreyImg"
-                        class="img-fluid"
-                        alt="country-flag"
-                      />
-                      <span class="mx-2">{{ data1.countryName }}</span>
+                <tbody>
+                  <tr v-for="(servicio, index) in paginatedData" :key="index">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ servicio.nombre }}</td>
+                    <td>{{ servicio.tipo }}</td>
+                    <td>{{ servicio.tipo_intervencion }}</td>
+                    <td>{{ servicio.descripcion }}</td>
+                    <td>{{ servicio.departamento_responsable_id }}</td>
+                    <td>{{ servicio.estatus }}</td>
+                    <td>
+                      <a href="#" class="edit" title="">
+                        <button
+                          class="btn btn-warning btn-sm"
+                          @click="editBtn(servicio.id)"
+                        >
+                          Edita
+                        </button>
+                      </a>
+                      <a href="#" class="edit" title="">
+                        <button
+                          class="btn btn-danger btn-sm"
+                          @click="deleteservicio(servicio.id)"
+                        >
+                          Elimina
+                        </button>
+                      </a>
                     </td>
-                    <td>{{ data.Nombre }}</td>
-                    <td>{{ data.Tipo }}</td>
-                    <td>{{ data.Tipo_Intervencion }}</td>
-                    <td>{{ data.Descripcion }}</td>
-                    <td>{{ data.Departamento_Responasble_ID }}</td>
-                    <td>{{ data.Estatus }}</td>
                   </tr>
                 </tbody>
               </table>
+            </div>
+
+            <div class="pagination">
+              <button
+                class="btn btn-primary"
+                @click="previousPage"
+                :disabled="currentPage === 1"
+              >
+                Anterior
+              </button>
+              <button
+                class="btn btn-primary"
+                @click="nextPage"
+                :disabled="currentPage === totalPages"
+              >
+                Siguiente
+              </button>
             </div>
           </template>
         </iq-card>
@@ -243,6 +272,7 @@ import CountUp from "vue-countup-v3";
 import "swiper/css";
 import "swiper/scss";
 import "swiper/css/navigation";
+import axios from "axios";
 
 export default {
   name: "EstruOrgaHospital",
@@ -254,33 +284,88 @@ export default {
   },
   mounted() {
     xray.index();
+    console.log("DOM is rendered");
+    console.log(Object.keys(this.currentServicio).length);
   },
+
+  created() {
+    console.log("DOM is created");
+    this.getServicios();
+  },
+
+  methods: {
+    getServicios() {
+      axios
+        .get(this.api + "/v1ServiciosHospitalarios/")
+        .then((response) => {
+          console.log(response.data);
+          this.servicios = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
+  },
+
   data() {
     return {
-      globalRecord: [
-        {
-          id: 1,
-          Nombre: "Receta Medica",
-          Tipo: "Medico",
-          Tipo_Intervencion: "Farmacia",
-          Descripcion: "Departamento en Prueba",
-          Departamento_Responasble_ID: 1,
-          Estatus: "Activo",
-        },
-        // Más datos aquí si es necesario
-      ],
+      servicios: [],
+      currentServicio: {},
+      api: "http://127.0.0.1:8000/hospital/api",
+      servicio: {
+        id: "",
+        nombre: "",
+        tipo: "",
+        tipo_intervencion: "",
+        descripcion: "",
+        departamento_responsable_id: "",
+        estatus: "",
+      },
       searchInput: "",
+      currentPage: 1, // Página actual
+      resultsPerPage: 10, // Resultados por página
     };
   },
+
   computed: {
     filteredData() {
-      return this.globalRecord.filter((data) => {
-        return Object.values(data).some((value) => {
+      // Modifica la función para filtrar según el término de búsqueda
+      return this.servicios.filter((servicio) => {
+        return Object.values(servicio).some((value) => {
           return String(value)
             .toLowerCase()
             .includes(this.searchInput.toLowerCase());
         });
       });
+    },
+
+    paginatedData() {
+      const startIndex = (this.currentPage - 1) * this.resultsPerPage;
+      const endIndex = startIndex + this.resultsPerPage;
+      return this.filteredData
+        .slice(startIndex, endIndex)
+        .map((item, index) => {
+          return {
+            ...item,
+            index: startIndex + index + 1, // Ajustar el índice para mantener la secuencia numérica continua
+          };
+        });
+    },
+
+    totalPages() {
+      return Math.ceil(this.servicios.length / this.resultsPerPage);
     },
   },
 };

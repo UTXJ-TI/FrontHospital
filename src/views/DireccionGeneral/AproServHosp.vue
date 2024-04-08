@@ -53,45 +53,43 @@
                       <table class="table table-bordered mt-4">
                         <thead>
                           <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">N°</th>
                             <th scope="col">Servicio</th>
-                            <th scope="col">Departamento</th>
+                            <th scope="col">Departamento Solicitante</th>
                             <th scope="col">Fecha de Solicitud</th>
                             <th scope="col">Estatus</th>
-                            <th scope="col">Comentarios</th>
+                            <th scope="col">Comentario</th>
                             <th scope="col">Fecha de Aprobación</th>
                             <th scope="col">Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr
-                            v-for="procedimiento in procedimientos"
-                            :key="procedimiento.id"
+                            v-for="(solicitud, index) in solicitudes"
+                            :key="index"
                           >
-                            <td>{{ procedimiento.id }}</td>
-                            <td>{{ procedimiento.servicio_paciente_id }}</td>
-                            <td>
-                              {{ procedimiento.departamento_solicitante }}
-                            </td>
-                            <td>{{ procedimiento.fecha_solicitud }}</td>
-                            <td>{{ procedimiento.estatus }}</td>
-                            <td>{{ procedimiento.comentarios }}</td>
-                            <td>{{ procedimiento.fecha_aprobacion }}</td>
+                            <td>{{ index + 1 }}</td>
+                            <td>{{ solicitud.servicio_paciente_id }}</td>
+                            <td>{{ solicitud.departamento_solicitante }}</td>
+                            <td>{{ solicitud.fecha_solicitud }}</td>
+                            <td>{{ solicitud.estatus }}</td>
+                            <td>{{ solicitud.comentarios }}</td>
+                            <td>{{ solicitud.fecha_aprobacion }}</td>
                             <td>
                               <a href="#" class="edit" title="">
                                 <button
                                   class="btn btn-warning btn-sm"
-                                  @click="editBtn(procedimiento.id)"
+                                  @click="editBtn(solicitud.id)"
                                 >
-                                  Editar
+                                  Edita
                                 </button>
                               </a>
-                              <a href="#" class="edit ml-1" title="">
+                              <a href="#" class="edit" title="">
                                 <button
                                   class="btn btn-danger btn-sm"
-                                  @click="deleteprocedimiento(procedimiento.id)"
+                                  @click="deleteSolicitud(solicitud.id)"
                                 >
-                                  Eliminar
+                                  Elimina
                                 </button>
                               </a>
                             </td>
@@ -102,16 +100,14 @@
 
                     <!-- There is a current procedimiento to be edited -->
                     <div class="col-md-5">
+                      <!-- Edicion de la Solicitudes -->
                       <div
-                        v-if="
-                          Object.keys(this.currentProcedimeinto).length !== 0
-                        "
+                        v-if="Object.keys(this.currentSolicitud).length !== 0"
                       >
-                        <h5 style="text-align: center">Edita la Solicitud</h5>
+                        <h2 class="alert alert-warning">Actualiza Solicitud</h2>
+
                         <form
-                          @submit.prevent="
-                            updateprocedimiento(currentProcedimeinto.id)
-                          "
+                          @submit.prevent="updateSolicitud(currentSolicitud.id)"
                         >
                           <div class="row">
                             <div class="col">
@@ -122,7 +118,9 @@
                                 <input
                                   type="text"
                                   class="form-control"
-                                  v-model="currentProcedimeinto.name"
+                                  v-model="
+                                    currentSolicitud.servicio_paciente_id
+                                  "
                                 />
                               </div>
                             </div>
@@ -133,9 +131,11 @@
                                   >Departamento</label
                                 >
                                 <input
-                                  type="email"
+                                  type="text"
                                   class="form-control"
-                                  v-model="currentProcedimeinto.email"
+                                  v-model="
+                                    currentSolicitud.departamento_solicitante
+                                  "
                                 />
                               </div>
                             </div>
@@ -148,48 +148,54 @@
                                   >Fecha de Solicitud</label
                                 >
                                 <input
-                                  type="date"
-                                  class="form-control"
-                                  v-model="currentProcedimeinto.course"
-                                />
-                              </div>
-                            </div>
-
-                            <div class="col">
-                              <div>
-                                <label class="form-label float-left ml-2"
-                                  >Estatus</label
-                                >
-                                <input
                                   type="text"
                                   class="form-control"
-                                  v-model="currentProcedimeinto.status"
+                                  v-model="currentSolicitud.fecha_solicitud"
                                 />
                               </div>
                             </div>
-
                             <div class="col">
-                              <div>
+                              <div class="form-group">
+                                <label class="form-label float-left ml-2"
+                                  >Estado</label
+                                >
+                                <select
+                                  class="form-control"
+                                  v-model="currentSolicitud.estatus"
+                                >
+                                  <option value="Aprobado">Aprobado</option>
+                                  <option value="En Proceso">En Proceso</option>
+                                  <option value="No Aprobado">
+                                    No Aprobado
+                                  </option>
+                                  <option value="Cancelado">Cancelado</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
                                 <label class="form-label float-left ml-2"
                                   >Comentario</label
                                 >
                                 <input
                                   type="text"
                                   class="form-control"
-                                  v-model="currentProcedimeinto.comment"
+                                  v-model="currentSolicitud.comentarios"
                                 />
                               </div>
                             </div>
-
                             <div class="col">
                               <div class="form-group">
                                 <label class="form-label float-left ml-2"
                                   >Fecha de Aprobacion</label
                                 >
                                 <input
-                                  type="date"
+                                  type="datetime-local"
                                   class="form-control"
-                                  v-model="currentProcedimeinto.approvalDate"
+                                  v-model="currentSolicitud.fecha_aprobacion"
                                 />
                               </div>
                             </div>
@@ -199,16 +205,18 @@
                             type="submit"
                             class="btn btn-success float-left ml-2"
                           >
-                            Actualizar
+                            Actualzar
                           </button>
                         </form>
                       </div>
 
                       <!-- There is no current procedimiento to be edited -->
 
+                      <!-- Crear Solicitud  -->
+
                       <div v-else>
-                        <h5 style="text-align: center">Crea una Solicitud</h5>
-                        <form @submit.prevent="saveprocedimiento()">
+                        <h2 class="alert alert-info">Crea Solicitud</h2>
+                        <form @submit.prevent="saveSolicitud()">
                           <div class="row">
                             <div class="col">
                               <div class="form-group">
@@ -218,7 +226,7 @@
                                 <input
                                   type="text"
                                   class="form-control"
-                                  v-model="procedimiento.name"
+                                  v-model="solicitud.servicio_paciente_id"
                                 />
                               </div>
                             </div>
@@ -229,9 +237,9 @@
                                   >Departamento</label
                                 >
                                 <input
-                                  type="email"
+                                  type="text"
                                   class="form-control"
-                                  v-model="procedimiento.email"
+                                  v-model="solicitud.departamento_solicitante"
                                 />
                               </div>
                             </div>
@@ -244,52 +252,59 @@
                                   >Fecha de Solicitud</label
                                 >
                                 <input
-                                  type="date"
+                                  type="datetime-local"
                                   class="form-control"
-                                  v-model="procedimiento.course"
+                                  v-model="solicitud.fecha_solicitud"
                                 />
                               </div>
                             </div>
-
                             <div class="col">
-                              <div>
+                              <div class="form-group">
                                 <label class="form-label float-left ml-2"
                                   >Estatus</label
                                 >
-                                <input
-                                  type="text"
+                                <select
                                   class="form-control"
-                                  v-model="currentProcedimeinto.status"
-                                />
+                                  v-model="solicitud.estatus"
+                                >
+                                  <option value="Aprobado">Aprobado</option>
+                                  <option value="En Proceso">En Proceso</option>
+                                  <option value="No Aprobado">
+                                    No Aprobado
+                                  </option>
+                                  <option value="Cancelado">Cancelado</option>
+                                </select>
                               </div>
                             </div>
+                          </div>
 
+                          <div class="row">
                             <div class="col">
-                              <div>
+                              <div class="form-group">
                                 <label class="form-label float-left ml-2"
                                   >Comentario</label
                                 >
                                 <input
                                   type="text"
                                   class="form-control"
-                                  v-model="currentProcedimeinto.comment"
+                                  v-model="solicitud.comentarios"
                                 />
                               </div>
                             </div>
-
                             <div class="col">
                               <div class="form-group">
                                 <label class="form-label float-left ml-2"
                                   >Fecha de Aprobacion</label
                                 >
                                 <input
-                                  type="date"
+                                  type="datetime-local"
                                   class="form-control"
-                                  v-model="currentProcedimeinto.approvalDate"
+                                  v-model="solicitud.fecha_aprobacion"
                                 />
                               </div>
                             </div>
                           </div>
+
                           <button
                             type="submit"
                             class="btn btn-primary float-left ml-2"
@@ -414,6 +429,10 @@ export default {
             name: "Solicitudes Negadas",
             data: [11, 17, 15, 15, 21, 14],
           },
+          {
+            name: "Solicitudes Canceladas",
+            data: [11, 17, 15, 15, 21, 14],
+          },
         ],
         colors: ["#089bab", "#FC9F5B", "red"],
         chart: {
@@ -464,17 +483,17 @@ export default {
         },
       },
 
-      procedimientos: [],
-      currentProcedimeinto: {},
-      api: "http://127.0.0.1:8000/hospital/api/v1AprobacionesServicios",
-      procedimiento: {
-        ID: "",
-        Servicio: "",
-        Departamento: "",
-        Fecha_Solicitud: "",
-        Estatus: "",
-        Comentarios: "",
-        Fecha_Aprobacion: "",
+      solicitudes: [],
+      currentSolicitud: {},
+      api: "http://127.0.0.1:8000/hospital/api",
+      solicitud: {
+        id: "",
+        servicio_paciente_id: "",
+        departamento_solicitante: "",
+        fecha_solicitud: "",
+        estatus: "",
+        comentarios: "",
+        fecha_aprobacion: "",
       },
     };
   },
@@ -483,7 +502,7 @@ export default {
     xray.index();
     body[0].classList.add("sidebar-main-menu");
     console.log("DOM is rendered");
-    console.log(Object.keys(this.currentProcedimeinto).length);
+    console.log(Object.keys(this.currentSolicitud).length);
   },
   unmounted() {
     body[0].classList.remove("sidebar-main-menu");
@@ -491,29 +510,29 @@ export default {
 
   created() {
     console.log("DOM is created");
-    this.getprocedimientos();
+    this.getSolicitudes();
   },
 
   methods: {
-    getprocedimientos() {
+    getSolicitudes() {
       axios
-        .get(this.api + "/procedimientos/")
+        .get(this.api + "/v1AprobacionesServicios/")
         .then((response) => {
           console.log(response.data);
-          this.procedimientos = response.data;
+          this.solicitudes = response.data;
         })
         .catch((error) => {
           console.log(error);
         });
     },
 
-    saveprocedimiento() {
+    saveSolicitud() {
       axios
-        .post(this.api + "/procedimientos/", this.procedimiento)
+        .post(this.api + "/v1AprobacionesServicios/", this.solicitud)
         .then((response) => {
           console.log(response.data);
-          this.getprocedimientos();
-          this.procedimiento = {};
+          this.getSolicitudes();
+          this.solicitud = {};
         })
         .catch((error) => {
           console.log(error);
@@ -522,45 +541,74 @@ export default {
 
     editBtn(id) {
       console.log(id);
-      this.procedimientos.map((procedimiento) => {
-        if (procedimiento.id === id) {
-          console.log(procedimiento.name);
-          this.currentProcedimeinto = {
-            id: procedimiento.id,
-            name: procedimiento.name,
-            email: procedimiento.email,
-            course: procedimiento.course,
-            gender: procedimiento.gender,
-            staus: procedimiento.status,
-            comment: procedimiento.comment,
-            approvalDate: procedimiento.approvalDate,
+      this.solicitudes.map((solicitud) => {
+        if (solicitud.id === id) {
+          console.log(solicitud.servicio_paciente_id);
+          this.currentSolicitud = {
+            id: solicitud.id,
+            servicio_paciente_id: solicitud.servicio_paciente_id,
+            departamento_solicitante: solicitud.departamento_solicitante,
+            fecha_solicitud: solicitud.fecha_solicitud,
+            estatus: solicitud.estatus,
+            comentarios: solicitud.comentarios,
+            fecha_aprobacion: solicitud.fecha_aprobacion,
           };
         }
       });
     },
 
-    updateprocedimiento(id) {
+    updateSolicitud(id) {
       axios
-        .put(this.api + `/procedimientos/${id}/`, this.currentProcedimeinto)
+        .put(
+          this.api + `/v1AprobacionesServicios/${id}/`,
+          this.currentSolicitud
+        )
         .then((response) => {
           console.log(response.data);
-          this.getprocedimientos();
-          this.currentProcedimeinto = {};
+          this.getSolicitudes();
+          this.currentSolicitud = {};
         })
         .catch((error) => {
           console.log(error);
         });
     },
 
-    deleteprocedimiento(id) {
+    deleteSolicitud(id) {
       axios
-        .delete(this.api + `/procedimientos/${id}/`, id)
+        .delete(this.api + `/v1AprobacionesServicios/${id}/`, id)
         .then((response) => {
           console.log(response.data);
-          this.getprocedimientos();
+          this.getSolicitudes();
         })
         .catch((error) => {
           console.log(error);
+        });
+    },
+
+    getVista() {
+      axios
+        .get("http://127.0.0.1:8000/hospital/api/v1VistaEstadoSolicitudes/")
+        .then((response) => {
+          console.log(response.data);
+          console.log("envio");
+          // Actualizar series de la gráfica con los datos obtenidos
+          this.chart5.series = [
+            { name: "Solcitudes Aprobadas", data: [5] },
+            { name: "En proceso de aprobación", data: [] },
+            { name: "Solicitudes Negadas", data: [] },
+            { name: "Solicitudes Canceladas", data: [] },
+          ];
+
+          // Iterar sobre los datos obtenidos y agregarlos a las series correspondientes
+          response.data.forEach((item) => {
+            this.chart5.series[0].data.push(item.num_aprobadas);
+            this.chart5.series[1].data.push(item.num_en_proceso);
+            this.chart5.series[2].data.push(item.num_no_aprobadas);
+            this.chart5.series[3].data.push(item.num_canceladas);
+          });
+        })
+        .catch((error) => {
+          console.error("Error al obtener las solicitudes:", error);
         });
     },
   },

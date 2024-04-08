@@ -115,32 +115,42 @@
             <div class="table-responsive mb-5">
               <table class="table mb-3 table-borderless">
                 <thead>
-                  <tr>
-                    <th scope="col">Nombre</th>
+                  <tr style="text-align: center">
+                    <th scope="col">N°</th>
+                    <th scope="col">Tabla</th>
                     <th scope="col">Usuario</th>
                     <th scope="col">Operación</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">Fecha</th>
                   </tr>
                 </thead>
-                <tbody v-for="data in globalRecord" :key="data.id">
-                  <tr>
-                    <td v-for="data1 in data.country" :key="data1.id">
-                      <img
-                        :src="data1.counreyImg"
-                        class="img-fluid"
-                        alt="country-flag"
-                      />
-                      <span class="mx-2">{{ data1.countryName }}</span>
-                    </td>
-                    <td>{{ data.Nombre }}</td>
-                    <td>{{ data.Usuario }}</td>
-                    <td>{{ data.Operacion }}</td>
-                    <td>{{ data.Descripcion }}</td>
-                    <td>{{ data.Fecha }}</td>
+                <tbody>
+                  <tr v-for="(bitacora, index) in paginatedData" :key="index">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ bitacora.nombre_tabla }}</td>
+                    <td>{{ bitacora.usuario }}</td>
+                    <td>{{ bitacora.operacion }}</td>
+                    <td>{{ bitacora.descripcion }}</td>
+                    <td>{{ bitacora.fecha_hora }}</td>
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <div class="pagination">
+              <button
+                class="btn btn-primary"
+                @click="previousPage"
+                :disabled="currentPage === 1"
+              >
+                Anterior
+              </button>
+              <button
+                class="btn btn-primary"
+                @click="nextPage"
+                :disabled="currentPage === totalPages"
+              >
+                Siguiente
+              </button>
             </div>
           </template>
         </iq-card>
@@ -228,6 +238,7 @@ import CountUp from "vue-countup-v3";
 import "swiper/css";
 import "swiper/scss";
 import "swiper/css/navigation";
+import axios from "axios";
 
 export default {
   name: "EstruOrgaHospital",
@@ -239,114 +250,87 @@ export default {
   },
   mounted() {
     xray.index();
+    console.log("DOM is rendered");
+    console.log(Object.keys(this.currentBitacora).length);
   },
+
+  created() {
+    console.log("DOM is created");
+    this.getBitacoras();
+  },
+
+  methods: {
+    getBitacoras() {
+      axios
+        .get(this.api + "/v1BitacoraDG/")
+        .then((response) => {
+          console.log(response.data);
+          this.bitacoras = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
+  },
+
   data() {
     return {
-      globalRecord: [
-        {
-          id: 1,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 2,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 3,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 4,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 5,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 6,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 7,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 8,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 9,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 10,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        // Más datos aquí si es necesario
-      ],
+      bitacoras: [],
+      currentBitacora: {},
+      api: "http://127.0.0.1:8000/hospital/api",
+      bitacora: {
+        id: "",
+        nombre_tabla: "",
+        usuario: "",
+        operacion: "",
+        descripcion: "",
+        fecha_hora: "",
+      },
       searchInput: "",
+      currentPage: 1, // Página actual
+      resultsPerPage: 10, // Resultados por página
     };
   },
+
   computed: {
     filteredData() {
-      return this.globalRecord.filter((data) => {
-        return Object.values(data).some((value) => {
+      // Modifica la función para filtrar según el término de búsqueda
+      return this.bitacoras.filter((bitacora) => {
+        return Object.values(bitacora).some((value) => {
           return String(value)
             .toLowerCase()
             .includes(this.searchInput.toLowerCase());
         });
       });
+    },
+
+    paginatedData() {
+      const startIndex = (this.currentPage - 1) * this.resultsPerPage;
+      const endIndex = startIndex + this.resultsPerPage;
+      return this.filteredData
+        .slice(startIndex, endIndex)
+        .map((item, index) => {
+          return {
+            ...item,
+            index: startIndex + index + 1, // Ajustar el índice para mantener la secuencia numérica continua
+          };
+        });
+    },
+
+    totalPages() {
+      return Math.ceil(this.bitacoras.length / this.resultsPerPage);
     },
   },
 };
