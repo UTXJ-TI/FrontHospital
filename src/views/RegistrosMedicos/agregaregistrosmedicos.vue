@@ -11,7 +11,7 @@
               <b-col md="3">
                 <ul id="top-tabbar-vertical" class="p-0">
                   <li
-                    class="datos"
+                    class="active"
                     :class="`${currentindex == 1 ? 'active' : ''} ${
                       currentindex > 1 ? 'done active' : ''
                     } `"
@@ -34,7 +34,7 @@
                     </a>
                   </li>
                   <li
-                    id="padecimiento_actualctual"
+                    id="padecimiento_actual"
                     :class="`${currentindex == 3 ? 'active' : ''} ${
                       currentindex > 3 ? 'done active' : ''
                     }`"
@@ -76,170 +76,194 @@
                       <div class="form-card text-start">
                         <b-row>
                           <b-col>
-                            <h3 class="mb-4">Informacion del usuario:</h3>
+                            <h3 class="mb-4">Datos personales:</h3>
                           </b-col>
                         </b-row>
                         <b-row>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="fname" class="mb-2">Nombre: *</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="nombre"
-                                name="nombre"
-                                placeholder="Nombre"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="lname" class="mb-2"
-                                >Apellido paterno: *</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="primer_apellido"
-                                name="primer_apellido"
-                                placeholder="Apellido paterno"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="lname" class="mb-2"
-                                >Apellido materno: *</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="segundo_apellido"
-                                name="segundo_apellido"
-                                placeholder="Apellido materno"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="lname" class="mb-2">CURP: *</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="curp"
-                                name="curp"
-                                placeholder="Ingresa tu CURP"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="dob" class="mb-2"
-                                >Fecha de nacimiento: *</label
-                              >
-                              <input
-                                type="date"
-                                class="form-control"
-                                id="dob"
-                                name="dob"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label class="my-2">Genero: *</label>
-                              <div class="form-check d-flex ps-0">
-                                <div
-                                  class="custom-control custom-radio custom-control-inline me-4"
-                                >
-                                  <input
-                                    type="radio"
-                                    id="customRadio1"
-                                    name="customRadio"
-                                    class="custom-control-input"
-                                  />
-                                  <label
-                                    class="custom-control-label"
-                                    for="customRadio1"
-                                  >
-                                    Masculino</label
-                                  >
+                          <div class="container">
+                            <div class="row">
+                              <div class="col-sm-6 col-md-5 col-lg-6">
+                                <!-- Izquierda -->
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="fname" class="mb-2"
+                                      >Nombre: *</label
+                                    >
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="nombre"
+                                      name="nombre"
+                                      placeholder="Nombre"
+                                      spellcheck="false"
+                                      data-ms-editor="true"
+                                    />
+                                  </div>
                                 </div>
-                                <div
-                                  class="custom-control custom-radio custom-control-inline"
-                                >
-                                  <input
-                                    type="radio"
-                                    id="customRadio2"
-                                    name="customRadio"
-                                    class="custom-control-input"
-                                  />
-                                  <label
-                                    class="custom-control-label"
-                                    for="customRadio2"
-                                  >
-                                    Femenino</label
-                                  >
+
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="lname" class="mb-2"
+                                      >Apellido materno: *</label
+                                    >
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="segundo_apellido"
+                                      name="segundo_apellido"
+                                      placeholder="Apellido materno"
+                                      spellcheck="false"
+                                      data-ms-editor="true"
+                                    />
+                                  </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="dob" class="mb-2"
+                                      >Fecha de nacimiento: *</label
+                                    >
+                                    <input
+                                      type="date"
+                                      class="form-control"
+                                      id="dob"
+                                      name="dob"
+                                    />
+                                  </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="ts" class="mb-2"
+                                      >Tipo de Sangre: *</label
+                                    >
+                                    <select
+                                      class="custom-select form-select"
+                                      id="ts"
+                                      name="ts"
+                                    >
+                                      <option selected>
+                                        Tipo de sangre...
+                                      </option>
+                                      <option value="1">A+</option>
+                                      <option value="2">A-</option>
+                                      <option value="3">B+</option>
+                                      <option value="4">B-</option>
+                                      <option value="5">AB+</option>
+                                      <option value="6">AB-</option>
+                                      <option value="7">O+</option>
+                                      <option value="8">O-</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Columnas separador -->
+                              <div
+                                class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0"
+                              >
+                                <!-- Derecha -->
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="lname" class="mb-2"
+                                      >Apellido paterno: *</label
+                                    >
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="primer_apellido"
+                                      name="primer_apellido"
+                                      placeholder="Apellido paterno"
+                                      spellcheck="false"
+                                      data-ms-editor="true"
+                                    />
+                                  </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="lname" class="mb-2"
+                                      >CURP: *</label
+                                    >
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="curp"
+                                      name="curp"
+                                      placeholder="Ingresa tu CURP"
+                                      spellcheck="false"
+                                      data-ms-editor="true"
+                                    />
+                                  </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="fname" class="mb-2"
+                                      >Alergias: *</label
+                                    >
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="alergias"
+                                      name="alergias"
+                                      placeholder="Alergias"
+                                      spellcheck="false"
+                                      data-ms-editor="true"
+                                    />
+                                  </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label class="my-2">Genero: *</label>
+                                    <div class="form-check d-flex ps-0">
+                                      <div
+                                        class="custom-control custom-radio custom-control-inline me-4"
+                                      >
+                                        <input
+                                          type="radio"
+                                          id="customRadio1"
+                                          name="customRadio"
+                                          class="custom-control-input"
+                                        />
+                                        <label
+                                          class="custom-control-label"
+                                          for="customRadio1"
+                                        >
+                                          Masculino</label
+                                        >
+                                      </div>
+                                      <div
+                                        class="custom-control custom-radio custom-control-inline"
+                                      >
+                                        <input
+                                          type="radio"
+                                          id="customRadio2"
+                                          name="customRadio"
+                                          class="custom-control-input"
+                                        />
+                                        <label
+                                          class="custom-control-label"
+                                          for="customRadio2"
+                                        >
+                                          Femenino</label
+                                        >
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <div class="input-group col-md-12">
-                            <div class="input-group-prepend">
-                              <label
-                                class="input-group-text"
-                                for="inputGroupSelect01"
-                                >Tipo de sangre</label
-                              >
-                            </div>
-                            <select
-                              class="custom-select"
-                              id="inputGroupSelect01"
-                            >
-                              <option selected>Tipo de sangre...</option>
-                              <option value="1">A+</option>
-                              <option value="2">A-</option>
-                              <option value="3">B+</option>
-                              <option value="4">B-</option>
-                              <option value="5">AB+</option>
-                              <option value="6">AB-</option>
-                              <option value="7">O+</option>
-                              <option value="8">O-</option>
-                            </select>
-                          </div>
-                          <div class="col-md-12">
-                            <br />
-                            <div class="form-group">
-                              <label for="fname" class="mb-2"
-                                >Alergias: *</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="alergias"
-                                name="alergias"
-                                placeholder="Alergias"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
-                            </div>
-                          </div>
                         </b-row>
                       </div>
+
                       <a
-                        href="#personal"
-                        class="btn btn-primary next action-button float-end"
+                        href="#contactos"
+                        class="btn btn-primary next action-button float-center"
                         @click="changeTab(2)"
-                        value="Next"
-                        >Next</a
+                        value="siguiente"
+                        >Siguiente</a
                       >
                     </fieldset>
                   </div>
@@ -309,14 +333,14 @@
                         </b-row>
                       </div>
                       <a
-                        href="#"
+                        href="#padecimiento_actual"
                         @click="changeTab(3)"
                         class="btn btn-primary next action-button float-end"
                         value="Next"
                         >Next</a
                       >
                       <a
-                        href="#signos_vitales"
+                        href="#personal"
                         @click="changeTab(1)"
                         class="btn btn-dark previous action-button-previous float-end me-1"
                         value="Previous"
@@ -362,14 +386,14 @@
                         </div>
                       </div>
                       <a
-                        href="#padecimiento_actual"
+                        href="#signos_vitales"
                         @click="changeTab(4)"
                         class="btn btn-primary next action-button float-end"
                         value="Next"
                         >Next</a
                       >
                       <a
-                        href="#signos_vitales"
+                        href="#contactos"
                         @click="changeTab(2)"
                         class="btn btn-dark previous action-button-previous float-end me-1"
                         value="Previous"
@@ -505,19 +529,162 @@
                         </div>
                       </div>
                       <a
-                        href="#padecimiento_actual"
-                        @click="changeTab(1)"
+                        href="#notas_medicas"
+                        @click="changeTab(5)"
                         class="btn btn-primary next action-button float-end mt-3"
-                        value="Next"
-                        >submit</a
+                        value="Siguiente"
+                        >Siguiente</a
                       >
-                      <!-- <a
-                    href="#signos_vitales"
-                    @click="changeTab(1)"
-                    class="btn btn-dark previous action-button-previous float-end me-1"
-                    value="Previous"
-                    >Previous</a
-                  > -->
+                      <a
+                        href="#padecimiento_actual"
+                        @click="changeTab(3)"
+                        class="btn btn-dark previous action-button-previous float-end me-1"
+                        value="Previous"
+                        >Previous</a
+                      >
+                    </fieldset>
+                  </div>
+                  <div :class="`${currentindex == 5 ? 'show' : 'd-none'}`">
+                    <fieldset>
+                      <div class="form-card text-left">
+                        <div class="row">
+                          <div class="col-12">
+                            <h3 class="mb-4 text-left">Notas medicas:</h3>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="panno">Estatura: *</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="panno"
+                                name="panno"
+                                placeholder="Estatura"
+                                spellcheck="false"
+                                data-ms-editor="true"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="accno">Peso: *</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="accno"
+                                name="accno"
+                                placeholder="Peso"
+                                spellcheck="false"
+                                data-ms-editor="true"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="holname"
+                                >Temperatura corporal: *</label
+                              >
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="holname"
+                                name="accname"
+                                placeholder="Temperatura corporal"
+                                spellcheck="false"
+                                data-ms-editor="true"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="ifsc">Presion sistolica: *</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="ifsc"
+                                name="ifsc"
+                                placeholder="Presion sistolica"
+                                spellcheck="false"
+                                data-ms-editor="true"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="ifsc">Presion diastolica: *</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="ifsc"
+                                name="ifsc"
+                                placeholder="Presion diastolica"
+                                spellcheck="false"
+                                data-ms-editor="true"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="ifsc">Oxigenacion: *</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="ifsc"
+                                name="ifsc"
+                                placeholder="Oxigenacion"
+                                spellcheck="false"
+                                data-ms-editor="true"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="ifsc">Frecuencia cardiaca: *</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="ifsc"
+                                name="ifsc"
+                                placeholder="Frecuencia cardiaca"
+                                spellcheck="false"
+                                data-ms-editor="true"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="ifsc"
+                                >Frecuencia respiratoria: *</label
+                              >
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="ifsc"
+                                name="ifsc"
+                                placeholder="Frecuencia respiratoria"
+                                spellcheck="false"
+                                data-ms-editor="true"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <a
+                        href="#notas_medicas"
+                        @click="changeTab(5)"
+                        class="btn btn-primary submit action-button float-end mt-3"
+                        value="Enviar"
+                        >Enviar</a
+                      >
+                      <a
+                        href="#signos_vitales"
+                        @click="changeTab(4)"
+                        class="btn btn-dark previous action-button-previous float-end me-1"
+                        value="Previous"
+                        >Previous</a
+                      >
                     </fieldset>
                   </div>
                 </b-form>
