@@ -102,6 +102,11 @@ import BitacoraDG from "../views/DireccionGeneral/BitacoraDG.vue";
 
 //------------------------------------------------------
 import ComiteT from "../views/ComiteTransplantes/comitetransplantes.vue";
+// -----Comite de Transplantes
+import solicitudesTransplantes from "../views/ComiteTransplantes/solicitudesTransplantes.vue";
+import tablaSolicitudesTransplante from "../views/ComiteTransplantes/tablaSolicitudesTransplante.vue";
+import dashboardSolicitudes from "../views/ComiteTransplantes/dashboardSolicitudes.vue";
+// ---------------------------------
 import Pediatria from "../views/Pediatria/pediatria.vue";
 import ProgramacionQ from "../views/ProgramacionQuirurgica/programacionquirurgica.vue";
 import RadiologiaI from "../views/RadiologiaImagen/radiologiaimagen.vue";
@@ -235,6 +240,48 @@ const childRoutes = (prop, mode) => [
     name: prop + ".farmaDis",
     meta: { dark: mode, auth: true, name: "Farmacia Intrahospitalaria" },
     component: FarmaciaIIIII,
+  },
+  {
+    path: "pediatria",
+    name: prop + ".pediatria",
+    meta: { dark: mode, auth: true, name: "Pediatria" },
+    component: Pediatria,
+  },
+  {
+    path: "prograq",
+    name: prop + ".prograq",
+    meta: { dark: mode, auth: true, name: "Programación Quirurgica" },
+    component: ProgramacionQ,
+  },
+  {
+    path: "comtrans",
+    name: prop + ".comtrans",
+    meta: { dark: mode, auth: true, name: "Comite de Transplantes" },
+    component: ComiteT,
+  },
+  {
+    path: "solicitudes-transplantes",
+    name: prop + ".solicitudes-transplantes",
+    meta: { dark: mode, auth: true, name: "Solicitud de Transplantes" },
+    component: solicitudesTransplantes,
+  },
+  {
+    path: "tabla-solicitudes",
+    name: prop + ".tabla-solicitudes",
+    meta: { dark: mode, auth: true, name: "Tabla de Solicitudes" },
+    component: tablaSolicitudesTransplante,
+  },
+  {
+    path: "dashboard-transplantes",
+    name: prop + ".dashboard-transplantes",
+    meta: { dark: mode, auth: true, name: "Dashboard de trans`lantes" },
+    component: dashboardSolicitudes,
+  },
+  {
+    path: "farmintra",
+    name: prop + ".farmintra",
+    meta: { dark: mode, auth: true, name: "Farmacia Intrahospitalaria" },
+    component: FarmaciaI,
   },
   {
     path: "pediatria",
