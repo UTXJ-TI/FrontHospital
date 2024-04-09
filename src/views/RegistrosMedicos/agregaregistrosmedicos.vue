@@ -18,7 +18,7 @@
                     id="personal"
                   >
                     <a href="#">
-                      <i class="ri-lock-unlock-line text-primary"></i
+                      <i class="ri-account-box-fill text-primary"></i
                       ><span>Datos Personales</span>
                     </a>
                   </li>
@@ -29,7 +29,7 @@
                     }`"
                   >
                     <a href="#">
-                      <i class="ri-user-fill text-danger"></i
+                      <i class="ri-phone-fill text-danger"></i
                       ><span>Contactos</span>
                     </a>
                   </li>
@@ -40,7 +40,7 @@
                     }`"
                   >
                     <a href="#">
-                      <i class="ri-camera-fill text-success"></i
+                      <i class="ri-file-fill text-success"></i
                       ><span>Padecimiento Actual</span>
                     </a>
                   </li>
@@ -51,8 +51,19 @@
                     }`"
                   >
                     <a href="#">
-                      <i class="ri-check-fill text-warning"></i
+                      <i class="ri-drop-fill text-warning"></i
                       ><span>Signos vitales</span>
+                    </a>
+                  </li>
+                  <li
+                    id="notas_medicas"
+                    :class="`${currentindex == 5 ? 'active' : ''} ${
+                      currentindex > 5 ? 'done active' : ''
+                    }`"
+                  >
+                    <a href="#">
+                      <i class="ri-bookmark-fill text-primary"></i
+                      ><span>Notas Medicas</span>
                     </a>
                   </li>
                 </ul>
@@ -65,21 +76,19 @@
                       <div class="form-card text-start">
                         <b-row>
                           <b-col>
-                            <h3 class="mb-4">User Information:</h3>
+                            <h3 class="mb-4">Informacion del usuario:</h3>
                           </b-col>
                         </b-row>
                         <b-row>
                           <div class="col-md-12">
                             <div class="form-group">
-                              <label for="fname" class="mb-2"
-                                >First Name: *</label
-                              >
+                              <label for="fname" class="mb-2">Nombre: *</label>
                               <input
                                 type="text"
                                 class="form-control"
-                                id="fname"
-                                name="fname"
-                                placeholder="First Name"
+                                id="nombre"
+                                name="nombre"
+                                placeholder="Nombre"
                                 spellcheck="false"
                                 data-ms-editor="true"
                               />
@@ -88,14 +97,14 @@
                           <div class="col-md-12">
                             <div class="form-group">
                               <label for="lname" class="mb-2"
-                                >Last Name: *</label
+                                >Apellido paterno: *</label
                               >
                               <input
                                 type="text"
                                 class="form-control"
-                                id="lname"
-                                name="lname"
-                                placeholder="Last Name"
+                                id="primer_apellido"
+                                name="primer_apellido"
+                                placeholder="Apellido paterno"
                                 spellcheck="false"
                                 data-ms-editor="true"
                               />
@@ -103,7 +112,50 @@
                           </div>
                           <div class="col-md-12">
                             <div class="form-group">
-                              <label class="my-2">Gender: *</label>
+                              <label for="lname" class="mb-2"
+                                >Apellido materno: *</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="segundo_apellido"
+                                name="segundo_apellido"
+                                placeholder="Apellido materno"
+                                spellcheck="false"
+                                data-ms-editor="true"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="lname" class="mb-2">CURP: *</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="curp"
+                                name="curp"
+                                placeholder="Ingresa tu CURP"
+                                spellcheck="false"
+                                data-ms-editor="true"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="dob" class="mb-2"
+                                >Fecha de nacimiento: *</label
+                              >
+                              <input
+                                type="date"
+                                class="form-control"
+                                id="dob"
+                                name="dob"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label class="my-2">Genero: *</label>
                               <div class="form-check d-flex ps-0">
                                 <div
                                   class="custom-control custom-radio custom-control-inline me-4"
@@ -118,7 +170,7 @@
                                     class="custom-control-label"
                                     for="customRadio1"
                                   >
-                                    Male</label
+                                    Masculino</label
                                   >
                                 </div>
                                 <div
@@ -134,22 +186,49 @@
                                     class="custom-control-label"
                                     for="customRadio2"
                                   >
-                                    Female</label
+                                    Femenino</label
                                   >
                                 </div>
                               </div>
                             </div>
                           </div>
+                          <div class="input-group col-md-12">
+                            <div class="input-group-prepend">
+                              <label
+                                class="input-group-text"
+                                for="inputGroupSelect01"
+                                >Tipo de sangre</label
+                              >
+                            </div>
+                            <select
+                              class="custom-select"
+                              id="inputGroupSelect01"
+                            >
+                              <option selected>Tipo de sangre...</option>
+                              <option value="1">A+</option>
+                              <option value="2">A-</option>
+                              <option value="3">B+</option>
+                              <option value="4">B-</option>
+                              <option value="5">AB+</option>
+                              <option value="6">AB-</option>
+                              <option value="7">O+</option>
+                              <option value="8">O-</option>
+                            </select>
+                          </div>
                           <div class="col-md-12">
+                            <br />
                             <div class="form-group">
-                              <label for="dob" class="mb-2"
-                                >Date Of Birth: *</label
+                              <label for="fname" class="mb-2"
+                                >Alergias: *</label
                               >
                               <input
-                                type="date"
+                                type="text"
                                 class="form-control"
-                                id="dob"
-                                name="dob"
+                                id="alergias"
+                                name="alergias"
+                                placeholder="Alergias"
+                                spellcheck="false"
+                                data-ms-editor="true"
                               />
                             </div>
                           </div>
