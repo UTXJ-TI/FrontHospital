@@ -406,6 +406,8 @@ import axios from "axios";
 //import CountUp from 'vue-countup-v3'
 const body = document.getElementsByTagName("body");
 
+// datos_grafuico = genera_datos_gragfica(dataset)
+
 export default {
   name: "AprobacionServiciosHospitalarios",
   components: { IqCard, ApexChart },
@@ -511,6 +513,7 @@ export default {
   created() {
     console.log("DOM is created");
     this.getSolicitudes();
+    this.getVista();
   },
 
   methods: {
@@ -587,13 +590,14 @@ export default {
 
     getVista() {
       axios
-        .get("http://127.0.0.1:8000/hospital/api/v1VistaEstadoSolicitudes/")
+        .get("http://127.0.0.1:8000/hospital/api/v1vista_estado_solicitudes/")
         .then((response) => {
           console.log(response.data);
           console.log("envio");
+
           // Actualizar series de la gráfica con los datos obtenidos
           this.chart5.series = [
-            { name: "Solcitudes Aprobadas", data: [5] },
+            { name: "Solcitudes Aprobadas", data: [] },
             { name: "En proceso de aprobación", data: [] },
             { name: "Solicitudes Negadas", data: [] },
             { name: "Solicitudes Canceladas", data: [] },
