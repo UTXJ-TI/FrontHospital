@@ -117,10 +117,35 @@
             </div>
             <!-- --------------------------------------------------------- -->
 
-            <form id="search">
-              <p>Buscar</p>
-              <input title="searchField" v-model="searchInput" />
-            </form>
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+              <div class="iq-search-bar">
+                <form action="#" class="searchbox">
+                  <input
+                    type="text"
+                    class="text search-input"
+                    title="searchField"
+                    placeholder="Buscar"
+                    v-model="searchInput"
+                  />
+                  <a class="search-link" href="#"
+                    ><i class="ri-search-line"></i
+                  ></a>
+                </form>
+              </div>
+              <b-navbar-toggle target="nav">
+                <i class="ri-menu-3-line"></i>
+              </b-navbar-toggle>
+              <div class="iq-menu-bt align-self-center">
+                <div class="wrapper-menu" @click="miniSidebar">
+                  <div class="main-circle"><i class="ri-more-fill"></i></div>
+                  <div class="hover-circle"><i class="ri-more-2-fill"></i></div>
+                </div>
+              </div>
+              <b-collapse id="nav-collapse" is-nav>
+                <slot name="responsiveRight" />
+              </b-collapse>
+              <slot name="right" />
+            </nav>
 
             <!-- <database-website-component :entries="dataset" :columns="dataColumns" :filter-key="searchInput">
                 </database-website-component> -->
@@ -130,7 +155,7 @@
 
           <template v-slot:body>
             <div class="table-responsive mb-5">
-              <table class="table mb-3 table-borderless">
+              <table class="table mb-3 table-borderless table-hover">
                 <thead>
                   <tr>
                     <th scope="col">N°</th>
@@ -144,8 +169,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(hospital, index) in paginatedData" :key="index">
-                    <td>{{ index + 1 }}</td>
+                  <tr v-for="(hospital, id) in paginatedData" :key="id">
+                    <td>{{ hospital.id }}</td>
                     <td>{{ hospital.clave }}</td>
                     <td>{{ hospital.nombre }}</td>
                     <td>{{ hospital.descripcion }}</td>
@@ -153,7 +178,7 @@
                     <td>{{ hospital.departamento_id }}</td>
                     <td>{{ hospital.instalacion_superior_id }}</td>
                     <td>{{ hospital.estatus }}</td>
-                    <td>
+                    <!-- <td>
                       <a href="#" class="edit" title="">
                         <button
                           class="btn btn-warning btn-sm"
@@ -170,7 +195,7 @@
                           Elimina
                         </button>
                       </a>
-                    </td>
+                    </td> -->
                   </tr>
                 </tbody>
               </table>
