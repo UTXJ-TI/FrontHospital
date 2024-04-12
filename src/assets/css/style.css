@@ -2811,7 +2811,7 @@ table.table-box-shadow th {
 }
 
 .iq-sidebar-booking,
-.iq-sidebar-payment {
+.iq-sidebar-signos_vitales {
   padding: 30px;
 }
 
@@ -4083,19 +4083,24 @@ fieldset[disabled] .btn {
   color: #089bab;
 }
 
-#top-tabbar-vertical li#contact i {
+#top-tabbar-vertical li#contactos i {
   background: #fff5f4;
   color: #f14336;
 }
 
-#top-tabbar-vertical li#official i {
+#top-tabbar-vertical li#padecimiento_actual i {
   background: #eefff2;
   color: #27b345;
 }
 
-#top-tabbar-vertical li#payment i {
+#top-tabbar-vertical li#signos_vitales i {
   background: #fffcf3;
   color: #fbc647;
+}
+
+#top-tabbar-vertical li#notas_medicas i {
+  background: #fffcf3;
+  color: #47c2fb;
 }
 
 #top-tabbar-vertical li.active a {
@@ -4123,16 +4128,21 @@ fieldset[disabled] .btn {
   background: #eff7f8;
 }
 
-#top-tabbar-vertical #contact.active a {
+#top-tabbar-vertical #contactos.active a {
   background: #fff5f4;
 }
 
-#top-tabbar-vertical #official.active a {
+#top-tabbar-vertical #padecimiento_actual.active a {
   background: #eefff2;
 }
 
-#top-tabbar-vertical #payment.active a {
+#top-tabbar-vertical #signos_vitales.active a {
   background: #fffcf3;
+}
+
+
+#top-tabbar-vertical #notas_medicas.active a {
+  background: #f3fcff;
 }
 
 #top-tabbar-vertical li.active i {

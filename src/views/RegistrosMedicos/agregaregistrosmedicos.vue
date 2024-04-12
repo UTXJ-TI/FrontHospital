@@ -17,9 +17,9 @@
                     } `"
                     id="personal"
                   >
-                    <a href="#">
-                      <i class="ri-account-box-fill text-primary"></i
-                      ><span>Datos Personales</span>
+                    <a href="#personal" @click="changeTab(1)">
+                      <i class="ri-account-box-fill text-primary"></i>
+                      <span>Datos Personales</span>
                     </a>
                   </li>
                   <li
@@ -28,9 +28,9 @@
                       currentindex > 2 ? 'done active' : ''
                     }`"
                   >
-                    <a href="#">
-                      <i class="ri-phone-fill text-danger"></i
-                      ><span>Contactos</span>
+                    <a href="#contactos" @click="changeTab(2)">
+                      <i class="ri-phone-fill text-danger"></i>
+                      <span>Contactos</span>
                     </a>
                   </li>
                   <li
@@ -39,10 +39,10 @@
                       currentindex > 3 ? 'done active' : ''
                     }`"
                   >
-                    <a href="#">
+                    <a href="#padecimiento_actual" @click="changeTab(3)">
                       <i class="ri-file-fill text-success"></i
-                      ><span>Padecimiento Actual</span>
-                    </a>
+                      ><span>Padecimiento Actual</span></a
+                    >
                   </li>
                   <li
                     id="signos_vitales"
@@ -50,10 +50,10 @@
                       currentindex > 4 ? 'done active' : ''
                     }`"
                   >
-                    <a href="#">
+                    <a href="#signos_vitales" @click="changeTab(4)">
                       <i class="ri-drop-fill text-warning"></i
-                      ><span>Signos vitales</span>
-                    </a>
+                      ><span>Signos vitales</span></a
+                    >
                   </li>
                   <li
                     id="notas_medicas"
@@ -61,10 +61,10 @@
                       currentindex > 5 ? 'done active' : ''
                     }`"
                   >
-                    <a href="#">
-                      <i class="ri-bookmark-fill text-primary"></i
-                      ><span>Notas Medicas</span>
-                    </a>
+                    <a href="#notas_medicas" @click="changeTab(5)">
+                      <i class="ri-bookmark-fill text-info"></i
+                      ><span>Notas Medicas</span></a
+                    >
                   </li>
                 </ul>
               </b-col>
@@ -80,176 +80,190 @@
                           </b-col>
                         </b-row>
                         <b-row>
-                          <div class="container">
-                            <div class="row">
-                              <div class="col-sm-6 col-md-5 col-lg-6">
-                                <!-- Izquierda -->
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                    <label for="fname" class="mb-2"
-                                      >Nombre: *</label
-                                    >
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      id="nombre"
-                                      name="nombre"
-                                      placeholder="Nombre"
-                                      spellcheck="false"
-                                      data-ms-editor="true"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                    <label for="lname" class="mb-2"
-                                      >Apellido materno: *</label
-                                    >
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      id="segundo_apellido"
-                                      name="segundo_apellido"
-                                      placeholder="Apellido materno"
-                                      spellcheck="false"
-                                      data-ms-editor="true"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                    <label for="dob" class="mb-2"
-                                      >Fecha de nacimiento: *</label
-                                    >
-                                    <input
-                                      type="date"
-                                      class="form-control"
-                                      id="dob"
-                                      name="dob"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                    <label for="ts" class="mb-2"
-                                      >Tipo de Sangre: *</label
-                                    >
-                                    <select
-                                      class="custom-select form-select"
-                                      id="ts"
-                                      name="ts"
-                                    >
-                                      <option selected>
-                                        Tipo de sangre...
-                                      </option>
-                                      <option value="1">A+</option>
-                                      <option value="2">A-</option>
-                                      <option value="3">B+</option>
-                                      <option value="4">B-</option>
-                                      <option value="5">AB+</option>
-                                      <option value="6">AB-</option>
-                                      <option value="7">O+</option>
-                                      <option value="8">O-</option>
-                                    </select>
-                                  </div>
+                          <div class="col-sm-6 col-md-5 col-lg-6">
+                            <!-- Izquierda -->
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="nombre" class="form-label mb-2"
+                                  >Nombre:</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="nombre"
+                                  name="nombre"
+                                  placeholder="Nombre"
+                                  v-model="nombre"
+                                  @input="validarNombre"
+                                  :class="{
+                                    'is-invalid':
+                                      nombreInvalido && nombre.length === 0,
+                                  }"
+                                  pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+"
+                                  title="Solo se acepta texto"
+                                  required
+                                />
+                                <div class="invalid-feedback">
+                                  Este campo es requerido
                                 </div>
                               </div>
-                              <!-- Columnas separador -->
-                              <div
-                                class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0"
-                              >
-                                <!-- Derecha -->
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                    <label for="lname" class="mb-2"
-                                      >Apellido paterno: *</label
-                                    >
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      id="primer_apellido"
-                                      name="primer_apellido"
-                                      placeholder="Apellido paterno"
-                                      spellcheck="false"
-                                      data-ms-editor="true"
-                                    />
-                                  </div>
-                                </div>
+                            </div>
 
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                    <label for="lname" class="mb-2"
-                                      >CURP: *</label
-                                    >
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      id="curp"
-                                      name="curp"
-                                      placeholder="Ingresa tu CURP"
-                                      spellcheck="false"
-                                      data-ms-editor="true"
-                                    />
-                                  </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label
+                                  for="segundo_apellido"
+                                  class="form-label mb-2"
+                                  >Apellido materno:
+                                </label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="segundo_apellido"
+                                  name="segundo_apellido"
+                                  placeholder="Apellido materno"
+                                  v-model="segundo_apellido"
+                                  @input="validarApellidoM"
+                                  :class="{
+                                    'is-invalid':
+                                      apellidoMInvalido &&
+                                      segundo_apellido.length === 0,
+                                  }"
+                                  pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+"
+                                  title="Solo se acepta texto"
+                                  required
+                                />
+                                <div class="invalid-feedback">
+                                  Este campo es requerido
                                 </div>
+                              </div>
+                            </div>
 
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                    <label for="fname" class="mb-2"
-                                      >Alergias: *</label
-                                    >
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="dob" class="mb-2"
+                                  >Fecha de nacimiento:</label
+                                >
+                                <input
+                                  type="date"
+                                  class="form-control"
+                                  id="dob"
+                                  name="dob"
+                                  v-model="dob"
+                                  @change="validateDate"
+                                />
+                                <small v-if="error" class="text-danger"
+                                  >La fecha de nacimiento no es válida</small
+                                >
+                              </div>
+                            </div>
+
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="ts" class="mb-2"
+                                  >Tipo de Sangre:
+                                </label>
+                                <select
+                                  class="custom-select form-select"
+                                  id="ts"
+                                  name="ts"
+                                >
+                                  <option selected>Tipo de sangre...</option>
+                                  <option value="1">A+</option>
+                                  <option value="2">A-</option>
+                                  <option value="3">B+</option>
+                                  <option value="4">B-</option>
+                                  <option value="5">AB+</option>
+                                  <option value="6">AB-</option>
+                                  <option value="7">O+</option>
+                                  <option value="8">O-</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Columnas separador -->
+                          <div
+                            class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0"
+                          >
+                            <!-- Derecha -->
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="lname" class="mb-2"
+                                  >Apellido paterno:
+                                </label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="primer_apellido"
+                                  name="primer_apellido"
+                                  placeholder="Apellido paterno"
+                                />
+                              </div>
+                            </div>
+
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="lname" class="mb-2">CURP: </label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="curp"
+                                  name="curp"
+                                  placeholder="Ingresa tu CURP"
+                                />
+                              </div>
+                            </div>
+
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="fname" class="mb-2"
+                                  >Alergias:
+                                </label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="alergias"
+                                  name="alergias"
+                                  placeholder="Alergias"
+                                />
+                              </div>
+                            </div>
+
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label class="my-2">Genero: </label>
+                                <div class="form-check d-flex ps-0">
+                                  <div
+                                    class="custom-control custom-radio custom-control-inline me-4"
+                                  >
                                     <input
-                                      type="text"
-                                      class="form-control"
-                                      id="alergias"
-                                      name="alergias"
-                                      placeholder="Alergias"
-                                      spellcheck="false"
-                                      data-ms-editor="true"
+                                      type="radio"
+                                      id="customRadio1"
+                                      name="customRadio"
+                                      class="custom-control-input"
                                     />
+                                    <label
+                                      class="custom-control-label"
+                                      for="customRadio1"
+                                    >
+                                      Masculino</label
+                                    >
                                   </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                    <label class="my-2">Genero: *</label>
-                                    <div class="form-check d-flex ps-0">
-                                      <div
-                                        class="custom-control custom-radio custom-control-inline me-4"
-                                      >
-                                        <input
-                                          type="radio"
-                                          id="customRadio1"
-                                          name="customRadio"
-                                          class="custom-control-input"
-                                        />
-                                        <label
-                                          class="custom-control-label"
-                                          for="customRadio1"
-                                        >
-                                          Masculino</label
-                                        >
-                                      </div>
-                                      <div
-                                        class="custom-control custom-radio custom-control-inline"
-                                      >
-                                        <input
-                                          type="radio"
-                                          id="customRadio2"
-                                          name="customRadio"
-                                          class="custom-control-input"
-                                        />
-                                        <label
-                                          class="custom-control-label"
-                                          for="customRadio2"
-                                        >
-                                          Femenino</label
-                                        >
-                                      </div>
-                                    </div>
+                                  <div
+                                    class="custom-control custom-radio custom-control-inline"
+                                  >
+                                    <input
+                                      type="radio"
+                                      id="customRadio2"
+                                      name="customRadio"
+                                      class="custom-control-input"
+                                    />
+                                    <label
+                                      class="custom-control-label"
+                                      for="customRadio2"
+                                    >
+                                      Femenino</label
+                                    >
                                   </div>
                                 </div>
                               </div>
@@ -290,7 +304,7 @@
                           </b-col>
                           <div class="col-md-12">
                             <div class="form-group">
-                              <label for="ccno">Contact Number: *</label>
+                              <label for="ccno">Contact Number: </label>
                               <input
                                 type="text"
                                 class="form-control"
@@ -304,7 +318,7 @@
                           </div>
                           <div class="col-md-12">
                             <div class="form-group">
-                              <label for="city">City: *</label>
+                              <label for="city">City: </label>
                               <input
                                 type="text"
                                 class="form-control"
@@ -704,11 +718,32 @@ export default {
   data() {
     return {
       currentindex: 1,
+      nombre: "",
+      nombreInvalido: false,
+      segundo_apellido: "",
+      apellidoMInvalido: false,
+      dob: "",
+      error: false,
     };
   },
   methods: {
     changeTab(val) {
       this.currentindex = val;
+    },
+    validarNombre() {
+      this.nombreInvalido = this.nombre.length === 0;
+    },
+    validarApellidoM() {
+      this.apellidoMInvalido = this.segundo_apellido.length === 0;
+    },
+    validateDate() {
+      const inputDate = new Date(this.dob);
+      const currentDate = new Date();
+      if (isNaN(inputDate) || inputDate > currentDate) {
+        this.error = true;
+      } else {
+        this.error = false;
+      }
     },
   },
 };
