@@ -94,7 +94,7 @@
                                   name="nombre"
                                   placeholder="Nombre"
                                   v-model="nombre"
-                                  @input="validarNombre"
+                                  @focus="validarNombre"
                                   :class="{
                                     'is-invalid':
                                       nombreInvalido && nombre.length === 0,
@@ -123,7 +123,7 @@
                                   name="segundo_apellido"
                                   placeholder="Apellido materno"
                                   v-model="segundo_apellido"
-                                  @input="validarApellidoM"
+                                  @focus="validarApellidoM"
                                   :class="{
                                     'is-invalid':
                                       apellidoMInvalido &&
@@ -161,14 +161,18 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="ts" class="mb-2"
-                                  >Tipo de Sangre:
-                                </label>
+                                  >Tipo de Sangre:</label
+                                >
                                 <select
                                   class="custom-select form-select"
                                   id="ts"
                                   name="ts"
+                                  v-model="selectedBloodType"
+                                  @change="validateBloodType"
                                 >
-                                  <option selected>Tipo de sangre...</option>
+                                  <option value="" selected>
+                                    Tipo de sangre...
+                                  </option>
                                   <option value="1">A+</option>
                                   <option value="2">A-</option>
                                   <option value="3">B+</option>
@@ -178,6 +182,12 @@
                                   <option value="7">O+</option>
                                   <option value="8">O-</option>
                                 </select>
+                                <div
+                                  v-if="bloodTypeEmpty"
+                                  class="invalid-feedback"
+                                >
+                                  Por favor, selecciona un tipo de sangre.
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -186,9 +196,12 @@
                             class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0"
                           >
                             <!-- Derecha -->
+
                             <div class="col-md-12">
                               <div class="form-group">
-                                <label for="lname" class="mb-2"
+                                <label
+                                  for="primer_apellido"
+                                  class="form-label mb-2"
                                   >Apellido paterno:
                                 </label>
                                 <input
@@ -197,26 +210,51 @@
                                   id="primer_apellido"
                                   name="primer_apellido"
                                   placeholder="Apellido paterno"
+                                  v-model="primer_apellido"
+                                  @focus="validarApellidoP"
+                                  :class="{
+                                    'is-invalid':
+                                      apellidoPInvalido &&
+                                      primer_apellido.length === 0,
+                                  }"
+                                  pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+"
+                                  title="Solo se acepta texto"
+                                  required
                                 />
+                                <div class="invalid-feedback">
+                                  Este campo es requerido
+                                </div>
                               </div>
                             </div>
 
                             <div class="col-md-12">
                               <div class="form-group">
-                                <label for="lname" class="mb-2">CURP: </label>
+                                <label for="curp" class="form-label mb-2"
+                                  >CURP:
+                                </label>
                                 <input
                                   type="text"
                                   class="form-control"
                                   id="curp"
                                   name="curp"
-                                  placeholder="Ingresa tu CURP"
+                                  placeholder="CURP"
+                                  v-model="curp"
+                                  @focus="validarCurp"
+                                  :class="{
+                                    'is-invalid':
+                                      CurpInvalido && curp.length === 0,
+                                  }"
+                                  required
                                 />
+                                <div class="invalid-feedback">
+                                  Este campo es requerido
+                                </div>
                               </div>
                             </div>
 
                             <div class="col-md-12">
                               <div class="form-group">
-                                <label for="fname" class="mb-2"
+                                <label for="alergias" class="form-label mb-2"
                                   >Alergias:
                                 </label>
                                 <input
@@ -225,7 +263,17 @@
                                   id="alergias"
                                   name="alergias"
                                   placeholder="Alergias"
+                                  v-model="alergias"
+                                  @focus="validarAlergias"
+                                  :class="{
+                                    'is-invalid':
+                                      AlergiasInvalido && alergias.length === 0,
+                                  }"
+                                  required
                                 />
+                                <div class="invalid-feedback">
+                                  Este campo es requerido
+                                </div>
                               </div>
                             </div>
 
@@ -718,12 +766,27 @@ export default {
   data() {
     return {
       currentindex: 1,
+
       nombre: "",
       nombreInvalido: false,
+
       segundo_apellido: "",
       apellidoMInvalido: false,
+
       dob: "",
       error: false,
+
+      selectedBloodType: "",
+      bloodTypeEmpty: false,
+
+      primer_apellido: "",
+      apellidoPInvalido: false,
+
+      curp: "",
+      CurpInvalido: false,
+
+      alergias: "",
+      AlergiasInvalido: false,
     };
   },
   methods: {
@@ -744,6 +807,19 @@ export default {
       } else {
         this.error = false;
       }
+    },
+    validateBloodType() {
+      this.bloodTypeEmpty = this.selectedBloodType === "";
+    },
+
+    validarApellidoP() {
+      this.apellidoPInvalido = this.primer_apellido.length === 0;
+    },
+    validarCurp() {
+      this.CurpInvalido = this.curp.length === 0;
+    },
+    validarAlergias() {
+      this.AlergiasInvalido = this.alergias.length === 0;
     },
   },
 };
