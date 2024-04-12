@@ -4,7 +4,7 @@
       <b-col sm="12" lg="12">
         <iq-card class="iq-card">
           <template v-slot:headerTitle>
-            <b-card-title>{{ $t("sidebar.verticalWizard") }}</b-card-title>
+            <b-card-title>Agregar expedientes medicos</b-card-title>
           </template>
           <template v-slot:body>
             <b-row>
@@ -331,65 +331,209 @@
                   </div>
                   <div :class="`${currentindex == 2 ? 'show' : 'd-none'}`">
                     <fieldset>
-                      <div class="form-card text-left">
+                      <div class="form-card text-start">
                         <b-row>
                           <b-col>
-                            <h3 class="mb-4">Contact Information:</h3>
+                            <h3 class="mb-4">Contactos:</h3>
                           </b-col>
                         </b-row>
                         <b-row>
-                          <b-col md="12">
-                            <b-form-group label="Email ID : *">
-                              <!-- <label for="email">Email Id: *</label> -->
-                              <b-form-input
-                                type="email"
-                                class="form-control"
-                                id="email"
-                                name="email"
-                                placeholder="Email Id"
-                              />
-                            </b-form-group>
-                          </b-col>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="ccno">Contact Number: </label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="ccno"
-                                name="ccno"
-                                placeholder="Contact Number"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
+                          <div class="col-sm-6 col-md-5 col-lg-6">
+                            <!-- Izquierda -->
+
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="calle" class="form-label mb-2"
+                                  >Calle:
+                                </label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="calle"
+                                  name="calle"
+                                  placeholder="Calle"
+                                  v-model="calle"
+                                  @focus="validarCalle"
+                                  :class="{
+                                    'is-invalid':
+                                      CalleInvalido && calle.length === 0,
+                                  }"
+                                  title="Este campo es requerido"
+                                  required
+                                />
+                                <div class="invalid-feedback">
+                                  Este campo es requerido
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="municipio" class="form-label mb-2"
+                                  >Municipio:
+                                </label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="municipio"
+                                  name="municipio"
+                                  placeholder="Municipio"
+                                  v-model="municipio"
+                                  @focus="validarMunicipio"
+                                  :class="{
+                                    'is-invalid':
+                                      MunicipioInvalido &&
+                                      municipio.length === 0,
+                                  }"
+                                  title="Este campo es requerido"
+                                  required
+                                />
+                                <div class="invalid-feedback">
+                                  Este campo es requerido
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="pais" class="form-label mb-2"
+                                  >Pais:
+                                </label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="pais"
+                                  name="pais"
+                                  placeholder="País"
+                                  v-model="pais"
+                                  @focus="validarPais"
+                                  :class="{
+                                    'is-invalid':
+                                      PaisInvalido && pais.length === 0,
+                                  }"
+                                  title="Este campo es requerido"
+                                  required
+                                />
+                                <div class="invalid-feedback">
+                                  Este campo es requerido
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label
+                                  for="numero_telefonico_familiar"
+                                  class="form-label mb-2"
+                                  >Numero telefonico familiar:
+                                </label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="numero_telefonico_familiar"
+                                  name="numero_telefonico_familiar"
+                                  placeholder="(+52) xxx xxx xx xx"
+                                  v-model="numero_telefonico_familiar"
+                                  @focus="validarNumero_telefonico_familiar"
+                                  :class="{
+                                    'is-invalid':
+                                      Numero_telefonico_familiarInvalido &&
+                                      numero_telefonico_familiar.length === 0,
+                                  }"
+                                  title="Este campo es requerido"
+                                  required
+                                />
+                                <div class="invalid-feedback">
+                                  Este campo es requerido
+                                </div>
+                              </div>
                             </div>
                           </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="city">City: </label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="city"
-                                name="city"
-                                placeholder="City."
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
+                          <!-- Columnas separador -->
+                          <div
+                            class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0"
+                          >
+                            <!-- Derecha -->
+
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="colonia" class="form-label mb-2"
+                                  >Colonia:
+                                </label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="colonia"
+                                  name="colonia"
+                                  placeholder="Colonia"
+                                  v-model="colonia"
+                                  @focus="validarColonia"
+                                  :class="{
+                                    'is-invalid':
+                                      ColoniaInvalido && colonia.length === 0,
+                                  }"
+                                  title="Este campo es requerido"
+                                  required
+                                />
+                                <div class="invalid-feedback">
+                                  Este campo es requerido
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="state">State: *</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="state"
-                                name="state"
-                                placeholder="State."
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
+
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="estado" class="form-label mb-2"
+                                  >Estado:
+                                </label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="estado"
+                                  name="estado"
+                                  placeholder="Estado"
+                                  v-model="estado"
+                                  @focus="validarEstado"
+                                  :class="{
+                                    'is-invalid':
+                                      EstadoInvalido && estado.length === 0,
+                                  }"
+                                  title="Este campo es requerido"
+                                  required
+                                />
+                                <div class="invalid-feedback">
+                                  Este campo es requerido
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label
+                                  for="numero_telefonico"
+                                  class="form-label mb-2"
+                                  >Numero telefonico:
+                                </label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="numero_telefonico"
+                                  name="numero_telefonico"
+                                  placeholder="(+52) xxx xxx xx xx"
+                                  v-model="numero_telefonico"
+                                  @focus="validarNumero_telefonico"
+                                  :class="{
+                                    'is-invalid':
+                                      Numero_telefonicoInvalido &&
+                                      numero_telefonico.length === 0,
+                                  }"
+                                  title="Este campo es requerido"
+                                  required
+                                />
+                                <div class="invalid-feedback">
+                                  Este campo es requerido
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </b-row>
@@ -397,16 +541,16 @@
                       <a
                         href="#padecimiento_actual"
                         @click="changeTab(3)"
-                        class="btn btn-primary next action-button float-end"
-                        value="Next"
-                        >Next</a
+                        class="btn btn-primary next action-button float-center"
+                        value="Siguiente"
+                        >Siguiente</a
                       >
                       <a
                         href="#personal"
                         @click="changeTab(1)"
-                        class="btn btn-dark previous action-button-previous float-end me-1"
-                        value="Previous"
-                        >Previous</a
+                        class="btn btn-dark previous action-button-previous float-center me-1"
+                        value="Anterior"
+                        >Anterior</a
                       >
                     </fieldset>
                   </div>
@@ -787,6 +931,27 @@ export default {
 
       alergias: "",
       AlergiasInvalido: false,
+
+      calle: "",
+      CalleInvalido: false,
+
+      municipio: "",
+      MunicipioInvalido: false,
+
+      pais: "",
+      PaisInvalido: false,
+
+      numero_telefonico_familiar: "",
+      Numero_telefonico_familiarInvalido: false,
+
+      colonia: "",
+      ColoniaInvalido: false,
+
+      estado: "",
+      EstadoInvalido: false,
+
+      numero_telefonico: "",
+      Numero_telefonicoInvalido: false,
     };
   },
   methods: {
@@ -820,6 +985,29 @@ export default {
     },
     validarAlergias() {
       this.AlergiasInvalido = this.alergias.length === 0;
+    },
+
+    validarCalle() {
+      this.CalleInvalido = this.calle.length === 0;
+    },
+    validarMunicipio() {
+      this.MunicipioInvalido = this.municipio.length === 0;
+    },
+    validarPais() {
+      this.PaisInvalido = this.pais.length === 0;
+    },
+    validarNumero_telefonico_familiar() {
+      this.Numero_telefonico_familiarInvalido =
+        this.numero_telefonico_familiar.length === 0;
+    },
+    validarColonia() {
+      this.ColoniaInvalido = this.colonia.length === 0;
+    },
+    validarEstado() {
+      this.EstadoInvalido = this.estado.length === 0;
+    },
+    validarNumero_telefonico() {
+      this.Numero_telefonicoInvalido = this.numero_telefonico.length === 0;
     },
   },
 };
