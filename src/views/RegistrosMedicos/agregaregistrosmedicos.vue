@@ -556,7 +556,7 @@
                   </div>
                   <div :class="`${currentindex == 3 ? 'show' : 'd-none'}`">
                     <fieldset>
-                      <div class="form-card text-left">
+                      <div class="form-card text-start">
                         <div class="row">
                           <div class="col-12">
                             <h3 class="mb-4">Padecimiento actual:</h3>
@@ -565,28 +565,28 @@
                         <div class="row">
                           <div class="col-md-12">
                             <div class="form-group">
-                              <label for="empid">Padecimiento: *</label>
-                              <input
-                                type="text"
+                              <label for="padecimiento" class="form-label mb-2"
+                                >Padecimiento actual:
+                              </label>
+                              <textarea
                                 class="form-control"
-                                id="empid"
-                                name="empid"
-                                placeholder="Padecimiento actual"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="desg">Estatus: *</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="desg"
-                                name="desg"
-                                placeholder="Estatus."
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
+                                id="padecimiento"
+                                name="padecimiento"
+                                placeholder="Describe el padecimiento más acutal del paciente"
+                                rows="3"
+                                v-model="padecimiento"
+                                @focus="validarPadecimiento"
+                                :class="{
+                                  'is-invalid':
+                                    PadecimientoInvalido &&
+                                    padecimiento.length === 0,
+                                }"
+                                title="Este campo es requerido"
+                                required
+                              ></textarea>
+                              <div class="invalid-feedback">
+                                Este campo es requerido
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -595,15 +595,15 @@
                         href="#signos_vitales"
                         @click="changeTab(4)"
                         class="btn btn-primary next action-button float-end"
-                        value="Next"
-                        >Next</a
+                        value="Siguiente"
+                        >Siguiente</a
                       >
                       <a
                         href="#contactos"
                         @click="changeTab(2)"
                         class="btn btn-dark previous action-button-previous float-end me-1"
-                        value="Previous"
-                        >Previous</a
+                        value="Anterior"
+                        >Anterior</a
                       >
                     </fieldset>
                   </div>
@@ -761,118 +761,27 @@
                         <div class="row">
                           <div class="col-md-12">
                             <div class="form-group">
-                              <label for="panno">Estatura: *</label>
-                              <input
-                                type="number"
+                              <label for="notasM" class="form-label mb-2"
+                                >Recomendaciones:
+                              </label>
+                              <textarea
                                 class="form-control"
-                                id="panno"
-                                name="panno"
-                                placeholder="Estatura"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="accno">Peso: *</label>
-                              <input
-                                type="number"
-                                class="form-control"
-                                id="accno"
-                                name="accno"
-                                placeholder="Peso"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="holname"
-                                >Temperatura corporal: *</label
-                              >
-                              <input
-                                type="number"
-                                class="form-control"
-                                id="holname"
-                                name="accname"
-                                placeholder="Temperatura corporal"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="ifsc">Presion sistolica: *</label>
-                              <input
-                                type="number"
-                                class="form-control"
-                                id="ifsc"
-                                name="ifsc"
-                                placeholder="Presion sistolica"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="ifsc">Presion diastolica: *</label>
-                              <input
-                                type="number"
-                                class="form-control"
-                                id="ifsc"
-                                name="ifsc"
-                                placeholder="Presion diastolica"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="ifsc">Oxigenacion: *</label>
-                              <input
-                                type="number"
-                                class="form-control"
-                                id="ifsc"
-                                name="ifsc"
-                                placeholder="Oxigenacion"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="ifsc">Frecuencia cardiaca: *</label>
-                              <input
-                                type="number"
-                                class="form-control"
-                                id="ifsc"
-                                name="ifsc"
-                                placeholder="Frecuencia cardiaca"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="ifsc"
-                                >Frecuencia respiratoria: *</label
-                              >
-                              <input
-                                type="number"
-                                class="form-control"
-                                id="ifsc"
-                                name="ifsc"
-                                placeholder="Frecuencia respiratoria"
-                                spellcheck="false"
-                                data-ms-editor="true"
-                              />
+                                id="notasM"
+                                name="notasM"
+                                placeholder="Recomendaciones al paciente"
+                                rows="3"
+                                v-model="notasM"
+                                @focus="validarNotasM"
+                                :class="{
+                                  'is-invalid':
+                                    NotasMInvalido && notasM.length === 0,
+                                }"
+                                title="Este campo es requerido"
+                                required
+                              ></textarea>
+                              <div class="invalid-feedback">
+                                Este campo es requerido
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -888,8 +797,8 @@
                         href="#signos_vitales"
                         @click="changeTab(4)"
                         class="btn btn-dark previous action-button-previous float-end me-1"
-                        value="Previous"
-                        >Previous</a
+                        value="Anterior"
+                        >Anterior</a
                       >
                     </fieldset>
                   </div>
@@ -952,6 +861,9 @@ export default {
 
       numero_telefonico: "",
       Numero_telefonicoInvalido: false,
+
+      padecimiento: "",
+      PadecimientoInvalido: false,
     };
   },
   methods: {
@@ -1008,6 +920,9 @@ export default {
     },
     validarNumero_telefonico() {
       this.Numero_telefonicoInvalido = this.numero_telefonico.length === 0;
+    },
+    validarPadecimiento() {
+      this.PadecimientoInvalido = this.padecimiento.length === 0;
     },
   },
 };
