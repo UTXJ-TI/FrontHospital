@@ -917,15 +917,20 @@
                         value="Anterior"
                         >Anterior</a
                       >
-
                       <a
+                        @click="enviarDatos"
+                        class="btn btn-primary submit action-button float-center mt-3"
+                        type="submit"
+                        >Enviar</a
+                      >
+                      <!--                       <a
                         href="#notas_medicas"
                         @click="changeTab(5)"
                         class="btn btn-primary submit action-button float-center mt-3"
                         value="Enviar"
                         type="submit"
                         >Enviar</a
-                      >
+                      > -->
                     </fieldset>
                   </div>
                 </b-form>
@@ -938,6 +943,7 @@
   </div>
 </template>
 <script>
+import apiService from "@/services/apiService";
 import iqCard from "../../components/xray/cards/iq-card";
 export default {
   name: "VerticalWizard",
@@ -1108,6 +1114,56 @@ export default {
     validarNotasM() {
       this.NotasMInvalido = this.notasM.length === 0;
     },
+    async enviarDatos() {
+      try {
+        // Aquí puedes agregar la lógica para obtener los datos que deseas enviar a la API
+        // Por ejemplo, puedes acceder a los datos del formulario desde las propiedades de tu componente
+        let datosAEnviar = {
+          // Aquí debes definir los datos que deseas enviar
+          nombre: this.nombre,
+          segundo_apellido: this.segundo_apellido,
+          dob: this.dob,
+          selectedBloodType: this.selectedBloodType,
+          primer_apellido: this.primer_apellido,
+          curp: this.curp,
+          alergias: this.alergias,
+          calle: this.calle,
+          municipio: this.municipios,
+          pais: this.pais,
+          numero_telefonico_familiar: this.numero_telefonico_familiar,
+          colonia: this.colonia,
+          estado: this.estado,
+          numero_telefonico: this.numero_telefonico,
+          padecimiento: this.padecimiento,
+          estatura: this.estatura,
+          peso: this.peso,
+          temperatura_corporal: this.temperatura_corporal,
+          presion_sistolica: this.presion_sistolica,
+          presion_diastolica: this.presion_diastolica,
+          oxigenacion: this.oxigenacion,
+          frecuecia_cardiaca: this.frecuecia_cardiaca,
+          frecuecia_respiratoria: this.frecuecia_respiratoria,
+          notasM: this.notasM,
+        };
+
+        // Luego, utiliza tu servicio para realizar la solicitud HTTP a la API
+        const response = await apiService.enviarDatos(datosAEnviar);
+
+        // Aquí puedes manejar la respuesta de la API, si es necesario
+        console.log("Respuesta de la API:", response.data);
+      } catch (error) {
+        // Maneja cualquier error que pueda ocurrir durante la solicitud
+        console.error("Error al enviar los datos:", error);
+      }
+    },
+  },
+  async created() {
+    try {
+      const response = await apiService.enviarDatos();
+      this.items = response.data;
+    } catch (error) {
+      console.error("Error al obtener los elementos:", error);
+    }
   },
 };
 </script>
