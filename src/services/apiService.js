@@ -22,6 +22,10 @@ class ApiService {
   deleteItem(id) {
     return axios.delete(`${API_URL}/${id}`);
   }
+
+  enviarDatos(datos) {
+    return axios.post(API_URL, datos);
+  }
 }
 
 export default new ApiService();
