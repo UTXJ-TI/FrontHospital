@@ -94,7 +94,7 @@ export default {
       columns: [
         { key: "_id", label: "Id", headerClass: "text-left" },
         { key: "nombre", label: "Nombre completo", headerClass: "text-left" },
-        { key: "edad", label: "Edad", headerClass: "text-left" },
+        /* { key: "edad", label: "Edad", headerClass: "text-left" }, */
         { key: "notasM", label: "Nota", headerClass: "text-left" },
         { key: "remove", label: "Remove", class: "text-center" },
       ],

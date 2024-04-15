@@ -120,7 +120,7 @@
         },
         "class_name": "",
         "is_icon_class": true,
-        "icon": "ri-home-8-fill",
+        "icon": "fa fa-area-chart",
         "badge" : false
       },
       {
@@ -132,7 +132,7 @@
         },
         "class_name": "",
         "is_icon_class": true,
-        "icon": "ri-home-8-fill",
+        "icon": "fa fa-id-card",
         "badge" : false
       },
       {
@@ -144,7 +144,7 @@
         },
         "class_name": "",
         "is_icon_class": true,
-        "icon": "ri-home-8-fill",
+        "icon": "fa fa-book",
         "badge" : false
       },
       {
@@ -156,7 +156,7 @@
         },
         "class_name": "",
         "is_icon_class": true,
-        "icon": "ri-home-8-fill",
+        "icon": "fa fa-upload",
         "badge" : false
       },
       {
@@ -168,7 +168,7 @@
         },
         "class_name": "",
         "is_icon_class": true,
-        "icon": "ri-home-8-fill",
+        "icon": "fa fa-file",
         "badge" : false
       }
     ]
