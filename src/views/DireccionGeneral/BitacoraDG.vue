@@ -6,67 +6,38 @@
           Bitácora de Dirección del Hospital
         </h1>
 
-        <b-row>
+        <b-row sm="12">
           <div style="margin-left: auto; margin-right: auto; max-width: 1200px">
-            <div style="display: flex; justify-content: space-between">
-              <b-col md="6" lg="3">
-                <iq-card body-class=" rounded">
+            <div class="d-flex flex-wrap justify-content-between">
+              <!-- Utilizamos flex-wrap y justify-content-center para centrar los elementos y permitir que se envuelvan en pantallas más pequeñas -->
+              <b-col
+                md="6"
+                lg="3"
+                v-for="(category, index) in categories"
+                :key="index"
+              >
+                <iq-card body-class="rounded">
                   <template v-slot:body>
                     <div
                       class="d-flex align-items-center justify-content-between"
                     >
-                      <div class="text-left">
-                        <h4 class="mb-2 mt-2">Médicos</h4>
+                      <div class="text-center">
+                        <h4 class="mb-2 mt-2">{{ category.title }}</h4>
                         <h3 class="mb-0 line-height">
                           <span
-                            ><count-up :end-val="1200" duration="5"></count-up
+                            ><count-up
+                              :end-val="category.value"
+                              duration="5"
+                            ></count-up
                           ></span>
                         </h3>
                       </div>
-                      <div class="rounded-circle iq-card-icon bg-primary">
-                        <i class="ri-task-line"></i>
-                      </div>
-                    </div>
-                  </template>
-                </iq-card>
-              </b-col>
-              <b-col md="6" lg="3">
-                <iq-card body-class=" rounded">
-                  <template v-slot:body>
-                    <div
-                      class="d-flex align-items-center justify-content-between"
-                    >
-                      <div class="text-left">
-                        <h4 class="mb-2 mt-2">Enfermeras</h4>
-                        <h3 class="mb-0 line-height">
-                          <span
-                            ><count-up :end-val="800" duration="5"></count-up
-                          ></span>
-                        </h3>
-                      </div>
-                      <div class="rounded-circle iq-card-icon bg-warning">
-                        <i class="ri-hospital-line"></i>
-                      </div>
-                    </div>
-                  </template>
-                </iq-card>
-              </b-col>
-              <b-col md="6" lg="3">
-                <iq-card body-class=" rounded">
-                  <template v-slot:body>
-                    <div
-                      class="d-flex align-items-center justify-content-between"
-                    >
-                      <div class="text-left">
-                        <h4 class="mb-2 mt-2">Pacientes</h4>
-                        <h3 class="mb-0 line-height">
-                          <span
-                            ><count-up :end-val="6899" duration="5"></count-up
-                          ></span>
-                        </h3>
-                      </div>
-                      <div class="rounded-circle iq-card-icon bg-danger">
-                        <i class="ri-gradienter-line"></i>
+                      <div
+                        :class="
+                          'rounded-circle iq-card-icon ' + category.iconBg
+                        "
+                      >
+                        <i :class="category.icon"></i>
                       </div>
                     </div>
                   </template>
@@ -153,9 +124,65 @@
                     <td>{{ bitacora.id }}</td>
                     <td>{{ bitacora.nombre_tabla }}</td>
                     <td>{{ bitacora.usuario }}</td>
-                    <td>{{ bitacora.operacion }}</td>
-                    <td>{{ bitacora.descripcion }}</td>
-                    <td>{{ bitacora.fecha_hora }}</td>
+                    <td>
+                      <div
+                        v-if="bitacora.operacion === 'Insert'"
+                        class="text-center"
+                      >
+                        <a class="iq-icons-list" href="#" target="_self">
+                          <div
+                            data-icon=":"
+                            class="icon"
+                            style="color: green"
+                          ></div>
+                          <span style="color: green">Agregado</span>
+                        </a>
+                      </div>
+                      <div
+                        v-else-if="bitacora.operacion === 'Update'"
+                        class="text-center"
+                      >
+                        <a class="iq-icons-list" href="#" target="_self">
+                          <div
+                            data-icon="Z"
+                            class="icon"
+                            style="color: orange"
+                          ></div>
+                          <span style="color: orange">Actulizado</span>
+                        </a>
+                      </div>
+                      <div
+                        v-else-if="bitacora.operacion === 'Delete'"
+                        class="text-center"
+                      >
+                        <a class="iq-icons-list" href="#" target="_self">
+                          <div
+                            data-icon="&#xe053;"
+                            class="icon"
+                            style="color: red"
+                          ></div>
+                          <span style="color: red">Eliminado</span>
+                        </a>
+                      </div>
+                      <div
+                        v-else-if="bitacora.operacion === 'Read'"
+                        class="text-center"
+                      >
+                        <a class="iq-icons-list" href="#" target="_self">
+                          <div
+                            data-icon="("
+                            class="icon"
+                            style="color: black"
+                          ></div>
+                          <span style="color: black">Lectura</span>
+                        </a>
+                      </div>
+                      <div v-else class="col-12 col-md-6 col-lg-3">
+                        {{ bitacora.operacion }}
+                      </div>
+                    </td>
+                    <td>{{ formatearDescripcion(bitacora.descripcion) }}</td>
+                    <td>{{ formatearFecha(bitacora.fecha_hora) }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -263,6 +290,7 @@ import "swiper/css";
 import "swiper/scss";
 import "swiper/css/navigation";
 import axios from "axios";
+import moment from "moment";
 
 export default {
   name: "EstruOrgaHospital",
@@ -281,6 +309,7 @@ export default {
   created() {
     console.log("DOM is created");
     this.getBitacoras();
+    this.fetchData();
   },
 
   methods: {
@@ -307,6 +336,40 @@ export default {
         this.currentPage++;
       }
     },
+
+    formatearFecha(fecha) {
+      if (moment(fecha, moment.ISO_8601, true).isValid()) {
+        return moment(fecha).format("DD/MM/YYYY HH:mm:ss");
+      } else {
+        return "Sin Fecha";
+      }
+    },
+
+    formatearDescripcion(descripcion) {
+      // Remover la primera parte "Nuevo registro insertado en Aprobaciones_Servicios:"
+      descripcion = descripcion.replace(
+        "Nuevo registro insertado en Aprobaciones_Servicios:",
+        ""
+      );
+
+      // Reemplazar los puntos por punto y salto de línea
+      let nuevaDescripcion = descripcion.replace(/\./g, ".\n");
+      return nuevaDescripcion;
+    },
+
+    fetchData() {
+      axios
+        .get("http://127.0.0.1:8000/hospital/api/v1vista_operaciones_bitacora/")
+        .then((response) => {
+          // Actualiza los valores de cada categoría con los datos obtenidos de la API
+          this.categories[0].value = response.data[0].inserciones;
+          this.categories[1].value = response.data[0].actualizaciones;
+          this.categories[2].value = response.data[0].eliminaciones;
+        })
+        .catch((error) => {
+          console.error("Error fetching data: ", error);
+        });
+    },
   },
 
   data() {
@@ -325,6 +388,27 @@ export default {
       searchInput: "",
       currentPage: 1, // Página actual
       resultsPerPage: 10, // Resultados por página
+
+      categories: [
+        {
+          title: "Agregados",
+          value: null,
+          iconBg: "bg-success",
+          icon: "fa fa-arrow-down",
+        },
+        {
+          title: "Actulizados",
+          value: null,
+          iconBg: "bg-warning",
+          icon: "fa fa-refresh",
+        },
+        {
+          title: "Eliminados",
+          value: null,
+          iconBg: "bg-danger",
+          icon: "fa fa-times",
+        },
+      ],
     };
   },
 

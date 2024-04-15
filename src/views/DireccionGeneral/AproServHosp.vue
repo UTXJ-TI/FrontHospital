@@ -928,7 +928,11 @@
                                       {{ solicitud.departamento_solicitante }}
                                     </div>
                                   </td>
-                                  <td>{{ solicitud.fecha_solicitud }}</td>
+                                  <td>
+                                    {{
+                                      formatearFecha(solicitud.fecha_solicitud)
+                                    }}
+                                  </td>
                                   <td>
                                     <div
                                       v-if="solicitud.estatus === 'Aprobado'"
@@ -1020,7 +1024,11 @@
                                     </div>
                                   </td>
                                   <td>{{ solicitud.comentarios }}</td>
-                                  <td>{{ solicitud.fecha_aprobacion }}</td>
+                                  <td>
+                                    {{
+                                      formatearFecha(solicitud.fecha_aprobacion)
+                                    }}
+                                  </td>
                                   <td>
                                     <a href="#" class="edit" title="">
                                       <button
@@ -1068,13 +1076,74 @@
                                     <label class="form-label float-left ml-2"
                                       >Servicio</label
                                     >
-                                    <input
-                                      type="text"
+
+                                    <select
                                       class="form-control"
                                       v-model="
                                         currentSolicitud.servicio_paciente_id
                                       "
-                                    />
+                                    >
+                                      <option value="1">Urgencias</option>
+                                      <option value="2">
+                                        Consulta Externa
+                                      </option>
+                                      <option value="3">Hospitalización</option>
+                                      <option value="4">Cirugia</option>
+                                      <option value="5">
+                                        Laboratorio Clínico
+                                      </option>
+                                      <option value="6">Radiología</option>
+                                      <option value="7">Farmacia</option>
+                                      <option value="8">Rehabilitación</option>
+                                      <option value="9">
+                                        Cuidados Intensivos
+                                      </option>
+                                      <option value="10">
+                                        Atención Pediática
+                                      </option>
+                                      <option value="11">
+                                        Atencion Materno-Infantil
+                                      </option>
+                                      <option value="12">
+                                        Atencion Geriatrica
+                                      </option>
+                                      <option value="13">
+                                        Psiquiatria y Salud Mental
+                                      </option>
+                                      <option value="14">
+                                        Banco de Sangre
+                                      </option>
+                                      <option value="15">
+                                        Ginecologia y Obstetricia
+                                      </option>
+                                      <option value="16">Quirofano</option>
+                                      <option value="17">Tanatologia</option>
+                                      <option value="18">Infectología</option>
+                                      <option value="19">Cardiología</option>
+                                      <option value="20">Neurología</option>
+                                      <option value="21">Endocrinología</option>
+                                      <option value="22">Oftamología</option>
+                                      <option value="23">Otorrinología</option>
+                                      <option value="24">
+                                        Gastroenterología
+                                      </option>
+                                      <option value="25">Nefrología</option>
+                                      <option value="26">Dermatología</option>
+                                      <option value="27">Hematología</option>
+                                      <option value="28">Oncología</option>
+                                      <option value="29">
+                                        Alergología e Inmunología
+                                      </option>
+                                      <option value="30">
+                                        Medicina Física y Rehabilitación
+                                      </option>
+                                      <option value="31">
+                                        Medicina Interna
+                                      </option>
+                                      <option value="32">
+                                        Medicina Preventiva y Salud Pública
+                                      </option>
+                                    </select>
                                   </div>
                                 </div>
 
@@ -1083,13 +1152,195 @@
                                     <label class="form-label float-left ml-2"
                                       >Departamento</label
                                     >
-                                    <input
-                                      type="text"
+                                    <select
                                       class="form-control"
                                       v-model="
                                         currentSolicitud.departamento_solicitante
                                       "
-                                    />
+                                    >
+                                      <option value="1">
+                                        Dirección General
+                                      </option>
+                                      <option value="2">
+                                        Junta de Gobierno
+                                      </option>
+                                      <option value="3">
+                                        Comiés Hospitalarios
+                                      </option>
+                                      <option value="4">
+                                        Comiés de Transplantes
+                                      </option>
+                                      <option value="5">
+                                        Departamento de Calidad
+                                      </option>
+                                      <option value="6">
+                                        Autenticacion a Quejas
+                                      </option>
+                                      <option value="7">
+                                        Seguridad paciente
+                                      </option>
+                                      <option value="8">
+                                        Programacion Quirurgica
+                                      </option>
+                                      <option value="9">
+                                        Sub - Dirección Medica
+                                      </option>
+                                      <option value="10">
+                                        Sub - Administrativa
+                                      </option>
+                                      <option value="11">
+                                        División de Medicina Interna
+                                      </option>
+                                      <option value="12">
+                                        División de Pediatía
+                                      </option>
+                                      <option value="13">
+                                        Servicio de Traumatología
+                                      </option>
+                                      <option value="14">
+                                        División de Cirugía
+                                      </option>
+                                      <option value="15">
+                                        Servicio de Urgencias Adultos
+                                      </option>
+                                      <option value="16">
+                                        Terapia Intensiva
+                                      </option>
+                                      <option value="17">
+                                        Quirófano y Anestesiología
+                                      </option>
+                                      <option value="18">
+                                        Terapia Intermedia
+                                      </option>
+                                      <option value="19">
+                                        Servicio de Urgencias Pediátricas
+                                      </option>
+                                      <option value="20">
+                                        Centro de Mezclas
+                                      </option>
+                                      <option value="21">
+                                        Radiología e imagen
+                                      </option>
+                                      <option value="22">Genética</option>
+                                      <option value="23">
+                                        Laboratorio de Análisis Clinicos
+                                      </option>
+                                      <option value="24">Hemodialisis</option>
+                                      <option value="25">
+                                        Laboratorio de Patología
+                                      </option>
+                                      <option value="26">
+                                        Rehabilitación Pulmonar
+                                      </option>
+                                      <option value="27">
+                                        Medicina Genómica
+                                      </option>
+                                      <option value="28">
+                                        Banco de Sangre
+                                      </option>
+                                      <option value="29">
+                                        Laboratorio Histocompatibilidad
+                                      </option>
+                                      <option value="30">Aféresis</option>
+                                      <option value="31">Tele-Robotica</option>
+                                      <option value="32">
+                                        Jefatura de Enseñanza Médica
+                                      </option>
+                                      <option value="33">
+                                        Ética e Investigación
+                                      </option>
+                                      <option value="34">
+                                        Consulta Externa
+                                      </option>
+                                      <option value="35">
+                                        Terapia y Rehabilitacion Fisica
+                                      </option>
+                                      <option value="36">Medicina Legal</option>
+                                      <option value="37">Trabajo Social</option>
+                                      <option value="38">UVEH</option>
+                                      <option value="39">CIES</option>
+                                      <option value="40">
+                                        Comunicacion Social
+                                      </option>
+                                      <option value="41">
+                                        Violencia Intrafamiliar
+                                      </option>
+                                      <option value="42">
+                                        Jefatura de Enfermeria
+                                      </option>
+                                      <option value="43">
+                                        Sub-Jefatura de Enfermeria
+                                      </option>
+                                      <option value="44">
+                                        Supervisoras de Turno
+                                      </option>
+                                      <option value="45">
+                                        Coordinación Enseñanza Enfermeria
+                                      </option>
+                                      <option value="46">
+                                        Jefas de Servicio
+                                      </option>
+                                      <option value="47">
+                                        Clinicas y Programas
+                                      </option>
+                                      <option value="48">
+                                        Recursos Humanos
+                                      </option>
+                                      <option value="49">Dietética</option>
+                                      <option value="50">
+                                        Farmacia Intrahospitalaria
+                                      </option>
+                                      <option value="51">
+                                        Coordinación de Asuntos Jurídicos y
+                                        Administrativos
+                                      </option>
+                                      <option value="52">
+                                        Biomédica, Conservación y Mantenimiento
+                                      </option>
+                                      <option value="53">Validación</option>
+                                      <option value="54">
+                                        Recursos Materiales
+                                      </option>
+                                      <option value="55">
+                                        Servicios Generales
+                                      </option>
+                                      <option value="56">
+                                        Recursos Financieros
+                                      </option>
+                                      <option value="57">
+                                        Departamento Adtvo. Hemodinamia
+                                      </option>
+                                      <option value="58">
+                                        Relaciones Públicas
+                                      </option>
+                                      <option value="59">
+                                        Farmacia HGC Seguro Popular
+                                      </option>
+                                      <option value="60">
+                                        Enlace Administrativo
+                                      </option>
+                                      <option value="61">Informatica</option>
+                                      <option value="62">
+                                        Registros Médicos
+                                      </option>
+                                      <option value="63">
+                                        Archivo y Correspondencia
+                                      </option>
+                                      <option value="64">Vigilancia</option>
+                                      <option value="65">Almacen</option>
+                                      <option value="66">
+                                        Insumos Especializados
+                                      </option>
+                                      <option value="67">Intendencia</option>
+                                      <option value="68">Ropería</option>
+                                      <option value="69">Nivel 7</option>
+                                      <option value="70">
+                                        Control Gastos Catastroficos
+                                      </option>
+                                      <option value="71">
+                                        Tecnologia en la Salud
+                                      </option>
+                                    </select>
                                   </div>
                                 </div>
                               </div>
@@ -1107,6 +1358,7 @@
                                     />
                                   </div>
                                 </div>
+
                                 <div class="col">
                                   <div class="form-group">
                                     <label class="form-label float-left ml-2"
@@ -1182,11 +1434,71 @@
                                     <label class="form-label float-left ml-2"
                                       >Servicio</label
                                     >
-                                    <input
-                                      type="text"
+                                    <select
                                       class="form-control"
                                       v-model="solicitud.servicio_paciente_id"
-                                    />
+                                    >
+                                      <option value="1">Urgencias</option>
+                                      <option value="2">
+                                        Consulta Externa
+                                      </option>
+                                      <option value="3">Hospitalización</option>
+                                      <option value="4">Cirugia</option>
+                                      <option value="5">
+                                        Laboratorio Clínico
+                                      </option>
+                                      <option value="6">Radiología</option>
+                                      <option value="7">Farmacia</option>
+                                      <option value="8">Rehabilitación</option>
+                                      <option value="9">
+                                        Cuidados Intensivos
+                                      </option>
+                                      <option value="10">
+                                        Atención Pediática
+                                      </option>
+                                      <option value="11">
+                                        Atencion Materno-Infantil
+                                      </option>
+                                      <option value="12">
+                                        Atencion Geriatrica
+                                      </option>
+                                      <option value="13">
+                                        Psiquiatria y Salud Mental
+                                      </option>
+                                      <option value="14">
+                                        Banco de Sangre
+                                      </option>
+                                      <option value="15">
+                                        Ginecologia y Obstetricia
+                                      </option>
+                                      <option value="16">Quirofano</option>
+                                      <option value="17">Tanatologia</option>
+                                      <option value="18">Infectología</option>
+                                      <option value="19">Cardiología</option>
+                                      <option value="20">Neurología</option>
+                                      <option value="21">Endocrinología</option>
+                                      <option value="22">Oftamología</option>
+                                      <option value="23">Otorrinología</option>
+                                      <option value="24">
+                                        Gastroenterología
+                                      </option>
+                                      <option value="25">Nefrología</option>
+                                      <option value="26">Dermatología</option>
+                                      <option value="27">Hematología</option>
+                                      <option value="28">Oncología</option>
+                                      <option value="29">
+                                        Alergología e Inmunología
+                                      </option>
+                                      <option value="30">
+                                        Medicina Física y Rehabilitación
+                                      </option>
+                                      <option value="31">
+                                        Medicina Interna
+                                      </option>
+                                      <option value="32">
+                                        Medicina Preventiva y Salud Pública
+                                      </option>
+                                    </select>
                                   </div>
                                 </div>
                               </div>
@@ -1197,13 +1509,195 @@
                                     <label class="form-label float-left ml-2"
                                       >Departamento</label
                                     >
-                                    <input
-                                      type="text"
+                                    <select
                                       class="form-control"
                                       v-model="
                                         solicitud.departamento_solicitante
                                       "
-                                    />
+                                    >
+                                      <option value="1">
+                                        Dirección General
+                                      </option>
+                                      <option value="2">
+                                        Junta de Gobierno
+                                      </option>
+                                      <option value="3">
+                                        Comiés Hospitalarios
+                                      </option>
+                                      <option value="4">
+                                        Comiés de Transplantes
+                                      </option>
+                                      <option value="5">
+                                        Departamento de Calidad
+                                      </option>
+                                      <option value="6">
+                                        Autenticacion a Quejas
+                                      </option>
+                                      <option value="7">
+                                        Seguridad paciente
+                                      </option>
+                                      <option value="8">
+                                        Programacion Quirurgica
+                                      </option>
+                                      <option value="9">
+                                        Sub - Dirección Medica
+                                      </option>
+                                      <option value="10">
+                                        Sub - Administrativa
+                                      </option>
+                                      <option value="11">
+                                        División de Medicina Interna
+                                      </option>
+                                      <option value="12">
+                                        División de Pediatía
+                                      </option>
+                                      <option value="13">
+                                        Servicio de Traumatología
+                                      </option>
+                                      <option value="14">
+                                        División de Cirugía
+                                      </option>
+                                      <option value="15">
+                                        Servicio de Urgencias Adultos
+                                      </option>
+                                      <option value="16">
+                                        Terapia Intensiva
+                                      </option>
+                                      <option value="17">
+                                        Quirófano y Anestesiología
+                                      </option>
+                                      <option value="18">
+                                        Terapia Intermedia
+                                      </option>
+                                      <option value="19">
+                                        Servicio de Urgencias Pediátricas
+                                      </option>
+                                      <option value="20">
+                                        Centro de Mezclas
+                                      </option>
+                                      <option value="21">
+                                        Radiología e imagen
+                                      </option>
+                                      <option value="22">Genética</option>
+                                      <option value="23">
+                                        Laboratorio de Análisis Clinicos
+                                      </option>
+                                      <option value="24">Hemodialisis</option>
+                                      <option value="25">
+                                        Laboratorio de Patología
+                                      </option>
+                                      <option value="26">
+                                        Rehabilitación Pulmonar
+                                      </option>
+                                      <option value="27">
+                                        Medicina Genómica
+                                      </option>
+                                      <option value="28">
+                                        Banco de Sangre
+                                      </option>
+                                      <option value="29">
+                                        Laboratorio Histocompatibilidad
+                                      </option>
+                                      <option value="30">Aféresis</option>
+                                      <option value="31">Tele-Robotica</option>
+                                      <option value="32">
+                                        Jefatura de Enseñanza Médica
+                                      </option>
+                                      <option value="33">
+                                        Ética e Investigación
+                                      </option>
+                                      <option value="34">
+                                        Consulta Externa
+                                      </option>
+                                      <option value="35">
+                                        Terapia y Rehabilitacion Fisica
+                                      </option>
+                                      <option value="36">Medicina Legal</option>
+                                      <option value="37">Trabajo Social</option>
+                                      <option value="38">UVEH</option>
+                                      <option value="39">CIES</option>
+                                      <option value="40">
+                                        Comunicacion Social
+                                      </option>
+                                      <option value="41">
+                                        Violencia Intrafamiliar
+                                      </option>
+                                      <option value="42">
+                                        Jefatura de Enfermeria
+                                      </option>
+                                      <option value="43">
+                                        Sub-Jefatura de Enfermeria
+                                      </option>
+                                      <option value="44">
+                                        Supervisoras de Turno
+                                      </option>
+                                      <option value="45">
+                                        Coordinación Enseñanza Enfermeria
+                                      </option>
+                                      <option value="46">
+                                        Jefas de Servicio
+                                      </option>
+                                      <option value="47">
+                                        Clinicas y Programas
+                                      </option>
+                                      <option value="48">
+                                        Recursos Humanos
+                                      </option>
+                                      <option value="49">Dietética</option>
+                                      <option value="50">
+                                        Farmacia Intrahospitalaria
+                                      </option>
+                                      <option value="51">
+                                        Coordinación de Asuntos Jurídicos y
+                                        Administrativos
+                                      </option>
+                                      <option value="52">
+                                        Biomédica, Conservación y Mantenimiento
+                                      </option>
+                                      <option value="53">Validación</option>
+                                      <option value="54">
+                                        Recursos Materiales
+                                      </option>
+                                      <option value="55">
+                                        Servicios Generales
+                                      </option>
+                                      <option value="56">
+                                        Recursos Financieros
+                                      </option>
+                                      <option value="57">
+                                        Departamento Adtvo. Hemodinamia
+                                      </option>
+                                      <option value="58">
+                                        Relaciones Públicas
+                                      </option>
+                                      <option value="59">
+                                        Farmacia HGC Seguro Popular
+                                      </option>
+                                      <option value="60">
+                                        Enlace Administrativo
+                                      </option>
+                                      <option value="61">Informatica</option>
+                                      <option value="62">
+                                        Registros Médicos
+                                      </option>
+                                      <option value="63">
+                                        Archivo y Correspondencia
+                                      </option>
+                                      <option value="64">Vigilancia</option>
+                                      <option value="65">Almacen</option>
+                                      <option value="66">
+                                        Insumos Especializados
+                                      </option>
+                                      <option value="67">Intendencia</option>
+                                      <option value="68">Ropería</option>
+                                      <option value="69">Nivel 7</option>
+                                      <option value="70">
+                                        Control Gastos Catastroficos
+                                      </option>
+                                      <option value="71">
+                                        Tecnologia en la Salud
+                                      </option>
+                                    </select>
                                   </div>
                                 </div>
                               </div>
@@ -1394,6 +1888,8 @@ import ApexChart from "../../components/xray/charts/ApexChart";
 import axios from "axios";
 //import { template } from "lodash";
 
+import moment from "moment";
+
 //import CountUp from 'vue-countup-v3'
 const body = document.getElementsByTagName("body");
 
@@ -1424,26 +1920,16 @@ export default {
         dateFormat: "Y-m-d",
         inline: true,
       },
+
       chart5: {
         series: [
-          {
-            name: "Solcitudes Aprobadas",
-            data: [44, 55, 41, 67, 22, 43],
-          },
-          {
-            name: "En proceso de aprobación",
-            data: [13, 23, 20, 8, 13, 27],
-          },
-          {
-            name: "Solicitudes Negadas",
-            data: [11, 17, 15, 15, 21, 14],
-          },
-          {
-            name: "Solicitudes Canceladas",
-            data: [11, 17, 15, 15, 21, 14],
-          },
+          { name: "Solcitudes Aprobadas", data: [] },
+          { name: "En proceso de aprobación", data: [] },
+          { name: "Solicitudes Negadas", data: [] },
+          { name: "Solicitudes Canceladas", data: [] },
         ],
-        colors: ["#089bab", "#FC9F5B", "red"],
+
+        colors: ["#089bab", "#FC9F5B", "#FF0000", "#0000ff"],
         chart: {
           type: "bar",
           height: 350,
@@ -1473,14 +1959,20 @@ export default {
           },
         },
         xaxis: {
-          type: "datetime",
+          type: "text",
           categories: [
-            "01/01/2011 GMT",
-            "01/02/2011 GMT",
-            "01/03/2011 GMT",
-            "01/04/2011 GMT",
-            "01/05/2011 GMT",
-            "01/06/2011 GMT",
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre",
           ],
         },
         legend: {
@@ -1499,7 +1991,9 @@ export default {
     body[0].classList.add("sidebar-main-menu");
     console.log("DOM is rendered");
     console.log(Object.keys(this.currentSolicitud).length);
+    this.getVista();
   },
+
   unmounted() {
     body[0].classList.remove("sidebar-main-menu");
   },
@@ -1589,13 +2083,10 @@ export default {
           console.log(response.data);
           console.log("envio");
 
-          // Actualizar series de la gráfica con los datos obtenidos
-          this.chart5.series = [
-            { name: "Solcitudes Aprobadas", data: [] },
-            { name: "En proceso de aprobación", data: [] },
-            { name: "Solicitudes Negadas", data: [] },
-            { name: "Solicitudes Canceladas", data: [] },
-          ];
+          // Reiniciar datos de la gráfica
+          this.chart5.series.forEach((serie) => {
+            serie.data = [];
+          });
 
           // Iterar sobre los datos obtenidos y agregarlos a las series correspondientes
           response.data.forEach((item) => {
@@ -1619,6 +2110,14 @@ export default {
     nextPage() {
       if (this.currentPage < this.totalPages) {
         this.currentPage++;
+      }
+    },
+
+    formatearFecha(fecha) {
+      if (moment(fecha, moment.ISO_8601, true).isValid()) {
+        return moment(fecha).format("DD/MM/YYYY HH:mm:ss");
+      } else {
+        return "Sin Fecha";
       }
     },
   },
@@ -1984,15 +2483,15 @@ export default {
           .toLowerCase()
           .includes(this.searchInput.toLowerCase());
 
-        console.log("Entrada de búsqueda de coincidencias:", matchSearchInput);
-        console.log(
-          "Entrada de búsqueda de servicio_paciente_id:",
-          matchServicioId
-        );
-        console.log(
-          "Entrada de búsqueda de departamento_solicitante:",
-          matchDepartamentoId
-        );
+        // console.log("Entrada de búsqueda de coincidencias:", matchSearchInput);
+        // console.log(
+        //   "Entrada de búsqueda de servicio_paciente_id:",
+        //   matchServicioId
+        // );
+        // console.log(
+        //   "Entrada de búsqueda de departamento_solicitante:",
+        //   matchDepartamentoId
+        // );
 
         return matchSearchInput || matchServicioId || matchDepartamentoId;
       });

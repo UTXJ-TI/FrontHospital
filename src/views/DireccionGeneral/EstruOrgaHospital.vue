@@ -6,67 +6,38 @@
           Estructura Orgánica del Hospital
         </h1>
 
-        <b-row>
+        <b-row sm="12">
           <div style="margin-left: auto; margin-right: auto; max-width: 1200px">
-            <div style="display: flex; justify-content: space-between">
-              <b-col md="6" lg="3">
-                <iq-card body-class=" rounded">
+            <div class="d-flex flex-wrap justify-content-between">
+              <!-- Utilizamos flex-wrap y justify-content-center para centrar los elementos y permitir que se envuelvan en pantallas más pequeñas -->
+              <b-col
+                md="6"
+                lg="3"
+                v-for="(category, index) in categories"
+                :key="index"
+              >
+                <iq-card body-class="rounded">
                   <template v-slot:body>
                     <div
                       class="d-flex align-items-center justify-content-between"
                     >
-                      <div class="text-left">
-                        <h4 class="mb-2 mt-2">Médicos</h4>
+                      <div class="text-center">
+                        <h4 class="mb-2 mt-2">{{ category.title }}</h4>
                         <h3 class="mb-0 line-height">
                           <span
-                            ><count-up :end-val="1200" duration="5"></count-up
+                            ><count-up
+                              :end-val="category.value"
+                              duration="5"
+                            ></count-up
                           ></span>
                         </h3>
                       </div>
-                      <div class="rounded-circle iq-card-icon bg-primary">
-                        <i class="ri-task-line"></i>
-                      </div>
-                    </div>
-                  </template>
-                </iq-card>
-              </b-col>
-              <b-col md="6" lg="3">
-                <iq-card body-class=" rounded">
-                  <template v-slot:body>
-                    <div
-                      class="d-flex align-items-center justify-content-between"
-                    >
-                      <div class="text-left">
-                        <h4 class="mb-2 mt-2">Enfermeras</h4>
-                        <h3 class="mb-0 line-height">
-                          <span
-                            ><count-up :end-val="800" duration="5"></count-up
-                          ></span>
-                        </h3>
-                      </div>
-                      <div class="rounded-circle iq-card-icon bg-warning">
-                        <i class="ri-hospital-line"></i>
-                      </div>
-                    </div>
-                  </template>
-                </iq-card>
-              </b-col>
-              <b-col md="6" lg="3">
-                <iq-card body-class=" rounded">
-                  <template v-slot:body>
-                    <div
-                      class="d-flex align-items-center justify-content-between"
-                    >
-                      <div class="text-left">
-                        <h4 class="mb-2 mt-2">Pacientes</h4>
-                        <h3 class="mb-0 line-height">
-                          <span
-                            ><count-up :end-val="6899" duration="5"></count-up
-                          ></span>
-                        </h3>
-                      </div>
-                      <div class="rounded-circle iq-card-icon bg-danger">
-                        <i class="ri-gradienter-line"></i>
+                      <div
+                        :class="
+                          'rounded-circle iq-card-icon ' + category.iconBg
+                        "
+                      >
+                        <i :class="category.icon"></i>
                       </div>
                     </div>
                   </template>
@@ -316,6 +287,7 @@ export default {
   created() {
     console.log("DOM is created");
     this.getServicios();
+    this.fetchData();
   },
 
   methods: {
@@ -342,6 +314,26 @@ export default {
         this.currentPage++;
       }
     },
+
+    fetchData() {
+      axios
+        .get(
+          "http://127.0.0.1:8000/hospital/api/v1vista_cantidad_personal_medico/"
+        )
+        .then((response) => {
+          // Actualiza los valores de cada categoría con los datos obtenidos de la API
+          this.categories[0].value = response.data[0].medicos;
+          this.categories[1].value = response.data[0].enfermeros;
+          this.categories[2].value = response.data[0].administrativos;
+          this.categories[3].value = response.data[0].directivos;
+          this.categories[4].value = response.data[0].apoyo;
+          this.categories[5].value = response.data[0].residentes;
+          this.categories[6].value = response.data[0].internos;
+        })
+        .catch((error) => {
+          console.error("Error fetching data: ", error);
+        });
+    },
   },
 
   data() {
@@ -361,6 +353,51 @@ export default {
       searchInput: "",
       currentPage: 1, // Página actual
       resultsPerPage: 10, // Resultados por página
+
+      categories: [
+        {
+          title: "Médicos",
+          value: null,
+          iconBg: "bg-primary",
+          icon: "fa fa-user-md",
+        },
+        {
+          title: "Enfermeras",
+          value: null,
+          iconBg: "bg-info",
+          icon: "fa fa-medkit",
+        },
+        {
+          title: "Administrativos",
+          value: null,
+          iconBg: "bg-danger",
+          icon: "fa fa-users",
+        },
+        {
+          title: "Directivos",
+          value: null,
+          iconBg: "bg-warning",
+          icon: "fa fa-user",
+        },
+        {
+          title: "Apoyo",
+          value: null,
+          iconBg: "bg-success",
+          icon: "fa fa-user-plus",
+        },
+        {
+          title: "Residentes",
+          value: null,
+          iconBg: "bg-secondary",
+          icon: "fa fa-stethoscope",
+        },
+        {
+          title: "Internos",
+          value: null,
+          iconBg: "bg-primary",
+          icon: "fa fa-hospital-o",
+        },
+      ],
     };
   },
 
