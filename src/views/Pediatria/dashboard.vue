@@ -17,19 +17,18 @@
         </iq-card>
       </b-col>
 
-      <!-- <b-col lg="4">
-        <iq-card
-          
-        >
+      <b-col lg="4">
+        <iq-card>
           <template v-slot:body>
-            <img style="height: 425px; width: 290px;"
+            <img
+              style="height: 425px; width: 290px"
               src="../../assets/images/page-img/foto.png"
               class="rounded"
               alt="banner-img"
             />
           </template>
         </iq-card>
-      </b-col> -->
+      </b-col>
       <b-col lg="4">
         <iq-card>
           <template v-slot:headerTitle>
