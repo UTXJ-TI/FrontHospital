@@ -1437,6 +1437,7 @@
                                     <select
                                       class="form-control"
                                       v-model="solicitud.servicio_paciente_id"
+                                      required
                                     >
                                       <option value="1">Urgencias</option>
                                       <option value="2">
@@ -1514,6 +1515,7 @@
                                       v-model="
                                         solicitud.departamento_solicitante
                                       "
+                                      required
                                     >
                                       <option value="1">
                                         Dirección General
@@ -1712,6 +1714,7 @@
                                       type="datetime-local"
                                       class="form-control"
                                       v-model="solicitud.fecha_solicitud"
+                                      required
                                     />
                                   </div>
                                 </div>
@@ -1726,6 +1729,7 @@
                                     <select
                                       class="form-control"
                                       v-model="solicitud.estatus"
+                                      required
                                     >
                                       <option value="Aprobado">Aprobado</option>
                                       <option value="En Proceso">
@@ -1752,6 +1756,7 @@
                                       type="text"
                                       class="form-control"
                                       v-model="solicitud.comentarios"
+                                      required
                                     />
                                   </div>
                                 </div>
@@ -2018,6 +2023,10 @@ export default {
     },
 
     saveSolicitud() {
+      // Verifica si no se ha insertado ninguna fecha y hora en fecha_aprobacion
+      if (!this.solicitud.fecha_aprobacion) {
+        this.solicitud.fecha_aprobacion = null; // Establece fecha_aprobacion como null
+      }
       axios
         .post(this.api + "/v1AprobacionesServicios/", this.solicitud)
         .then((response) => {
@@ -2042,13 +2051,20 @@ export default {
             fecha_solicitud: solicitud.fecha_solicitud,
             estatus: solicitud.estatus,
             comentarios: solicitud.comentarios,
-            fecha_aprobacion: solicitud.fecha_aprobacion,
+            // Verifica si la fecha de aprobación existe, si no, establece como null
+            fecha_aprobacion: solicitud.fecha_aprobacion
+              ? solicitud.fecha_aprobacion
+              : null,
           };
         }
       });
     },
 
     updateSolicitud(id) {
+      // Verifica si no se ha insertado ninguna fecha y hora en fecha_aprobacion
+      if (!this.currentSolicitud.fecha_aprobacion) {
+        this.currentSolicitud.fecha_aprobacion = null; // Establece fecha_aprobacion como null
+      }
       axios
         .put(
           this.api + `/v1AprobacionesServicios/${id}/`,
@@ -2065,15 +2081,38 @@ export default {
     },
 
     deleteSolicitud(id) {
-      axios
-        .delete(this.api + `/v1AprobacionesServicios/${id}/`, id)
-        .then((response) => {
-          console.log(response.data);
-          this.getSolicitudes();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      // Buscar la solicitud que se va a eliminar
+      const solicitud = this.solicitudes.find(
+        (solicitud) => solicitud.id === id
+      );
+
+      // Mostrar una alerta de confirmación antes de eliminar la solicitud
+      if (
+        confirm(`¿Deseas eliminar la solicitud? 
+                  - ID: ${solicitud.id}
+                  - Servicio: ${solicitud.servicio_paciente_id}
+                  - Departamento solicitante: ${
+                    solicitud.departamento_solicitante
+                  }
+                  - Fecha de Solicitud: ${this.formatearFecha(
+                    solicitud.fecha_solicitud
+                  )}
+                  - Estatus: ${solicitud.estatus}
+                  - Comentario: ${solicitud.comentarios}
+                  - Fecha de Aprobación: ${this.formatearFecha(
+                    solicitud.fecha_aprobacion
+                  )}`)
+      ) {
+        axios
+          .delete(this.api + `/v1AprobacionesServicios/${id}/`, id)
+          .then((response) => {
+            console.log(response.data);
+            this.getSolicitudes();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
 
     getVista() {

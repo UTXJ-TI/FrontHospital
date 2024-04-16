@@ -129,9 +129,9 @@
                         v-if="bitacora.operacion === 'Insert'"
                         class="text-center"
                       >
-                        <a class="iq-icons-list" href="#" target="_self">
+                        <a class="iq-icons-list" target="_self">
                           <div
-                            data-icon=":"
+                            data-icon="S"
                             class="icon"
                             style="color: green"
                           ></div>
@@ -142,7 +142,7 @@
                         v-else-if="bitacora.operacion === 'Update'"
                         class="text-center"
                       >
-                        <a class="iq-icons-list" href="#" target="_self">
+                        <a class="iq-icons-list" target="_self">
                           <div
                             data-icon="Z"
                             class="icon"
@@ -155,7 +155,7 @@
                         v-else-if="bitacora.operacion === 'Delete'"
                         class="text-center"
                       >
-                        <a class="iq-icons-list" href="#" target="_self">
+                        <a class="iq-icons-list" target="_self">
                           <div
                             data-icon="&#xe053;"
                             class="icon"

@@ -1,12 +1,15 @@
 <template>
   <!-- TOP Nav Bar -->
-  <div class="iq-top-navbar header-top-sticky">
+
+  <div></div>
+
+  <!-- <div class="iq-top-navbar header-top-sticky">
     <div class="iq-navbar-custom" :class="horizontal ? 'd-flex align-items-center justify-content-between' : ''">
       <div class="iq-sidebar-logo">
         <div class="top-logo">
           <router-link :to="homeURL">
             <img :src="logo" class="img-fluid" alt="logo" />
-            <span>XRay</span>
+            <span>XRay23</span>
           </router-link>
         </div>
       </div>
@@ -38,39 +41,41 @@
       </nav>
     </div>
   </div>
+-->
+
   <!-- TOP Nav Bar END -->
 </template>
 <script>
-import List from '../menus/ListStyle1'
-import SideBarItems from '../../../FackApi/json/SideBar'
+// import List from '../menus/ListStyle1'
+import SideBarItems from "../../../FackApi/json/SideBar";
 export default {
-  name: 'NavBarStyle1',
+  name: "NavBarStyle1",
   props: {
-    homeURL: { type: Object, default: () => ({ name: 'dashboard' }) },
-    title: { type: String, default: 'Dashboard' },
-    logo: { type: String, default: require('../../../assets/images/logo.png') },
+    homeURL: { type: Object, default: () => ({ name: "dashboard" }) },
+    title: { type: String, default: "Dashboard" },
+    logo: { type: String, default: require("../../../assets/images/logo.png") },
     horizontal: { type: Boolean, default: false },
-    items: { type: Array }
+    items: { type: Array },
   },
   mounted() {
-    document.addEventListener('click', this.closeSearch, true)
+    document.addEventListener("click", this.closeSearch, true);
   },
   components: {
-    List
+    // List
   },
   computed: {},
   data() {
     return {
       sidebar: SideBarItems,
-      globalSearch: '',
+      globalSearch: "",
       showSearch: false,
-      showMenu: false
-    }
+      showMenu: false,
+    };
   },
   methods: {
     miniSidebar() {
-      this.$emit('toggle')
-    }
-  }
-}
+      this.$emit("toggle");
+    },
+  },
+};
 </script>
