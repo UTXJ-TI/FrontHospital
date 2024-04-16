@@ -36,7 +36,7 @@
       <b-col lg="6">
         <iq-card>
           <template v-slot:headerTitle>
-            <h4>Tipos de sangre</h4>
+            <h4>Tipo de sangre</h4>
           </template>
           <template v-slot:body>
             <!-- <EChart theme="light" chartType="area" /> -->
@@ -51,7 +51,8 @@
 <script>
 import iqCard from "../../components/xray/cards/iq-card";
 import { xray } from "../../config/pluginInit";
-
+import apiService from "@/services/apiService";
+import { onMounted } from "vue";
 // Echart
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
@@ -135,19 +136,10 @@ export default {
       },
       series: [
         {
-          name: "Access From",
+          name: "Tipos de Sangre",
           type: "pie",
           radius: "50%",
-          data: [
-            { value: 1048, name: "A+" },
-            { value: 735, name: "A-" },
-            { value: 580, name: "B+" },
-            { value: 484, name: "B-" },
-            { value: 300, name: "AB+" },
-            { value: 300, name: "AB-" },
-            { value: 300, name: "O+" },
-            { value: 300, name: "O-" },
-          ],
+          data: [],
           emphasis: {
             itemStyle: {
               shadowBlur: 10,
@@ -157,6 +149,32 @@ export default {
           },
         },
       ],
+    });
+    onMounted(async () => {
+      try {
+        const response = await apiService.getItems(); // Hacer la llamada a la API para obtener los datos
+        const pacientes = response.data;
+
+        // Contar la cantidad de cada tipo de sangre
+        const conteoTipoSangre = pacientes.reduce((acc, paciente) => {
+          acc[paciente.selectedBloodType] =
+            (acc[paciente.selectedBloodType] || 0) + 1;
+          return acc;
+        }, {});
+
+        // Construir los datos para la serie del gráfico de pastel
+        const dataPieChart = Object.entries(conteoTipoSangre).map(
+          ([tipo, cantidad]) => ({
+            value: cantidad,
+            name: tipo,
+          })
+        );
+
+        // Actualizar la serie del gráfico de pastel
+        PieChartOption.value.series[0].data = dataPieChart;
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+      }
     });
     const BarChart = ref({
       xAxis: {
