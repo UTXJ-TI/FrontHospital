@@ -36,7 +36,7 @@
       <b-col lg="6">
         <iq-card>
           <template v-slot:headerTitle>
-            <h4>Enfermedades más comunes</h4>
+            <h4>Tipos de sangre</h4>
           </template>
           <template v-slot:body>
             <!-- <EChart theme="light" chartType="area" /> -->
@@ -139,11 +139,14 @@ export default {
           type: "pie",
           radius: "50%",
           data: [
-            { value: 1048, name: "Sida" },
-            { value: 735, name: "Malaria" },
-            { value: 580, name: "Enfermedades infantiles" },
-            { value: 484, name: "Muertes maternas" },
-            { value: 300, name: "infecciones respiratorias" },
+            { value: 1048, name: "A+" },
+            { value: 735, name: "A-" },
+            { value: 580, name: "B+" },
+            { value: 484, name: "B-" },
+            { value: 300, name: "AB+" },
+            { value: 300, name: "AB-" },
+            { value: 300, name: "O+" },
+            { value: 300, name: "O-" },
           ],
           emphasis: {
             itemStyle: {
