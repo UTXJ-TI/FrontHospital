@@ -8,30 +8,15 @@
           </template>
           <template v-slot:body>
             <b-row>
-              <div class="table-ad mb-3 me-2">
-                <b-button
-                  variant="btn btn-sm iq-bg-success float-end"
-                  @click="add"
-                  >+ Add New</b-button
-                >
-              </div>
               <b-col md="12" class="table-responsive w-100">
                 <b-table striped bordered hover :items="rows" :fields="columns">
                   <template v-slot:cell(remove)="data">
-                    <b-button
-                      variant=" iq-bg-success mr-1 mb-1"
-                      size="sm"
-                      @click="edit(data.item)"
-                      v-if="!data.item.editable"
-                      ><i class="ri-ball-pen-fill m-0"></i
-                    ></b-button>
-                    <b-button
-                      variant=" iq-bg-success mr-1 mb-1"
-                      size="sm"
-                      @click="submit(data.item)"
-                      v-else
-                      >Ok</b-button
-                    >
+                    <router-link to="/editaregistrosmedicos">
+                      <b-button variant=" iq-bg-success mr-1 mb-1" size="sm"
+                        ><i class="ri-ball-pen-fill m-0"></i
+                      ></b-button>
+                    </router-link>
+
                     <b-button
                       variant=" iq-bg-danger"
                       size="sm"

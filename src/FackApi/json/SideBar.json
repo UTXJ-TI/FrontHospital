@@ -113,7 +113,7 @@
     "children": [
       {
         "title": "Dashboard de exp",
-        "name": "Dashboard",
+        "name": "Estadísticas",
         "is_active": true,
         "link": {
           "name": "dashboard.registrosm"
@@ -158,19 +158,8 @@
         "is_icon_class": true,
         "icon": "fa fa-upload",
         "badge" : false
-      },
-      {
-        "title": "Editar expedientes",
-        "name": "Editar expedientes",
-        "is_active": true,
-        "link": {
-          "name": "dashboard.editaregistrosmedicos"
-        },
-        "class_name": "",
-        "is_icon_class": true,
-        "icon": "fa fa-file",
-        "badge" : false
       }
+      
     ]
   },
   {
