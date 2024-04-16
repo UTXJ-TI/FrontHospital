@@ -313,6 +313,8 @@ const childRoutes = (prop, mode) => [
     name: prop + ".registrosm",
     meta: { dark: mode, auth: true, name: "Registros Medicos" },
     component: RegistrosM,
+  },
+  {
     path: "comtrans",
     name: prop + ".comtrans",
     meta: { dark: mode, auth: true, name: "Comite de Transplantes" },

@@ -6,67 +6,38 @@
           Estructura Orgánica del Hospital
         </h1>
 
-        <b-row>
+        <b-row sm="12">
           <div style="margin-left: auto; margin-right: auto; max-width: 1200px">
-            <div style="display: flex; justify-content: space-between">
-              <b-col md="6" lg="3">
-                <iq-card body-class=" rounded">
+            <div class="d-flex flex-wrap justify-content-between">
+              <!-- Utilizamos flex-wrap y justify-content-center para centrar los elementos y permitir que se envuelvan en pantallas más pequeñas -->
+              <b-col
+                md="6"
+                lg="3"
+                v-for="(category, index) in categories"
+                :key="index"
+              >
+                <iq-card body-class="rounded">
                   <template v-slot:body>
                     <div
                       class="d-flex align-items-center justify-content-between"
                     >
-                      <div class="text-left">
-                        <h4 class="mb-2 mt-2">Médicos</h4>
+                      <div class="text-center">
+                        <h4 class="mb-2 mt-2">{{ category.title }}</h4>
                         <h3 class="mb-0 line-height">
                           <span
-                            ><count-up :end-val="1200" duration="5"></count-up
+                            ><count-up
+                              :end-val="category.value"
+                              duration="5"
+                            ></count-up
                           ></span>
                         </h3>
                       </div>
-                      <div class="rounded-circle iq-card-icon bg-primary">
-                        <i class="ri-task-line"></i>
-                      </div>
-                    </div>
-                  </template>
-                </iq-card>
-              </b-col>
-              <b-col md="6" lg="3">
-                <iq-card body-class=" rounded">
-                  <template v-slot:body>
-                    <div
-                      class="d-flex align-items-center justify-content-between"
-                    >
-                      <div class="text-left">
-                        <h4 class="mb-2 mt-2">Enfermeras</h4>
-                        <h3 class="mb-0 line-height">
-                          <span
-                            ><count-up :end-val="800" duration="5"></count-up
-                          ></span>
-                        </h3>
-                      </div>
-                      <div class="rounded-circle iq-card-icon bg-warning">
-                        <i class="ri-hospital-line"></i>
-                      </div>
-                    </div>
-                  </template>
-                </iq-card>
-              </b-col>
-              <b-col md="6" lg="3">
-                <iq-card body-class=" rounded">
-                  <template v-slot:body>
-                    <div
-                      class="d-flex align-items-center justify-content-between"
-                    >
-                      <div class="text-left">
-                        <h4 class="mb-2 mt-2">Pacientes</h4>
-                        <h3 class="mb-0 line-height">
-                          <span
-                            ><count-up :end-val="6899" duration="5"></count-up
-                          ></span>
-                        </h3>
-                      </div>
-                      <div class="rounded-circle iq-card-icon bg-danger">
-                        <i class="ri-gradienter-line"></i>
+                      <div
+                        :class="
+                          'rounded-circle iq-card-icon ' + category.iconBg
+                        "
+                      >
+                        <i :class="category.icon"></i>
                       </div>
                     </div>
                   </template>
@@ -82,7 +53,7 @@
       <b-col lg="12">
         <iq-card>
           <template v-slot:headerTitle>
-            <h4 class="card-title">Servicios Médicos</h4>
+            <h2 style="text-align: center">Servicios Médicos</h2>
 
             <div
               style="margin-left: auto; margin-right: auto; max-width: 1200px"
@@ -117,10 +88,35 @@
             </div>
             <!-- --------------------------------------------------------- -->
 
-            <form id="search">
-              <p>Buscar</p>
-              <input title="searchField" v-model="searchInput" />
-            </form>
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+              <div class="iq-search-bar">
+                <form action="#" class="searchbox">
+                  <input
+                    type="text"
+                    class="text search-input"
+                    title="searchField"
+                    placeholder="Buscar"
+                    v-model="searchInput"
+                  />
+                  <a class="search-link" href="#"
+                    ><i class="ri-search-line"></i
+                  ></a>
+                </form>
+              </div>
+              <b-navbar-toggle target="nav">
+                <i class="ri-menu-3-line"></i>
+              </b-navbar-toggle>
+              <div class="iq-menu-bt align-self-center">
+                <div class="wrapper-menu" @click="miniSidebar">
+                  <div class="main-circle"><i class="ri-more-fill"></i></div>
+                  <div class="hover-circle"><i class="ri-more-2-fill"></i></div>
+                </div>
+              </div>
+              <b-collapse id="nav-collapse" is-nav>
+                <slot name="responsiveRight" />
+              </b-collapse>
+              <slot name="right" />
+            </nav>
 
             <!-- <database-website-component :entries="dataset" :columns="dataColumns" :filter-key="searchInput">
                 </database-website-component> -->
@@ -130,9 +126,10 @@
 
           <template v-slot:body>
             <div class="table-responsive mb-5">
-              <table class="table mb-3 table-borderless">
+              <table class="table mb-3 table-borderless table-hover">
                 <thead>
                   <tr>
+                    <th scope="col">N°</th>
                     <th scope="col">Clave</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripcion</th>
@@ -142,26 +139,53 @@
                     <th scope="col">Estatus</th>
                   </tr>
                 </thead>
-                <tbody v-for="data in globalRecord" :key="data.id">
-                  <tr>
-                    <td v-for="data1 in data.country" :key="data1.id">
-                      <img
-                        :src="data1.counreyImg"
-                        class="img-fluid"
-                        alt="country-flag"
-                      />
-                      <span class="mx-2">{{ data1.countryName }}</span>
-                    </td>
-                    <td>{{ data.Clave }}</td>
-                    <td>{{ data.Nombre }}</td>
-                    <td>{{ data.Descripcion }}</td>
-                    <td>{{ data.Tipo }}</td>
-                    <td>{{ data.Departamento_id }}</td>
-                    <td>{{ data.Instalacion_superior_id }}</td>
-                    <td>{{ data.Estatus }}</td>
+                <tbody>
+                  <tr v-for="(hospital, id) in paginatedData" :key="id">
+                    <td>{{ hospital.id }}</td>
+                    <td>{{ hospital.clave }}</td>
+                    <td>{{ hospital.nombre }}</td>
+                    <td>{{ hospital.descripcion }}</td>
+                    <td>{{ hospital.tipo }}</td>
+                    <td>{{ hospital.departamento_id }}</td>
+                    <td>{{ hospital.instalacion_superior_id }}</td>
+                    <td>{{ hospital.estatus }}</td>
+                    <!-- <td>
+                      <a href="#" class="edit" title="">
+                        <button
+                          class="btn btn-warning btn-sm"
+                          @click="editBtn(hospital.id)"
+                        >
+                          Edita
+                        </button>
+                      </a>
+                      <a href="#" class="edit" title="">
+                        <button
+                          class="btn btn-danger btn-sm"
+                          @click="deletehospital(hospital.id)"
+                        >
+                          Elimina
+                        </button>
+                      </a>
+                    </td> -->
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <div class="pagination">
+              <button
+                class="btn btn-primary"
+                @click="previousPage"
+                :disabled="currentPage === 1"
+              >
+                Anterior
+              </button>
+              <button
+                class="btn btn-primary"
+                @click="nextPage"
+                :disabled="currentPage === totalPages"
+              >
+                Siguiente
+              </button>
             </div>
           </template>
         </iq-card>
@@ -244,6 +268,7 @@ import CountUp from "vue-countup-v3";
 import "swiper/css";
 import "swiper/scss";
 import "swiper/css/navigation";
+import axios from "axios";
 
 export default {
   name: "EstruOrgaHospital",
@@ -255,34 +280,125 @@ export default {
   },
   mounted() {
     xray.index();
+    console.log("DOM is rendered");
+    console.log(Object.keys(this.currentHospital).length);
   },
+
+  created() {
+    console.log("DOM is created");
+    this.getHospilales();
+    this.fetchData();
+  },
+
+  methods: {
+    getHospilales() {
+      axios
+        .get(this.api + "/v1ServiciosMedicos/")
+        .then((response) => {
+          console.log(response.data);
+          this.hospitales = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
+
+    fetchData() {
+      axios
+        .get("http://127.0.0.1:8000/hospital/api/v1vista_pacientes/")
+        .then((response) => {
+          // Actualiza los valores de cada categoría con los datos obtenidos de la API
+          this.categories[0].value = response.data[0].cantidad_femeninos;
+          this.categories[1].value = response.data[0].cantidad_masculinos;
+          this.categories[2].value = response.data[0].cantidad_total_personas;
+        })
+        .catch((error) => {
+          console.error("Error fetching data: ", error);
+        });
+    },
+  },
+
   data() {
     return {
-      globalRecord: [
-        {
-          id: 1,
-          Clave: "HG-CS",
-          Nombre: "Pediatría",
-          Descripcion: "Cosultorio Pediatrico",
-          Tipo: "Area Ifaltil",
-          Departamento_id: 1,
-          Instalacion_superior_id: 1,
-          Estatus: "Activo",
-        },
-        // Más datos aquí si es necesario
-      ],
+      hospitales: [],
+      currentHospital: {},
+      api: "http://127.0.0.1:8000/hospital/api",
+      hospital: {
+        id: "",
+        clave: "",
+        nombre: "",
+        descripcion: "",
+        tipo: "",
+        departamento_id: "",
+        Instalacion_superior_id: "",
+        estatus: "",
+      },
       searchInput: "",
+      currentPage: 1, // Página actual
+      resultsPerPage: 10, // Resultados por página
+
+      categories: [
+        {
+          title: "Total de Mujeres",
+          value: null,
+          iconBg: "bg-info",
+          icon: "fa fa-female",
+        },
+        {
+          title: "Total de Hombres",
+          value: null,
+          iconBg: "bg-primary",
+          icon: "fa fa-male",
+        },
+        {
+          title: "Total de Pacientes",
+          value: null,
+          iconBg: "bg-success",
+          icon: "fa fa-users",
+        },
+      ],
     };
   },
+
   computed: {
     filteredData() {
-      return this.globalRecord.filter((data) => {
-        return Object.values(data).some((value) => {
+      // Modifica la función para filtrar según el término de búsqueda
+      return this.hospitales.filter((hospital) => {
+        return Object.values(hospital).some((value) => {
           return String(value)
             .toLowerCase()
             .includes(this.searchInput.toLowerCase());
         });
       });
+    },
+
+    paginatedData() {
+      const startIndex = (this.currentPage - 1) * this.resultsPerPage;
+      const endIndex = startIndex + this.resultsPerPage;
+      return this.filteredData
+        .slice(startIndex, endIndex)
+        .map((item, index) => {
+          return {
+            ...item,
+            index: startIndex + index + 1, // Ajustar el índice para mantener la secuencia numérica continua
+          };
+        });
+    },
+
+    totalPages() {
+      return Math.ceil(this.hospitales.length / this.resultsPerPage);
     },
   },
 };

@@ -6,67 +6,38 @@
           Bitácora de Dirección del Hospital
         </h1>
 
-        <b-row>
+        <b-row sm="12">
           <div style="margin-left: auto; margin-right: auto; max-width: 1200px">
-            <div style="display: flex; justify-content: space-between">
-              <b-col md="6" lg="3">
-                <iq-card body-class=" rounded">
+            <div class="d-flex flex-wrap justify-content-between">
+              <!-- Utilizamos flex-wrap y justify-content-center para centrar los elementos y permitir que se envuelvan en pantallas más pequeñas -->
+              <b-col
+                md="6"
+                lg="3"
+                v-for="(category, index) in categories"
+                :key="index"
+              >
+                <iq-card body-class="rounded">
                   <template v-slot:body>
                     <div
                       class="d-flex align-items-center justify-content-between"
                     >
-                      <div class="text-left">
-                        <h4 class="mb-2 mt-2">Médicos</h4>
+                      <div class="text-center">
+                        <h4 class="mb-2 mt-2">{{ category.title }}</h4>
                         <h3 class="mb-0 line-height">
                           <span
-                            ><count-up :end-val="1200" duration="5"></count-up
+                            ><count-up
+                              :end-val="category.value"
+                              duration="5"
+                            ></count-up
                           ></span>
                         </h3>
                       </div>
-                      <div class="rounded-circle iq-card-icon bg-primary">
-                        <i class="ri-task-line"></i>
-                      </div>
-                    </div>
-                  </template>
-                </iq-card>
-              </b-col>
-              <b-col md="6" lg="3">
-                <iq-card body-class=" rounded">
-                  <template v-slot:body>
-                    <div
-                      class="d-flex align-items-center justify-content-between"
-                    >
-                      <div class="text-left">
-                        <h4 class="mb-2 mt-2">Enfermeras</h4>
-                        <h3 class="mb-0 line-height">
-                          <span
-                            ><count-up :end-val="800" duration="5"></count-up
-                          ></span>
-                        </h3>
-                      </div>
-                      <div class="rounded-circle iq-card-icon bg-warning">
-                        <i class="ri-hospital-line"></i>
-                      </div>
-                    </div>
-                  </template>
-                </iq-card>
-              </b-col>
-              <b-col md="6" lg="3">
-                <iq-card body-class=" rounded">
-                  <template v-slot:body>
-                    <div
-                      class="d-flex align-items-center justify-content-between"
-                    >
-                      <div class="text-left">
-                        <h4 class="mb-2 mt-2">Pacientes</h4>
-                        <h3 class="mb-0 line-height">
-                          <span
-                            ><count-up :end-val="6899" duration="5"></count-up
-                          ></span>
-                        </h3>
-                      </div>
-                      <div class="rounded-circle iq-card-icon bg-danger">
-                        <i class="ri-gradienter-line"></i>
+                      <div
+                        :class="
+                          'rounded-circle iq-card-icon ' + category.iconBg
+                        "
+                      >
+                        <i :class="category.icon"></i>
                       </div>
                     </div>
                   </template>
@@ -99,11 +70,35 @@
               </div> -->
 
             <!-- --------------------------------------------------------- -->
-
-            <form id="search">
-              <p>Buscar</p>
-              <input title="searchField" v-model="searchInput" />
-            </form>
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+              <div class="iq-search-bar">
+                <form action="#" class="searchbox">
+                  <input
+                    type="text"
+                    class="text search-input"
+                    title="searchField"
+                    placeholder="Buscar"
+                    v-model="searchInput"
+                  />
+                  <a class="search-link" href="#"
+                    ><i class="ri-search-line"></i
+                  ></a>
+                </form>
+              </div>
+              <b-navbar-toggle target="nav">
+                <i class="ri-menu-3-line"></i>
+              </b-navbar-toggle>
+              <div class="iq-menu-bt align-self-center">
+                <div class="wrapper-menu" @click="miniSidebar">
+                  <div class="main-circle"><i class="ri-more-fill"></i></div>
+                  <div class="hover-circle"><i class="ri-more-2-fill"></i></div>
+                </div>
+              </div>
+              <b-collapse id="nav-collapse" is-nav>
+                <slot name="responsiveRight" />
+              </b-collapse>
+              <slot name="right" />
+            </nav>
 
             <!-- <database-website-component :entries="dataset" :columns="dataColumns" :filter-key="searchInput">
                 </database-website-component> -->
@@ -113,34 +108,100 @@
 
           <template v-slot:body>
             <div class="table-responsive mb-5">
-              <table class="table mb-3 table-borderless">
+              <table class="table mb-3 table-borderless table-hover">
                 <thead>
-                  <tr>
-                    <th scope="col">Nombre</th>
+                  <tr style="text-align: center">
+                    <th scope="col">N°</th>
+                    <th scope="col">Tabla</th>
                     <th scope="col">Usuario</th>
                     <th scope="col">Operación</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">Fecha</th>
                   </tr>
                 </thead>
-                <tbody v-for="data in globalRecord" :key="data.id">
-                  <tr>
-                    <td v-for="data1 in data.country" :key="data1.id">
-                      <img
-                        :src="data1.counreyImg"
-                        class="img-fluid"
-                        alt="country-flag"
-                      />
-                      <span class="mx-2">{{ data1.countryName }}</span>
+                <tbody>
+                  <tr v-for="(bitacora, id) in paginatedData" :key="id">
+                    <td>{{ bitacora.id }}</td>
+                    <td>{{ bitacora.nombre_tabla }}</td>
+                    <td>{{ bitacora.usuario }}</td>
+                    <td>
+                      <div
+                        v-if="bitacora.operacion === 'Insert'"
+                        class="text-center"
+                      >
+                        <a class="iq-icons-list" target="_self">
+                          <div
+                            data-icon="S"
+                            class="icon"
+                            style="color: green"
+                          ></div>
+                          <span style="color: green">Agregado</span>
+                        </a>
+                      </div>
+                      <div
+                        v-else-if="bitacora.operacion === 'Update'"
+                        class="text-center"
+                      >
+                        <a class="iq-icons-list" target="_self">
+                          <div
+                            data-icon="Z"
+                            class="icon"
+                            style="color: orange"
+                          ></div>
+                          <span style="color: orange">Actulizado</span>
+                        </a>
+                      </div>
+                      <div
+                        v-else-if="bitacora.operacion === 'Delete'"
+                        class="text-center"
+                      >
+                        <a class="iq-icons-list" target="_self">
+                          <div
+                            data-icon="&#xe053;"
+                            class="icon"
+                            style="color: red"
+                          ></div>
+                          <span style="color: red">Eliminado</span>
+                        </a>
+                      </div>
+                      <div
+                        v-else-if="bitacora.operacion === 'Read'"
+                        class="text-center"
+                      >
+                        <a class="iq-icons-list" href="#" target="_self">
+                          <div
+                            data-icon="("
+                            class="icon"
+                            style="color: black"
+                          ></div>
+                          <span style="color: black">Lectura</span>
+                        </a>
+                      </div>
+                      <div v-else class="col-12 col-md-6 col-lg-3">
+                        {{ bitacora.operacion }}
+                      </div>
                     </td>
-                    <td>{{ data.Nombre }}</td>
-                    <td>{{ data.Usuario }}</td>
-                    <td>{{ data.Operacion }}</td>
-                    <td>{{ data.Descripcion }}</td>
-                    <td>{{ data.Fecha }}</td>
+                    <td>{{ formatearDescripcion(bitacora.descripcion) }}</td>
+                    <td>{{ formatearFecha(bitacora.fecha_hora) }}</td>
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <div class="pagination">
+              <button
+                class="btn btn-primary"
+                @click="previousPage"
+                :disabled="currentPage === 1"
+              >
+                Anterior
+              </button>
+              <button
+                class="btn btn-primary"
+                @click="nextPage"
+                :disabled="currentPage === totalPages"
+              >
+                Siguiente
+              </button>
             </div>
           </template>
         </iq-card>
@@ -228,6 +289,8 @@ import CountUp from "vue-countup-v3";
 import "swiper/css";
 import "swiper/scss";
 import "swiper/css/navigation";
+import axios from "axios";
+import moment from "moment";
 
 export default {
   name: "EstruOrgaHospital",
@@ -239,114 +302,143 @@ export default {
   },
   mounted() {
     xray.index();
+    console.log("DOM is rendered");
+    console.log(Object.keys(this.currentBitacora).length);
   },
+
+  created() {
+    console.log("DOM is created");
+    this.getBitacoras();
+    this.fetchData();
+  },
+
+  methods: {
+    getBitacoras() {
+      axios
+        .get(this.api + "/v1BitacoraDG/")
+        .then((response) => {
+          console.log(response.data);
+          this.bitacoras = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
+
+    formatearFecha(fecha) {
+      if (moment(fecha, moment.ISO_8601, true).isValid()) {
+        return moment(fecha).format("DD/MM/YYYY HH:mm:ss");
+      } else {
+        return "Sin Fecha";
+      }
+    },
+
+    formatearDescripcion(descripcion) {
+      // Remover la primera parte "Nuevo registro insertado en Aprobaciones_Servicios:"
+      descripcion = descripcion.replace(
+        "Nuevo registro insertado en Aprobaciones_Servicios:",
+        ""
+      );
+
+      // Reemplazar los puntos por punto y salto de línea
+      let nuevaDescripcion = descripcion.replace(/\./g, ".\n");
+      return nuevaDescripcion;
+    },
+
+    fetchData() {
+      axios
+        .get("http://127.0.0.1:8000/hospital/api/v1vista_operaciones_bitacora/")
+        .then((response) => {
+          // Actualiza los valores de cada categoría con los datos obtenidos de la API
+          this.categories[0].value = response.data[0].inserciones;
+          this.categories[1].value = response.data[0].actualizaciones;
+          this.categories[2].value = response.data[0].eliminaciones;
+        })
+        .catch((error) => {
+          console.error("Error fetching data: ", error);
+        });
+    },
+  },
+
   data() {
     return {
-      globalRecord: [
-        {
-          id: 1,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 2,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 3,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 4,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 5,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 6,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 7,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 8,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 9,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        {
-          id: 10,
-          Nombre: "Direccion_General",
-          Usuario: "Usuario",
-          Operacion: "Insert",
-          Descripcion:
-            "Prueba de integracion de informaciona a la bitacora de Dirección General",
-          Fecha: "2024-01-15 14:14:04",
-        },
-        // Más datos aquí si es necesario
-      ],
+      bitacoras: [],
+      currentBitacora: {},
+      api: "http://127.0.0.1:8000/hospital/api",
+      bitacora: {
+        id: "",
+        nombre_tabla: "",
+        usuario: "",
+        operacion: "",
+        descripcion: "",
+        fecha_hora: "",
+      },
       searchInput: "",
+      currentPage: 1, // Página actual
+      resultsPerPage: 10, // Resultados por página
+
+      categories: [
+        {
+          title: "Agregados",
+          value: null,
+          iconBg: "bg-success",
+          icon: "fa fa-arrow-down",
+        },
+        {
+          title: "Actulizados",
+          value: null,
+          iconBg: "bg-warning",
+          icon: "fa fa-refresh",
+        },
+        {
+          title: "Eliminados",
+          value: null,
+          iconBg: "bg-danger",
+          icon: "fa fa-times",
+        },
+      ],
     };
   },
+
   computed: {
     filteredData() {
-      return this.globalRecord.filter((data) => {
-        return Object.values(data).some((value) => {
+      // Modifica la función para filtrar según el término de búsqueda
+      return this.bitacoras.filter((bitacora) => {
+        return Object.values(bitacora).some((value) => {
           return String(value)
             .toLowerCase()
             .includes(this.searchInput.toLowerCase());
         });
       });
+    },
+
+    paginatedData() {
+      const startIndex = (this.currentPage - 1) * this.resultsPerPage;
+      const endIndex = startIndex + this.resultsPerPage;
+      return this.filteredData
+        .slice(startIndex, endIndex)
+        .map((item, index) => {
+          return {
+            ...item,
+            index: startIndex + index + 1, // Ajustar el índice para mantener la secuencia numérica continua
+          };
+        });
+    },
+
+    totalPages() {
+      return Math.ceil(this.bitacoras.length / this.resultsPerPage);
     },
   },
 };
