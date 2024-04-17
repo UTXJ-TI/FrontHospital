@@ -25,7 +25,7 @@
       <b-col lg="6">
         <iq-card>
           <template v-slot:headerTitle>
-            <h4>Pacientes y su seguro</h4>
+            <h4>Edades</h4>
           </template>
           <template v-slot:body>
             <!-- <EChart theme="light" chartType="area" /> -->
@@ -176,17 +176,25 @@ export default {
         console.error("Error al obtener los datos:", error);
       }
     });
+    /*grafica de edades------------------------------------------------------------------------------ */
     const BarChart = ref({
       xAxis: {
         type: "category",
-        data: ["Sin seguro", "Seguro por convenio", "seguro social"],
+        data: [
+          "(0-5)",
+          "(6 - 11)",
+          "(12 - 18)",
+          "(14 - 26)",
+          "(27- 59)",
+          "(60 o mas)",
+        ],
       },
       yAxis: {
         type: "value",
       },
       series: [
         {
-          data: [120, 200, 150],
+          data: [0, 0, 0, 0, 0, 0],
           type: "bar",
           itemStyle: {
             color: "rgba(8, 155, 171, 1)",
@@ -195,11 +203,61 @@ export default {
       ],
     });
 
+    // Función para actualizar los datos del gráfico de barras
+    const actualizarBarChart = (datos) => {
+      BarChart.value.series[0].data = datos;
+    };
+
+    onMounted(async () => {
+      try {
+        const response = await apiService.getItems(); // Hacer la llamada al API para obtener los datos
+        const pacientes = response.data;
+
+        // Calcular la edad de cada paciente y contar la cantidad de pacientes en cada rango de edad
+        const conteoEdades = [0, 0, 0, 0, 0, 0];
+        const hoy = new Date();
+
+        pacientes.forEach((paciente) => {
+          const fechaNacimiento = new Date(paciente.dob);
+          const edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+          const indiceEdad = obtenerIndiceEdad(edad);
+          if (indiceEdad !== -1) {
+            conteoEdades[indiceEdad]++;
+          }
+        });
+
+        // Actualizar el gráfico de barras con los datos de conteo de edades
+        actualizarBarChart(conteoEdades);
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+      }
+    });
+
+    // Función para obtener el índice del rango de edad correspondiente
+    const obtenerIndiceEdad = (edad) => {
+      if (edad >= 0 && edad <= 5) {
+        return 0;
+      } else if (edad >= 6 && edad <= 11) {
+        return 1;
+      } else if (edad >= 12 && edad <= 18) {
+        return 2;
+      } else if (edad >= 14 && edad <= 26) {
+        return 3;
+      } else if (edad >= 27 && edad <= 59) {
+        return 4;
+      } else if (edad >= 60) {
+        return 5;
+      } else {
+        return -1; // Edad no válida
+      }
+    };
+    // ---------------------------------------------------
     return {
       LineChartOption,
       PieChartOption,
       AreaChartOption,
       BarChart,
+      actualizarBarChart,
     };
   },
   data() {
