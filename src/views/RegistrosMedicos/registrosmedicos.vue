@@ -15,7 +15,7 @@
       <b-col lg="6">
         <iq-card>
           <template v-slot:headerTitle>
-            <h4>Personas registradas</h4>
+            <h4>Personas/personal nacidos (1970-2024)</h4>
           </template>
           <template v-slot:body>
             <!-- <EChart theme="light" chartType="area" /> -->
@@ -144,6 +144,7 @@ export default {
       }
     });
     //----------------------------------------------------------------------------------------
+    // -------------grafica de personas registradas---------------------------------------------
     const AreaChartOption = ref({
       color: ["#80FFA5", "#00DDFF", "#37A2FF", "#FF0087", "#FFBF00"],
 
@@ -151,7 +152,7 @@ export default {
         {
           type: "category",
           boundaryGap: false,
-          data: ["Adultos", "Infantes", "De la tercera edad"],
+          data: ["1970", "1980", "1990", "2000", "2010", "2020", "2024"], // Años de nacimiento
         },
       ],
       yAxis: [
@@ -161,7 +162,7 @@ export default {
       ],
       series: [
         {
-          data: [300, 200, 800],
+          data: [], // Se llenará con la suma de personas nacidas en cada año
           type: "line",
           areaStyle: {},
           itemStyle: {
@@ -170,6 +171,42 @@ export default {
         },
       ],
     });
+
+    onMounted(async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/personas");
+        const personas = response.data;
+
+        // Inicializar contadores para cada año de nacimiento
+        const sumaPorAño = {
+          1970: 0,
+          1980: 0,
+          1990: 0,
+          2000: 0,
+          2010: 0,
+          2020: 0,
+          2024: 0,
+        };
+
+        personas.forEach((persona) => {
+          // Obtener el año de nacimiento
+          const añoNacimiento = new Date(persona.Fecha_Nacimiento)
+            .getFullYear()
+            .toString();
+
+          // Incrementar el contador del año correspondiente
+          if (sumaPorAño[añoNacimiento] !== undefined) {
+            sumaPorAño[añoNacimiento]++;
+          }
+        });
+
+        // Actualizar los datos del gráfico con las sumas por año de nacimiento
+        AreaChartOption.value.series[0].data = Object.values(sumaPorAño);
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+      }
+    });
+
     // --------------------------------------------------------------------------------------------------
     // grafica de tipo de sangre ------------------------------------------------------------------------
     const PieChartOption = ref({
