@@ -93,7 +93,7 @@ import VerticalWizard from "../views/FormWizard/VerticalWizard.vue";
 // Vue.use(VueRouter)
 //IMPORT NEW VIEW PROYECTO 8A
 //-----Dirección General
-//import DireccionG from "../views/DireccionGeneral/DireccionGeneral.vue";
+import DireccionG from "../views/DireccionGeneral/DireccionGeneral.vue";
 import AproServiHosp from "../views/DireccionGeneral/AproServHosp.vue";
 import EstruOrgaHosp from "../views/DireccionGeneral/EstruOrgaHospital.vue";
 import EstruOrgaHosp2 from "../views/DireccionGeneral/EstruOrgaHospital2.vue";
@@ -101,9 +101,12 @@ import DashboardGenHospital from "../views/DireccionGeneral/DashboardGenHospital
 import BitacoraDG from "../views/DireccionGeneral/BitacoraDG.vue";
 
 //------------------------------------------------------
-import DireccionG from "../views/DireccionGeneral/DireccionGeneral.vue";
 import ComiteT from "../views/ComiteTransplantes/comitetransplantes.vue";
-import FarmaciaI from "../views/FarmaciaIntraHospitalaria/farmaciaintrahospitalaria.vue";
+// -----Comite de Transplantes
+import solicitudesTransplantes from "../views/ComiteTransplantes/solicitudesTransplantes.vue";
+import tablaSolicitudesTransplante from "../views/ComiteTransplantes/tablaSolicitudesTransplante.vue";
+import dashboardSolicitudes from "../views/ComiteTransplantes/dashboardSolicitudes.vue";
+// ---------------------------------
 import Pediatria from "../views/Pediatria/pediatria.vue";
 import ProgramacionQ from "../views/ProgramacionQuirurgica/programacionquirurgica.vue";
 import RadiologiaI from "../views/RadiologiaImagen/radiologiaimagen.vue";
@@ -112,6 +115,12 @@ import RegistrosM from "../views/RegistrosMedicos/registrosmedicos.vue";
 import NotasM from "../views/RegistrosMedicos/notasmedicas.vue";
 import CrudRegistrosM from "../views/RegistrosMedicos/crudregistrosmedicos.vue";
 import AgregaRegistrosMedicos from "../views/RegistrosMedicos/agregaregistrosmedicos.vue";
+
+
+import FarmaciaI from "../views/FarmaciaIntraHospitalaria/farmaciaintrahospitalaria.vue";
+import FarmaciaII from "../views/FarmaciaIntraHospitalaria/farmaciainventario.vue";
+import FarmaciaIIII from "../views/FarmaciaIntraHospitalaria/dashboard.vue";
+import FarmaciaIIIII from "../views/FarmaciaIntraHospitalaria/dispensaciondetalles.vue";
 
 const childRoutes = (prop, mode) => [
   {
@@ -203,6 +212,90 @@ const childRoutes = (prop, mode) => [
     component: ProgramacionQ,
   },
   {
+    path: "comtrans",
+    name: prop + ".comtrans",
+    meta: { dark: mode, auth: true, name: "Comite de Transplantes" },
+    component: ComiteT,
+  },
+  {
+    path: "farmintra",
+    name: prop + ".farmintra",
+    meta: { dark: mode, auth: true, name: "Farmacia Intrahospitalaria" },
+    component: FarmaciaI,
+  },
+  {
+    path: "farmintraInv",
+    name: prop + ".farmintraInv",
+    meta: { dark: mode, auth: true, name: "Farmacia Intrahospitalaria" },
+    component: FarmaciaII,
+  },
+  {
+    path: "farmadash",
+    name: prop + ".farmadash",
+    meta: { dark: mode, auth: true, name: "Farmacia Intrahospitalaria" },
+    component: FarmaciaIIII,
+  },
+  {
+    path: "farmaDis",
+    name: prop + ".farmaDis",
+    meta: { dark: mode, auth: true, name: "Farmacia Intrahospitalaria" },
+    component: FarmaciaIIIII,
+  },
+  {
+    path: "pediatria",
+    name: prop + ".pediatria",
+    meta: { dark: mode, auth: true, name: "Pediatria" },
+    component: Pediatria,
+  },
+  {
+    path: "prograq",
+    name: prop + ".prograq",
+    meta: { dark: mode, auth: true, name: "Programación Quirurgica" },
+    component: ProgramacionQ,
+  },
+  {
+    path: "comtrans",
+    name: prop + ".comtrans",
+    meta: { dark: mode, auth: true, name: "Comite de Transplantes" },
+    component: ComiteT,
+  },
+  {
+    path: "solicitudes-transplantes",
+    name: prop + ".solicitudes-transplantes",
+    meta: { dark: mode, auth: true, name: "Solicitud de Transplantes" },
+    component: solicitudesTransplantes,
+  },
+  {
+    path: "tabla-solicitudes",
+    name: prop + ".tabla-solicitudes",
+    meta: { dark: mode, auth: true, name: "Tabla de Solicitudes" },
+    component: tablaSolicitudesTransplante,
+  },
+  {
+    path: "dashboard-transplantes",
+    name: prop + ".dashboard-transplantes",
+    meta: { dark: mode, auth: true, name: "Dashboard de trans`lantes" },
+    component: dashboardSolicitudes,
+  },
+  {
+    path: "farmintra",
+    name: prop + ".farmintra",
+    meta: { dark: mode, auth: true, name: "Farmacia Intrahospitalaria" },
+    component: FarmaciaI,
+  },
+  {
+    path: "pediatria",
+    name: prop + ".pediatria",
+    meta: { dark: mode, auth: true, name: "Pediatria" },
+    component: Pediatria,
+  },
+  {
+    path: "prograq",
+    name: prop + ".prograq",
+    meta: { dark: mode, auth: true, name: "Programación Quirurgica" },
+    component: ProgramacionQ,
+  },
+  {
     path: "radiologiai",
     name: prop + ".radiologiai",
     meta: { dark: mode, auth: true, name: "Radiologia e Imagen" },
@@ -213,6 +306,7 @@ const childRoutes = (prop, mode) => [
     name: prop + ".recursosh",
     meta: { dark: mode, auth: true, name: "Recursos humanos" },
     component: RecursosH,
+  },/*
   },
   {
     path: "registrosm",
@@ -225,7 +319,7 @@ const childRoutes = (prop, mode) => [
     name: prop + ".comtrans",
     meta: { dark: mode, auth: true, name: "Comite de Transplantes" },
     component: ComiteT,
-  },
+  },*/
   {
     path: "farmintra",
     name: prop + ".farmintra",
