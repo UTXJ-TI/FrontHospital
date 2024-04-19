@@ -10,17 +10,6 @@
             <b-row>
               <b-col md="12" class="table-responsive w-100">
                 <b-table striped bordered hover :items="rows" :fields="columns">
-                  <template v-slot:cell(nombre)="data">
-                    <span v-if="!data.item.editable">{{
-                      data.item.nombre
-                    }}</span>
-                    <input
-                      type="text"
-                      v-model="data.item.nombre"
-                      v-else
-                      class="form-control text-center"
-                    />
-                  </template>
                   <template v-slot:cell(notasM)="data">
                     <span v-if="!data.item.editable">{{
                       data.item.notasM
