@@ -34,10 +34,13 @@
                 </thead>
                 <tbody>
                   <tr v-for="item in filteredRows" :key="item._id">
-                    <td>{{ item._id }}</td>
+                    <!-- <td>{{ item._id }}</td> -->
                     <td>
                       {{ item.nombre }} {{ item.primer_apellido }}
                       {{ item.segundo_apellido }}
+                    </td>
+                    <td>
+                      {{ item.curp }}
                     </td>
                     <td>{{ calcularEdad(item.dob) }}</td>
                     <td>{{ item.notasM }}</td>
@@ -62,8 +65,9 @@ export default {
   data() {
     return {
       columns: [
-        { label: "Id", field: "_id", headerClass: "text-left" },
+        /* { label: "Id", field: "_id", headerClass: "text-left" }, */
         { label: "Nombre completo", field: "nombre", headerClass: "text-left" },
+        { label: "CURP", field: "curp", headerClass: "text-left" },
         { label: "Edad", field: "edad", headerClass: "text-left" },
         { label: "Nota", field: "notasM", headerClass: "text-left" },
       ],
