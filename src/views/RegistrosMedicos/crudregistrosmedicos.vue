@@ -11,12 +11,20 @@
               <b-col md="12" class="table-responsive w-100">
                 <b-table striped bordered hover :items="rows" :fields="columns">
                   <template v-slot:cell(remove)="data">
-                    <router-link to="/editaregistrosmedicos">
-                      <b-button variant=" iq-bg-success mr-1 mb-1" size="sm"
-                        ><i class="ri-ball-pen-fill m-0"></i
-                      ></b-button>
-                    </router-link>
-
+                    <b-button
+                      variant=" iq-bg-success mr-1 mb-1"
+                      size="sm"
+                      @click="edit(data.item)"
+                      v-if="!data.item.editable"
+                      ><i class="ri-ball-pen-fill m-0"></i
+                    ></b-button>
+                    <b-button
+                      variant=" iq-bg-success mr-1 mb-1"
+                      size="sm"
+                      @click="submit(data.item)"
+                      v-else
+                      >Ok</b-button
+                    >
                     <b-button
                       variant=" iq-bg-danger"
                       size="sm"
@@ -48,15 +56,20 @@ export default {
     async loadRecords() {
       try {
         const response = await apiService.getItems();
-        this.rows = response.data;
+        // Modificar los registros para incluir el nombre completo
+        this.rows = response.data.map((item) => ({
+          ...item,
+          nombreCompleto: `${item.nombre} ${item.primer_apellido} ${item.segundo_apellido}`,
+        }));
       } catch (error) {
         console.error("Error loading records:", error);
       }
     },
+
     add() {
       this.rows.push({
         nombre: "",
-        edad: "",
+        dob: "",
         notasM: "",
       });
     },
@@ -78,8 +91,12 @@ export default {
     return {
       columns: [
         { key: "_id", label: "Id", headerClass: "text-left" },
-        { key: "nombre", label: "Nombre completo", headerClass: "text-left" },
-        /* { key: "edad", label: "Edad", headerClass: "text-left" }, */
+        {
+          key: "nombreCompleto",
+          label: "Nombre completo",
+          headerClass: "text-left",
+        },
+        { key: "dob", label: "Fecha Nacimiento", headerClass: "text-left" },
         { key: "notasM", label: "Nota", headerClass: "text-left" },
         { key: "remove", label: "Remove", class: "text-center" },
       ],
