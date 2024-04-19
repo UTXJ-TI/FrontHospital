@@ -110,211 +110,209 @@
                                   <td>{{ solicitud.id }}</td>
                                   <td class="text-center">
                                     <div
-                                      v-if="
-                                        solicitud.servicio_paciente_id === 1
-                                      "
+                                      v-if="solicitud.servicio_paciente === 1"
                                     >
                                       <h5>Urgencias</h5>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 2
+                                        solicitud.servicio_paciente === 2
                                       "
                                     >
                                       <span>Consulta Externa</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 3
+                                        solicitud.servicio_paciente === 3
                                       "
                                     >
                                       <span>Hospitalización</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 4
+                                        solicitud.servicio_paciente === 4
                                       "
                                     >
                                       <span>Cirugía</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 5
+                                        solicitud.servicio_paciente === 5
                                       "
                                     >
                                       <span>Laboratorio Clínico</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 6
+                                        solicitud.servicio_paciente === 6
                                       "
                                     >
                                       <span>Radiología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 7
+                                        solicitud.servicio_paciente === 7
                                       "
                                     >
                                       <span>Farmacia</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 8
+                                        solicitud.servicio_paciente === 8
                                       "
                                     >
                                       <span>Rehabilitación</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 9
+                                        solicitud.servicio_paciente === 9
                                       "
                                     >
                                       <span>Cuidados Intensivos</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 10
+                                        solicitud.servicio_paciente === 10
                                       "
                                     >
                                       <span>Atención Pediática</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 11
+                                        solicitud.servicio_paciente === 11
                                       "
                                     >
                                       <span>Atención Materno-Infantil</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 12
+                                        solicitud.servicio_paciente === 12
                                       "
                                     >
                                       <span>Atención Geriatríca</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 13
+                                        solicitud.servicio_paciente === 13
                                       "
                                     >
                                       <span>Psiquiatría y Salud Mental</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 14
+                                        solicitud.servicio_paciente === 14
                                       "
                                     >
                                       <span>Banco de Sangre</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 15
+                                        solicitud.servicio_paciente === 15
                                       "
                                     >
                                       <span>Ginecología y Obstétricia</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 16
+                                        solicitud.servicio_paciente === 16
                                       "
                                     >
                                       <span>Quirófano</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 17
+                                        solicitud.servicio_paciente === 17
                                       "
                                     >
                                       <span>Tanatología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 18
+                                        solicitud.servicio_paciente === 18
                                       "
                                     >
                                       <span>Infectología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 19
+                                        solicitud.servicio_paciente === 19
                                       "
                                     >
                                       <span>Cardiología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 20
+                                        solicitud.servicio_paciente === 20
                                       "
                                     >
                                       <span>Neurología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 21
+                                        solicitud.servicio_paciente === 21
                                       "
                                     >
                                       <span>Endocrinología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 22
+                                        solicitud.servicio_paciente === 22
                                       "
                                     >
                                       <span>Oftamología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 23
+                                        solicitud.servicio_paciente === 23
                                       "
                                     >
                                       <span>Otorrinología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 24
+                                        solicitud.servicio_paciente === 24
                                       "
                                     >
                                       <span>Gastroenterología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 25
+                                        solicitud.servicio_paciente === 25
                                       "
                                     >
                                       <span>Nefrología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 26
+                                        solicitud.servicio_paciente === 26
                                       "
                                     >
                                       <span>Dermatología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 27
+                                        solicitud.servicio_paciente === 27
                                       "
                                     >
                                       <span>Hematología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 28
+                                        solicitud.servicio_paciente === 28
                                       "
                                     >
                                       <span>Oncología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 29
+                                        solicitud.servicio_paciente === 29
                                       "
                                     >
                                       <span>Alergología e Inmunología</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 30
+                                        solicitud.servicio_paciente === 30
                                       "
                                     >
                                       <span
@@ -323,14 +321,14 @@
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 31
+                                        solicitud.servicio_paciente === 31
                                       "
                                     >
                                       <span>Medicina Interna</span>
                                     </div>
                                     <div
                                       v-else-if="
-                                        solicitud.servicio_paciente_id === 32
+                                        solicitud.servicio_paciente === 32
                                       "
                                     >
                                       <span
@@ -342,7 +340,7 @@
                                       v-else
                                       class="col-12 col-md-6 col-lg-3"
                                     >
-                                      {{ solicitud.servicio_paciente_id }}
+                                      {{ solicitud.servicio_paciente }}
                                     </div>
                                   </td>
                                   <td>
@@ -1080,7 +1078,7 @@
                                     <select
                                       class="form-control"
                                       v-model="
-                                        currentSolicitud.servicio_paciente_id
+                                        currentSolicitud.servicio_paciente
                                       "
                                     >
                                       <option value="1">Urgencias</option>
@@ -1436,7 +1434,7 @@
                                     >
                                     <select
                                       class="form-control"
-                                      v-model="solicitud.servicio_paciente_id"
+                                      v-model="solicitud.servicio_paciente"
                                       required
                                     >
                                       <option value="1">Urgencias</option>
@@ -1910,7 +1908,7 @@ export default {
       api: "http://127.0.0.1:8000/hospital/api",
       solicitud: {
         id: "",
-        servicio_paciente_id: "",
+        servicio_paciente: "",
         departamento_solicitante: "",
         fecha_solicitud: "",
         estatus: "",
@@ -1934,7 +1932,7 @@ export default {
           { name: "Solicitudes Canceladas", data: [] },
         ],
 
-        colors: ["#089bab", "#FC9F5B", "#FF0000", "#0000ff"],
+        colors: ["#089bab", "#FC9F5B", "#FF0000", "#9b9b9b"],
         chart: {
           type: "bar",
           height: 350,
@@ -2046,7 +2044,7 @@ export default {
           console.log(solicitud.servicio_paciente_id);
           this.currentSolicitud = {
             id: solicitud.id,
-            servicio_paciente_id: solicitud.servicio_paciente_id,
+            servicio_paciente: solicitud.servicio_paciente,
             departamento_solicitante: solicitud.departamento_solicitante,
             fecha_solicitud: solicitud.fecha_solicitud,
             estatus: solicitud.estatus,
@@ -2090,7 +2088,7 @@ export default {
       if (
         confirm(`¿Deseas eliminar la solicitud? 
                   - ID: ${solicitud.id}
-                  - Servicio: ${solicitud.servicio_paciente_id}
+                  - Servicio: ${solicitud.servicio_paciente}
                   - Departamento solicitante: ${
                     solicitud.departamento_solicitante
                   }
@@ -2191,7 +2189,7 @@ export default {
 
         // Obtener el texto correspondiente al servicio_paciente_id
         let servicioText = "";
-        switch (solicitud.servicio_paciente_id) {
+        switch (solicitud.servicio_paciente) {
           case 1:
             servicioText = "Urgencias";
             break;
@@ -2290,7 +2288,7 @@ export default {
             break;
 
           default:
-            servicioText = String(solicitud.servicio_paciente_id); // Si no coincide con ninguno, mantener el valor original
+            servicioText = String(solicitud.servicio_paciente); // Si no coincide con ninguno, mantener el valor original
         }
 
         const matchServicioId = servicioText

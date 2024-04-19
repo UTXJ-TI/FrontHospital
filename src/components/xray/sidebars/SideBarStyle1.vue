@@ -40,7 +40,7 @@ export default {
     items: { type: Array },
     logo: {
       type: String,
-      default: require("../../../assets/images/hospital.png"),
+      default: require("../../../assets/images/logo.png"),
     },
     horizontal: { type: Boolean },
     toggleButton: { type: Boolean, default: true },

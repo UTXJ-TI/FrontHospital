@@ -146,9 +146,118 @@
                     <td>{{ hospital.nombre }}</td>
                     <td>{{ hospital.descripcion }}</td>
                     <td>{{ hospital.tipo }}</td>
-                    <td>{{ hospital.departamento_id }}</td>
-                    <td>{{ hospital.instalacion_superior_id }}</td>
-                    <td>{{ hospital.estatus }}</td>
+                    <td>
+                      <div v-if="hospital.departamento === 1">
+                        <h5>Servicios Médicos</h5>
+                      </div>
+                      <div v-else class="col-12 col-md-6 col-lg-3">
+                        {{ hospital.instalacion_superior }}
+                      </div>
+                    </td>
+                    <td>
+                      <div v-if="hospital.instalacion_superior === 1">
+                        <h5>Hospital General de Puebla</h5>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 2">
+                        <span>Edificio de Especialidades</span>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 3">
+                        <span>Edificio de Maternidad</span>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 4">
+                        <span>Edificio Administrativo</span>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 5">
+                        <span>Edificio Laboratorios</span>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 6">
+                        <span>Edificio Urgencias</span>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 7">
+                        <span>Piso 1 - Consultorios </span>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 8">
+                        <span>Piso 2 - Terapia Intesiva</span>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 9">
+                        <span>Piso 3 - Quirofano</span>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 10">
+                        <span>Piso 4 - Hospitalización</span>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 11">
+                        <span>Piso 1 - Acceso y Recepción</span>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 14">
+                        <span>Piso 4 - Area de Diagnostico por Imagne</span>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 17">
+                        <span>Servicio de Traumatología</span>
+                      </div>
+                      <div v-else-if="hospital.instalacion_superior === 29">
+                        <span>Piso 2 - Traumatología</span>
+                      </div>
+                      <div v-else class="col-12 col-md-6 col-lg-3">
+                        {{ hospital.instalacion_superior }}
+                      </div>
+                    </td>
+                    <td>
+                      <div
+                        v-if="hospital.estatus === 'Activo'"
+                        class="text-center"
+                      >
+                        <a class="iq-icons-list" href="#" target="_self">
+                          <div
+                            data-icon="S"
+                            class="icon"
+                            style="color: green"
+                          ></div>
+                          <span style="color: green">Activo</span>
+                        </a>
+                      </div>
+                      <div
+                        v-else-if="hospital.estatus === 'En Proceso'"
+                        class="text-center"
+                      >
+                        <a class="iq-icons-list" href="#" target="_self">
+                          <div
+                            data-icon="Y"
+                            class="icon"
+                            style="color: orange"
+                          ></div>
+                          <span style="color: orange">Mantenimiento</span>
+                        </a>
+                      </div>
+                      <div
+                        v-else-if="hospital.estatus === 'No Aprobado'"
+                        class="text-center"
+                      >
+                        <a class="iq-icons-list" href="#" target="_self">
+                          <div
+                            data-icon="&#xe04d;"
+                            class="icon"
+                            style="color: red"
+                          ></div>
+                          <span style="color: red">Suspendido</span>
+                        </a>
+                      </div>
+                      <div
+                        v-else-if="hospital.estatus === 'Cancelado'"
+                        class="text-center"
+                      >
+                        <a class="iq-icons-list" href="#" target="_self">
+                          <div
+                            data-icon=")"
+                            class="icon"
+                            style="color: black"
+                          ></div>
+                          <span style="color: black">Cerrado</span>
+                        </a>
+                      </div>
+                      <div v-else class="col-12 col-md-6 col-lg-3">
+                        {{ hospital.estatus }}
+                      </div>
+                    </td>
                     <!-- <td>
                       <a href="#" class="edit" title="">
                         <button
@@ -341,8 +450,8 @@ export default {
         nombre: "",
         descripcion: "",
         tipo: "",
-        departamento_id: "",
-        Instalacion_superior_id: "",
+        departamento: "",
+        Instalacion_superior: "",
         estatus: "",
       },
       searchInput: "",

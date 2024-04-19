@@ -397,7 +397,7 @@ export default {
           icon: "fa fa-arrow-down",
         },
         {
-          title: "Actulizados",
+          title: "Actualizados",
           value: null,
           iconBg: "bg-warning",
           icon: "fa fa-refresh",
