@@ -92,7 +92,7 @@
                               <thead>
                                 <tr class="text-center">
                                   <th scope="col">N°</th>
-                                  <th scope="col">Servicio</th>
+                                  <th scope="col">Servicio Solicitado</th>
                                   <th scope="col">Departamento Solicitante</th>
                                   <th scope="col">Fecha de Solicitud</th>
                                   <th scope="col">Estatus</th>
@@ -112,6 +112,12 @@
                                     <div
                                       v-if="solicitud.servicio_paciente === 1"
                                     >
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/1.- Urgencias.png"
+                                        alt="Urgencias Icono"
+                                        width="32"
+                                        height="32"
+                                      />
                                       <h5>Urgencias</h5>
                                     </div>
                                     <div
@@ -119,222 +125,405 @@
                                         solicitud.servicio_paciente === 2
                                       "
                                     >
-                                      <span>Consulta Externa</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/2.- Consulta Externa.png"
+                                        alt="Consulta Externa"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Consulta Externa</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 3
                                       "
                                     >
-                                      <span>Hospitalización</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/3.- Hospitalización.png"
+                                        alt="Hospitalización"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Hospitalización</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 4
                                       "
                                     >
-                                      <span>Cirugía</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/4.- Cirugia.png"
+                                        alt="Cirugia"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Cirugía</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 5
                                       "
                                     >
-                                      <span>Laboratorio Clínico</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/5.- Laboratorio Clínico.png"
+                                        alt="Laboratorio Clínico"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Laboratorio Clínico</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 6
                                       "
                                     >
-                                      <span>Radiología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/6.- Radiología.png"
+                                        alt="Radiología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Radiología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 7
                                       "
                                     >
-                                      <span>Farmacia</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/7.- Farmacia.png"
+                                        alt="Farmacia"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Farmacia</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 8
                                       "
                                     >
-                                      <span>Rehabilitación</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/8.- Rehabilitación.png"
+                                        alt="Rehabilitación"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Rehabilitación</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 9
                                       "
                                     >
-                                      <span>Cuidados Intensivos</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/9.- Cuidados Intensivos.png"
+                                        alt="Cuidados Intensivos"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Cuidados Intensivos</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 10
                                       "
                                     >
-                                      <span>Atención Pediática</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/10.- Atención Pediática.png"
+                                        alt="Atención Pediática"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Atención Pediática</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 11
                                       "
                                     >
-                                      <span>Atención Materno-Infantil</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/11.- Atencion Materno-Infantil.png"
+                                        alt="Atencion Materno-Infantil"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Atención Materno-Infantil</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 12
                                       "
                                     >
-                                      <span>Atención Geriatríca</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/12.- Atencion Geriatrica.png"
+                                        alt="Atencion Geriatrica"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Atención Geriatríca</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 13
                                       "
                                     >
-                                      <span>Psiquiatría y Salud Mental</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/13.- Psiquiatria y Salud Mental.png"
+                                        alt="Psiquiatria y Salud Mental"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Psiquiatría y Salud Mental</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 14
                                       "
                                     >
-                                      <span>Banco de Sangre</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/14.- Banco de Sangre.png"
+                                        alt="Banco de Sangre"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Banco de Sangre</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 15
                                       "
                                     >
-                                      <span>Ginecología y Obstétricia</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/15.- Ginecologia y Obstetricia.png"
+                                        alt="Ginecologia y Obstetricia"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Ginecología y Obstétricia</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 16
                                       "
                                     >
-                                      <span>Quirófano</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/16.- Quirofano.png"
+                                        alt="Quirofano"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Quirófano</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 17
                                       "
                                     >
-                                      <span>Tanatología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/17.- Tanatologia.png"
+                                        alt="Tanatologia"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Tanatología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 18
                                       "
                                     >
-                                      <span>Infectología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/18.- Infectología.png"
+                                        alt="Infectología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Infectología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 19
                                       "
                                     >
-                                      <span>Cardiología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/19.- Cardiología.png"
+                                        alt="Cardiología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Cardiología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 20
                                       "
                                     >
-                                      <span>Neurología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/20.- Neurología.png"
+                                        alt="Neurología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Neurología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 21
                                       "
                                     >
-                                      <span>Endocrinología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/21.- Endocrinología.png"
+                                        alt="Endocrinología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Endocrinología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 22
                                       "
                                     >
-                                      <span>Oftamología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/22.- Oftamología.png"
+                                        alt="Oftamología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Oftamología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 23
                                       "
                                     >
-                                      <span>Otorrinología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/23.- Otorrinología.png"
+                                        alt="Otorrinología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Otorrinología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 24
                                       "
                                     >
-                                      <span>Gastroenterología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/24.- Gastroenterología.png"
+                                        alt="Gastroenterología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Gastroenterología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 25
                                       "
                                     >
-                                      <span>Nefrología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/25.- Nefrología.png"
+                                        alt="Nefrología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Nefrología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 26
                                       "
                                     >
-                                      <span>Dermatología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/26.- Dermatología.png"
+                                        alt="Dermatología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Dermatología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 27
                                       "
                                     >
-                                      <span>Hematología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/27.- Hematología.png"
+                                        alt="Hematología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Hematología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 28
                                       "
                                     >
-                                      <span>Oncología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/28.- Oncología.png"
+                                        alt="Oncología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Oncología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 29
                                       "
                                     >
-                                      <span>Alergología e Inmunología</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/29.- Alergología e Inmunología.png"
+                                        alt="Alergología e Inmunología"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Alergología e Inmunología</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 30
                                       "
                                     >
-                                      <span
-                                        >Medicina Física y Rehabilitación</span
-                                      >
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/30.- Medicina Física y Rehabilitación.png"
+                                        alt="Medicina Física y Rehabilitación"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Medicina Física y Rehabilitación</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 31
                                       "
                                     >
-                                      <span>Medicina Interna</span>
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/31.- Medicina Interna.png"
+                                        alt="Medicina Interna"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>Medicina Interna</h5>
                                     </div>
                                     <div
                                       v-else-if="
                                         solicitud.servicio_paciente === 32
                                       "
                                     >
-                                      <span
-                                        >Medicina Preventiva y Salud
-                                        Pública</span
-                                      >
+                                      <img
+                                        src="../../assets/images/Servicios Medicos/32.- Medicina Preventiva y Salud Pública.png"
+                                        alt="Medicina Preventiva y Salud Pública.png"
+                                        width="32"
+                                        height="32"
+                                      />
+                                      <h5>
+                                        Medicina Preventiva y Salud Pública
+                                      </h5>
                                     </div>
                                     <div
                                       v-else
@@ -1031,7 +1220,7 @@
                                     <a href="#" class="edit" title="">
                                       <button
                                         class="btn btn-warning btn-sm"
-                                        @click="editBtn(solicitud.id)"
+                                        @click.prevent="editBtn(solicitud.id)"
                                       >
                                         Edita
                                       </button>
@@ -1039,7 +1228,9 @@
                                     <a href="#" class="edit" title="">
                                       <button
                                         class="btn btn-danger btn-sm"
-                                        @click="deleteSolicitud(solicitud.id)"
+                                        @click.prevent="
+                                          deleteSolicitud(solicitud.id)
+                                        "
                                       >
                                         Elimina
                                       </button>
